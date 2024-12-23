@@ -2,7 +2,7 @@
 
 Disassembled IDP07280 DSDT acpi table.
 
-***This is not from a leaked source. Every .asl file was hand-edited/"reverse-engineered". SDM850 ACPI source was used as a reference for editing kodiak ASL templates.***
+***This is not from a leaked source. Every .asl file was hand-edited/"reverse-engineered". DragonBoard 410c ACPI source was used as a reference for editing kodiak ASL templates.***
 
 Some remarks/comments in the ASL bindings may contain errors.
 
