@@ -23,7 +23,8 @@ Device (CAMP)
 
     Name (_HID, "QCOM0A32")
     Name (_UID, 0x1B)
-    Method (_STA, 0, NotSerialized)
+
+    Method (_STA)
     {
         Return (0x0F)
     }
@@ -61,16 +62,9 @@ Device (CAMS)
     Alias (\_SB.PSUB, _SUB)
 
     // Return 0x0 to disable CAMS sensor
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
-        If ((\_SB.SKUV == One))
-        {
-            Return (0x0F)
-        }
-        Else
-        {
-            Return (Zero)
-        }
+        Return (0x0F)
     }
 
     // PEP Proxy Support
@@ -124,18 +118,11 @@ Device (CAMF)
 
     Method (_SUB, 0, NotSerialized)
     {
-        If ((\_SB.SKUV == One))
-        {
-            Return ("IDP07280")
-        }
-        Else
-        {
-            Return ("IDP17280")
-        }
+        Return ("IDP07280")
     }
 
     // Return 0x0 to disable CAMF sensor
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }
@@ -191,18 +178,11 @@ Device (CAMI)
 
     Method (_SUB, 0, NotSerialized)
     {
-        If ((\_SB.SKUV == One))
-        {
-            Return ("IDP07280")
-        }
-        Else
-        {
-            Return ("IDP17280")
-        }
+        Return ("IDP07280")
     }
 
     // Return 0x0 to disable CAMI sensor
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         If ((\_SB.SKUV == One))
         {
@@ -265,16 +245,9 @@ Device (CAMT)
     Alias (\_SB.PSUB, _SUB)
 
     // Return 0x0 to disable CAMT sensor
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
-        If ((\_SB.SKUV == One))
-        {
-            Return (0x0F)
-        }
-        Else
-        {
-            Return (Zero)
-        }
+        Return (0x0F)
     }
 
     // PEP Proxy Support
@@ -328,16 +301,9 @@ Device (CAMU)
     Alias (\_SB.PSUB, _SUB)
 
     // Return 0x0 to disable CAMU sensor
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
-        If ((\_SB.SKUV == One))
-        {
-            Return (0x0F)
-        }
-        Else
-        {
-            Return (Zero)
-        }
+        Return (0x0F)
     }
 
     // PEP Proxy Support
@@ -391,18 +357,11 @@ Device (FLSH)
 
     Method (_SUB, 0, NotSerialized)
     {
-        If ((\_SB.SKUV == One))
-        {
-            Return ("IDP07280")
-        }
-        Else
-        {
-            Return ("IDP17280")
-        }
+        Return ("IDP07280")
     }
 
     // Return 0x0 to disable FLSH device
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }

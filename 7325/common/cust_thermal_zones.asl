@@ -4,7 +4,7 @@
 Device (AGR0)
 {
     Name (_HID, "ACPI000C")
-    Name (_PUR, Package (0x02) {One, Zero})
+    Name (_PUR, Package (0x02) {1, 0})
     Method (_OST, 3, NotSerialized)
     {
         \_SB.PEP0.ROST = Arg2
@@ -31,20 +31,20 @@ Device (AGR0)
 //Regular Thermal zone for Little CPU TSENS to dial back little CPUs at 90C
 ThermalZone (TZ0) {
     Name (_HID, "QCOM0A58")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 
-    Name (TTSP, One)
+    Name (TTSP, 1)
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ0.TTSP)}
 } // end of TZ0
 
 // Regular Thermal Zone for Little CPU TSENS to Park cores at 105C
 ThermalZone (TZ1) {
     Name (_HID, "QCOM0A58")
-    Name (_UID, One)
-    Name (_TZD, Package (One) {\_SB.PEP0})
+    Name (_UID, 1)
+    Name (_TZD, Package () {\_SB.PEP0})
 
     Name (TPSV, 0x0EC4)
     Method (_PSV, 0, NotSerialized) { Return (\_SB.TZ1.TPSV) }
@@ -53,7 +53,7 @@ ThermalZone (TZ1) {
 
     // Control how aggressively the thermal manager applies thermal
     // throttling performance against temperature change.
-    Name (TTC1, Zero)
+    Name (TTC1, 0)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ1.TTC1) }
 
     // _TTC2 Controls how aggressively the thermal manager applies thermal
@@ -64,7 +64,7 @@ ThermalZone (TZ1) {
     // Since that is controlled via _TC2, we like it to be high.
     // please refer to the ACPI spec 6.0 to understand the significance of
     // _TC2 or take a look at the explanation at the top of this file.
-    Name (TTC2, One)
+    Name (TTC2, 1)
     Method (_TC2, 0, NotSerialized) { Return (\_SB.TZ1.TTC2) }
 
     // Appropriate temperature sampling interval for the zone in tenths
@@ -73,7 +73,7 @@ ThermalZone (TZ1) {
     // Must be greater than zero. For more information, see Thermal
     // throttling algorithm on msdn page
     // https://msdn.microsoft.com/en-us/library/windows/hardware/mt643928(v=vs.85).aspx
-    Name (TTSP, One)
+    Name (TTSP, 1)
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ1.TTSP) }
 
     // This optional object evaluates to a recommended polling frequency
@@ -83,10 +83,10 @@ ThermalZone (TZ1) {
     // generating asynchronous notifications).
     // TZP should be marked 0 for all thermal zones as our TSENS sensors
     // generate interrupts to complete thermal IOCTL read call.
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
 
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 } // end of TZ1
 
@@ -97,12 +97,12 @@ ThermalZone (TZ1) {
 // done actively by hardware starting from 8998.
 ThermalZone (TZ2) {
     Name (_HID, "QCOM0A59")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 
-    Name (TTSP, One)
+    Name (TTSP, 1)
     Method (_TSP, 0, NotSerialized) {
         Return (\_SB.TZ2.TTSP)
     }
@@ -111,64 +111,64 @@ ThermalZone (TZ2) {
 // Thermal Zone 3
 ThermalZone (TZ3) {
     Name (_HID, "QCOM0A59")
-    Name (_UID, One)
-    Name (_TZD, Package (One) {\_SB.PEP0})
+    Name (_UID, 1)
+    Name (_TZD, Package () {\_SB.PEP0})
 
     Name (TPSV, 0x0EC4)
     Method (_PSV, 0, NotSerialized) { Return (\_SB.TZ3.TPSV) }
 
     Name (_MTL, 0x14)
 
-    Name (TTC1, Zero)
+    Name (TTC1, 0)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ3.TTC1) }
 
-    Name (TTC2, One)
+    Name (TTC2, 1)
     Method (_TC2, 0, NotSerialized) { Return (\_SB.TZ3.TTC2) }
 
-    Name (TTSP, One)
+    Name (TTSP, 1)
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ3.TTSP) }
 
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
 
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 } // end of TZ3
 
 // Thermal zone 4
 ThermalZone (TZ4) {
     Name (_HID, "QCOM0AD4")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 
-    Name (TTSP, One)
+    Name (TTSP, 1)
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ4.TTSP) }
 }
 
 ThermalZone (TZ5) {
     Name (_HID, "QCOM0AD4")
-    Name (_UID, One)
-    Name (_TZD, Package (One) {\_SB.PEP0})
+    Name (_UID, 1)
+    Name (_TZD, Package () {\_SB.PEP0})
 
     Name (TPSV, 0x0EC4)
     Method (_PSV, 0, NotSerialized) { Return (\_SB.TZ5.TPSV) }
 
     Name (_MTL, 0x14)
 
-    Name (TTC1, Zero)
+    Name (TTC1, 0)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ5.TTC1) }
 
-    Name (TTC2, One)
+    Name (TTC2, 1)
     Method (_TC2, 0, NotSerialized) { Return (\_SB.TZ5.TTC2) }
 
-    Name (TTSP, One)
+    Name (TTSP, 1)
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ5.TTSP) }
 
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 } // end of TZ5
 
@@ -183,13 +183,13 @@ ThermalZone (TZ5) {
 //Thermal zone for TSENS14 dial back GPUs at 85C
 ThermalZone (TZ6) {
     Name (_HID, "QCOM0A91")
-    Name (_UID, Zero)
-    Name (_TZD, Package (One) {\_SB.GPU0})
+    Name (_UID, 0)
+    Name (_TZD, Package () {\_SB.GPU0})
 
     Name (TPSV, 0x0E60)
     Method (_PSV, 0, NotSerialized) { Return (\_SB.TZ6.TPSV) }
 
-    Name (TTC1, One)
+    Name (TTC1, 1)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ6.TTC1) }
 
     Name (TTC2, 0x02)
@@ -198,18 +198,18 @@ ThermalZone (TZ6) {
     Name (TTSP, 0x02)
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ6.TTSP) }
 
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 }
 
 // Thermal Zone 7
 ThermalZone (TZ7) {
     Name (_HID, "QCOM0A51")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 
     Name (TTSP, 0x32)
@@ -219,9 +219,9 @@ ThermalZone (TZ7) {
 // Thermal Zone 9
 ThermalZone (TZ9) {
     Name (_HID, "QCOM0A4C")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 
     Name (TTSP, 0x32)
@@ -231,13 +231,13 @@ ThermalZone (TZ9) {
 // Thermal Zone 10
 ThermalZone (TZ10) {
     Name (_HID, "QCOM0A92")
-    Name (_UID, Zero)
-    Name (_TZD, Package (One) {\_SB.MJCT})
+    Name (_UID, 0)
+    Name (_TZD, Package () {\_SB.MJCT})
 
     Name (TPSV, 0x0E60)
     Method (_PSV, 0, NotSerialized) { Return (\_SB.TZ10.TPSV) }
 
-    Name (TTC1, One)
+    Name (TTC1, 1)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ10.TTC1) }
 
     Name (TTC2, 0x02)
@@ -246,12 +246,12 @@ ThermalZone (TZ10) {
     Name (TTSP, 0x0A)
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ10.TTSP) }
 
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
 
     Method (_STA, 0, NotSerialized)
     {
         If ((((\_SB.SJTG == 0x001EB0E1) || (SKUV == 0x04)) || (SKUV == 0x06))) {
-            Return (Zero)
+            Return (0)
         }
         Else {
             Return (0x0F)
@@ -259,7 +259,7 @@ ThermalZone (TZ10) {
     }
 
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 } // end of TZ10
 
@@ -267,24 +267,24 @@ ThermalZone (TZ10) {
 ThermalZone (TZ11)
 {
     Name (_HID, "QCOM0ABF")
-    Name (_UID, Zero)
-    Name (_TZD, Package (One) {\_SB.CSW0})
+    Name (_UID, 0)
+    Name (_TZD, Package () {\_SB.CSW0})
 
     Name (TPSV, 0x0EC4)
     Method (_PSV, 0, NotSerialized) { Return (\_SB.TZ11.TPSV) }
 
-    Name (TTC1, Zero)
+    Name (TTC1, 0)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ11.TTC1) }
 
-    Name (TTC2, One)
+    Name (TTC2, 1)
     Method (_TC2, 0, NotSerialized) { Return (\_SB.TZ11.TTC2) }
 
     Name (TTSP, 0x32)
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ11.TTSP) }
 
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 } // end of TZ11
 
@@ -292,9 +292,9 @@ ThermalZone (TZ11)
 ThermalZone (TZ12)
 {
     Name (_HID, "QCOM0A4B")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 
     Name (TTSP, 0x32)
@@ -305,7 +305,7 @@ ThermalZone (TZ12)
 ThermalZone (TZ13)
 {
     Name (_HID, "QCOM0A57")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Name (_TZD, Package (0x04) {\_SB.WLTM, \_SB.CSW0, \_SB.GPU0, _SB.MBCL})
 
     Method (_DEP, 0, NotSerialized) {
@@ -317,7 +317,7 @@ ThermalZone (TZ13)
 ThermalZone (TZ15)
 {
     Name (_HID, "QCOM0AC8")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Method (_CRS, 0, NotSerialized)
     {
         Name (RBUF, ResourceTemplate ()
@@ -327,7 +327,7 @@ ThermalZone (TZ15)
         Return (RBUF)
     }
 
-    Name (_TZD, Package (One) {\_SB.PEP0})
+    Name (_TZD, Package () {\_SB.PEP0})
 
     Name (TPSV, 0x0E60)
     Method (_PSV, 0, NotSerialized) { Return (\_SB.TZ15.TPSV) }
@@ -337,15 +337,15 @@ ThermalZone (TZ15)
 
     Name (_MTL, 0x14)
 
-    Name (TTC1, Zero)
+    Name (TTC1, 0)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ15.TTC1) }
 
     Name (TTC2, 0x14)
     Method (_TC2, 0, NotSerialized) { Return (\_SB.TZ15.TTC2) }
 
-    Name (_TSP, One)
+    Name (_TSP, 1)
 
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
 
     Method(_DSM, 0x4, NotSerialized) {
         While(One) {
@@ -353,13 +353,13 @@ ThermalZone (TZ15)
             CopyObject(ToBuffer(Arg0, ), _T_0)
             If(LEqual(_T_0, Buffer(0x10) {0x4b, 0x2c, 0xd4, 0xc2, 0x5e, 0xe2, 0x1c, 0x47, 0x8a, 0x4e, 0x29, 0x0a, 0xac, 0x3a, 0x29, 0xa3})) {
                 While(One) {
-                    Name(_T_1, Zero)
+                    Name(_T_1, 0)
                     Store(Arg2, _T_1)
-                    If(LEqual(_T_1, Zero)) {
+                    If(LEqual(_T_1, 0)) {
                         While(One) {
-                            Name(_T_2, Zero)
+                            Name(_T_2, 0)
                             Store(Arg1, _T_2)
-                            If(LEqual(_T_2, Zero)) {
+                            If(LEqual(_T_2, 0)) {
                                 Return(Buffer(One) {0x03})
                             }
                             Break
@@ -367,9 +367,9 @@ ThermalZone (TZ15)
                         Return(Buffer(One) {0x00})
                     }
                     Else {
-                        If(LEqual(_T_1, One)) {
-                            Store(DerefOf(Index(Arg3, Zero, )), \_SB_.TZ15.TPSV)
-                            Store(DerefOf(Index(Arg3, One, )), \_SB_.TZ15.TCRT)
+                        If(LEqual(_T_1, 1)) {
+                            Store(DerefOf(Index(Arg3, 0, )), \_SB_.TZ15.TPSV)
+                            Store(DerefOf(Index(Arg3, 1, )), \_SB_.TZ15.TCRT)
                             Store(DerefOf(Index(Arg3, 0x2, )), \_SB_.TZ15.TTC2)
                             Store(Zero, \_SB_.TZ15.TTC1)
                             Notify(\_SB_.TZ15, 0x81)
@@ -397,7 +397,7 @@ ThermalZone (TZ15)
 // Thermal Zone 16
 ThermalZone (TZ16) {
     Name (_HID, "QCOM0AC9")
-    Name (_UID, Zero)
+    Name (_UID, 0)
 
     Method (_CRS, 0, NotSerialized)
     {
@@ -416,15 +416,15 @@ ThermalZone (TZ16) {
     Name (TCRT, 0x0F28)
     Method (_CRT, 0, NotSerialized) { Return (\_SB.TZ16.TCRT) }
 
-    Name (TTC1, Zero)
+    Name (TTC1, 0)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ16.TTC1) }
 
     Name (TTC2, 0x14)
     Method (_TC2, 0, NotSerialized) { Return (\_SB.TZ16.TTC2) }
 
-    Name (_TSP, One)
+    Name (_TSP, 1)
 
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
 
     Method (_DSM, 4, NotSerialized) {
         While (One) {
@@ -432,13 +432,13 @@ ThermalZone (TZ16) {
             CopyObject (ToBuffer (Arg0), _T_0)
             If ((_T_0 == ToUUID ("c2d42c4b-e25e-471c-8a4e-290aac3a29a3") )) {
                 While(One) {
-                    Name(_T_1, Zero)
+                    Name(_T_1, 0)
                     Store(Arg2, _T_1)
-                    If(LEqual(_T_1, Zero)) {
+                    If(LEqual(_T_1, 0)) {
                         While(One) {
-                            Name(_T_2, Zero)
+                            Name(_T_2, 0)
                             Store(Arg1, _T_2)
-                            If(LEqual(_T_2, Zero)) {
+                            If(LEqual(_T_2, 0)) {
                                 Return(Buffer(One) {0x03})
                             }
                             Break
@@ -446,9 +446,9 @@ ThermalZone (TZ16) {
                         Return(Buffer(One) {0x00})
                     }
                     Else {
-                        If(LEqual(_T_1, One)) {
-                            Store(DerefOf(Index(Arg3, Zero, )), \_SB_.TZ16.TPSV)
-                            Store(DerefOf(Index(Arg3, One, )), \_SB_.TZ16.TCRT)
+                        If(LEqual(_T_1, 1)) {
+                            Store(DerefOf(Index(Arg3, 0, )), \_SB_.TZ16.TPSV)
+                            Store(DerefOf(Index(Arg3, 1, )), \_SB_.TZ16.TCRT)
                             Store(DerefOf(Index(Arg3, 0x2, )), \_SB_.TZ16.TTC2)
                             Store(Zero, \_SB_.TZ16.TTC1)
                             Notify(\_SB_.TZ16, 0x81)
@@ -462,7 +462,7 @@ ThermalZone (TZ16) {
                 }
             }
             Else {
-                Return (Zero)
+                Return (0)
             }
 
             Break
@@ -477,7 +477,7 @@ ThermalZone (TZ16) {
 // Thermal Zone 18
 ThermalZone (TZ18) {
     Name (_HID, "QCOM0ACB")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Method (_CRS, 0, NotSerialized)
     {
 
@@ -496,15 +496,15 @@ ThermalZone (TZ18) {
     Name (TCRT, 0x0F28)
     Method (_CRT, 0, NotSerialized) { Return (\_SB.TZ18.TCRT) }
 
-    Name (TTC1, Zero)
+    Name (TTC1, 0)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ18.TTC1) }
 
     Name (TTC2, 0x14)
     Method (_TC2, 0, NotSerialized) { Return (\_SB.TZ18.TTC2) }
 
-    Name (_TSP, One)
+    Name (_TSP, 1)
 
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
 
     Method (_DSM, 4, NotSerialized) {
         While (One) {
@@ -512,13 +512,13 @@ ThermalZone (TZ18) {
             CopyObject (ToBuffer (Arg0), _T_0)
             If ((_T_0 == ToUUID ("c2d42c4b-e25e-471c-8a4e-290aac3a29a3") )) {
                 While(One) {
-                    Name(_T_1, Zero)
+                    Name(_T_1, 0)
                     Store(Arg2, _T_1)
-                    If(LEqual(_T_1, Zero)) {
+                    If(LEqual(_T_1, 0)) {
                         While(One) {
-                            Name(_T_2, Zero)
+                            Name(_T_2, 0)
                             Store(Arg1, _T_2)
-                            If(LEqual(_T_2, Zero)) {
+                            If(LEqual(_T_2, 0)) {
                                 Return(Buffer(One) {0x03})
                             }
                             Break
@@ -526,9 +526,9 @@ ThermalZone (TZ18) {
                         Return(Buffer(One) {0x00})
                     }
                     Else {
-                        If(LEqual(_T_1, One)) {
-                            Store(DerefOf(Index(Arg3, Zero, )), \_SB_.TZ18.TPSV)
-                            Store(DerefOf(Index(Arg3, One, )), \_SB_.TZ18.TCRT)
+                        If(LEqual(_T_1, 1)) {
+                            Store(DerefOf(Index(Arg3, 0, )), \_SB_.TZ18.TPSV)
+                            Store(DerefOf(Index(Arg3, 1, )), \_SB_.TZ18.TCRT)
                             Store(DerefOf(Index(Arg3, 0x2, )), \_SB_.TZ18.TTC2)
                             Store(Zero, \_SB_.TZ18.TTC1)
                             Notify(\_SB_.TZ18, 0x81)
@@ -542,7 +542,7 @@ ThermalZone (TZ18) {
                 }
             }
             Else {
-                Return (Zero)
+                Return (0)
             }
             Break
         }
@@ -551,7 +551,7 @@ ThermalZone (TZ18) {
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SJTG == 0x001EB0E1) || (SKUV == 0x04)) || (SKUV == 0x06)))
         {
-            Return (Zero)
+            Return (0)
         }
         Else {
             Return (0x0F)
@@ -566,7 +566,7 @@ ThermalZone (TZ18) {
 // Thermal Zone 99
 ThermalZone (TZ99) {
     Name (_HID, "QCOM0A5A")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Name (_TZD, Package (0x0D) {
         \_SB.SYSM.CLUS.CPU0, \_SB.SYSM.CLUS.CPU1, \_SB.SYSM.CLUS.CPU2, \_SB.SYSM.CLUS.CPU3,
         \_SB.SYSM.CLUS.CPU4, \_SB.SYSM.CLUS.CPU5, \_SB.SYSM.CLUS.CPU6, \_SB.SYSM.CLUS.CPU7,
@@ -589,9 +589,9 @@ ThermalZone (TZ99) {
     Name (TTSP, 0x0A)
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ99.TTSP) }
 
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.PEP0})
+        Return (Package () {\_SB.PEP0})
     }
 } // end of TZ99
 
@@ -599,11 +599,11 @@ ThermalZone (TZ99) {
 Device (MPA) {
     Name (_HID, "QCOM04B4")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One) {\_SB.IPC0})
+    Name (_DEP, Package () {\_SB.IPC0})
 
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
+        { Return (0) }
         Else
         { Return (0x0F) }
     }
@@ -612,11 +612,11 @@ Device (MPA) {
 Device (MPA1) {
     Name (_HID, "QCOM04B5")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One) {\_SB.IPC0})
+    Name (_DEP, Package () {\_SB.IPC0})
 
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
+        { Return (0) }
         Else
         { Return (0x0F) }
     }
@@ -625,11 +625,11 @@ Device (MPA1) {
 Device (MBJ0) {
     Name (_HID, "QCOM04B6")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One) {\_SB.IPC0})
+    Name (_DEP, Package () {\_SB.IPC0})
 
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
+        { Return (0) }
         Else
         { Return (0x0F) }
     }
@@ -638,11 +638,11 @@ Device (MBJ0) {
 Device (MBJ1) {
     Name (_HID, "QCOM04B7")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One) {\_SB.IPC0})
+    Name (_DEP, Package () {\_SB.IPC0})
 
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
+        { Return (0) }
         Else
         { Return (0x0F) }
     }
@@ -651,11 +651,11 @@ Device (MBJ1) {
 Device (MBJ2) {
     Name (_HID, "QCOM04B8")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One) {\_SB.IPC0})
+    Name (_DEP, Package () {\_SB.IPC0})
 
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
+        { Return (0) }
         Else
         { Return (0x0F) }
     }
@@ -664,11 +664,11 @@ Device (MBJ2) {
 Device (MBJ3) {
     Name (_HID, "QCOM04B9")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One) {\_SB.IPC0})
+    Name (_DEP, Package () {\_SB.IPC0})
 
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
+        { Return (0) }
         Else
         { Return (0x0F) }
     }
@@ -677,11 +677,11 @@ Device (MBJ3) {
 Device (MBS0) {
     Name (_HID, "QCOM04BA")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One) {\_SB.IPC0})
+    Name (_DEP, Package () {\_SB.IPC0})
 
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
+        { Return (0) }
         Else
         { Return (0x0F) }
     }
@@ -691,11 +691,11 @@ Device (MBS1)
 {
     Name (_HID, "QCOM04BB")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One) {\_SB.IPC0})
+    Name (_DEP, Package () {\_SB.IPC0})
 
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
+        { Return (0) }
         Else
         { Return (0x0F) }
     }
@@ -704,11 +704,11 @@ Device (MBS1)
 Device (MBS2) {
     Name (_HID, "QCOM04BC")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One) {\_SB.IPC0})
+    Name (_DEP, Package () {\_SB.IPC0})
 
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
+        { Return (0) }
         Else
         { Return (0x0F) }
     }
@@ -717,11 +717,11 @@ Device (MBS2) {
 Device (MSKN) {
     Name (_HID, "QCOM04BE")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One) {\_SB.IPC0})
+    Name (_DEP, Package () {\_SB.IPC0})
 
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
+        { Return (0) }
         Else
         { Return (0x0F) }
     }
@@ -730,11 +730,11 @@ Device (MSKN) {
 Device (MJCT) {
     Name (_HID, "QCOM04BF")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One) {\_SB.IPC0})
+    Name (_DEP, Package () {\_SB.IPC0})
 
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
+        { Return (0) }
         Else
         { Return (0x0F) }
     }
@@ -743,11 +743,11 @@ Device (MJCT) {
 Device (MBCL) {
     Name (_HID, "QCOM06D4")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One) {\_SB.IPC0})
+    Name (_DEP, Package () {\_SB.IPC0})
 
     Method (_STA, 0, NotSerialized) {
         If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
+        { Return (0) }
         Else
         { Return (0x0F) }
     }
@@ -755,8 +755,8 @@ Device (MBCL) {
 
 ThermalZone (TZ51) {
     Name (_HID, "QCOM04C0")
-    Name (_UID, Zero)
-    Name (_TZD, Package (One) {\_SB.MPA})
+    Name (_UID, 0)
+    Name (_TZD, Package () {\_SB.MPA})
 
     Name (TPSV, 0x0E60)
     Method (_PSV, 0, NotSerialized) { Return (\_SB.TZ51.TPSV) }
@@ -764,7 +764,7 @@ ThermalZone (TZ51) {
     Name (TCRT, 0x0F5A)
     Method (_CRT, 0, NotSerialized) { Return (\_SB.TZ51.TCRT) }
 
-    Name (TTC1, One)
+    Name (TTC1, 1)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ51.TTC1) }
 
     Name (TTC2, 0x02)
@@ -774,14 +774,14 @@ ThermalZone (TZ51) {
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ51.TTSP) }
 
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.MPA})
+        Return (Package () {\_SB.MPA})
     }
 }
 
 ThermalZone (TZ52) {
     Name (_HID, "QCOM04C1")
-    Name (_UID, Zero)
-    Name (_TZD, Package (One) {\_SB.MPA1})
+    Name (_UID, 0)
+    Name (_TZD, Package () {\_SB.MPA1})
 
     Name (TPSV, 0x0E60)
     Method (_PSV, 0, NotSerialized) { Return (\_SB.TZ52.TPSV) }
@@ -789,7 +789,7 @@ ThermalZone (TZ52) {
     Name (TCRT, 0x0F5A)
     Method (_CRT, 0, NotSerialized) { Return (\_SB.TZ52.TCRT) }
 
-    Name (TTC1, One)
+    Name (TTC1, 1)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ52.TTC1) }
 
     Name (TTC2, 0x02)
@@ -799,50 +799,50 @@ ThermalZone (TZ52) {
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ52.TTSP) }
 
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.MPA1})
+        Return (Package () {\_SB.MPA1})
     }
 }
 
 ThermalZone (TZ53) {
     Name (_HID, "QCOM04C2")
-    Name (_UID, Zero)
-    Name (_TZD, Package (One) {\_SB.MBJ0})
+    Name (_UID, 0)
+    Name (_TZD, Package () {\_SB.MBJ0})
 
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.MBJ0})
+        Return (Package () {\_SB.MBJ0})
     }
 }
 
 ThermalZone (TZ54) {
     Name (_HID, "QCOM04C3")
-    Name (_UID, Zero)
-    Name (_TZD, Package (One) {\_SB.MBJ1})
+    Name (_UID, 0)
+    Name (_TZD, Package () {\_SB.MBJ1})
 
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.MBJ1})
+        Return (Package () {\_SB.MBJ1})
     }
 }
 
 ThermalZone (TZ55) {
     Name (_HID, "QCOM04C4")
-    Name (_UID, Zero)
-    Name (_TZD, Package (One) {\_SB.MBJ2})
+    Name (_UID, 0)
+    Name (_TZD, Package () {\_SB.MBJ2})
 
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.MBJ2})
+        Return (Package () {\_SB.MBJ2})
     }
 }
 
 ThermalZone (TZ56) {
     Name (_HID, "QCOM04C5")
-    Name (_UID, Zero)
-    Name (_TZD, Package (One)
+    Name (_UID, 0)
+    Name (_TZD, Package ()
     {
         \_SB.MBJ3
     })
     Method (_DEP, 0, NotSerialized)
     {
-        Return (Package (One)
+        Return (Package ()
         {
             \_SB.MBJ3
         })
@@ -851,8 +851,8 @@ ThermalZone (TZ56) {
 
 ThermalZone (TZ57) {
     Name (_HID, "QCOM04C6")
-    Name (_UID, Zero)
-    Name (_TZD, Package (One) {\_SB.MBS0})
+    Name (_UID, 0)
+    Name (_TZD, Package () {\_SB.MBS0})
 
     Name (TPSV, 0x0E60)
     Method (_PSV, 0, NotSerialized) { Return (\_SB.TZ57.TPSV) }
@@ -860,7 +860,7 @@ ThermalZone (TZ57) {
     Name (TCRT, 0x0F5A)
     Method (_CRT, 0, NotSerialized) { Return (\_SB.TZ57.TCRT) }
 
-    Name (TTC1, One)
+    Name (TTC1, 1)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ57.TTC1) }
 
     Name (TTC2, 0x02)
@@ -870,14 +870,14 @@ ThermalZone (TZ57) {
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ57.TTSP) }
 
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.MBS0})
+        Return (Package () {\_SB.MBS0})
     }
 }
 
 ThermalZone (TZ58) {
     Name (_HID, "QCOM04C7")
-    Name (_UID, Zero)
-    Name (_TZD, Package (One) {\_SB.MBS1})
+    Name (_UID, 0)
+    Name (_TZD, Package () {\_SB.MBS1})
 
     Name (TPSV, 0x0E60)
     Method (_PSV, 0, NotSerialized) { Return (\_SB.TZ58.TPSV) }
@@ -885,7 +885,7 @@ ThermalZone (TZ58) {
     Name (TCRT, 0x0F5A)
     Method (_CRT, 0, NotSerialized) { Return (\_SB.TZ58.TCRT) }
 
-    Name (TTC1, One)
+    Name (TTC1, 1)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ58.TTC1) }
 
     Name (TTC2, 0x02)
@@ -895,14 +895,14 @@ ThermalZone (TZ58) {
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ58.TTSP) }
 
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.MBS1})
+        Return (Package () {\_SB.MBS1})
     }
 }
 
 ThermalZone (TZ59) {
     Name (_HID, "QCOM04C8")
-    Name (_UID, Zero)
-    Name (_TZD, Package (One) {\_SB.MBS2})
+    Name (_UID, 0)
+    Name (_TZD, Package () {\_SB.MBS2})
 
     Name (TPSV, 0x0E60)
     Method (_PSV, 0, NotSerialized) { Return (\_SB.TZ59.TPSV) }
@@ -910,7 +910,7 @@ ThermalZone (TZ59) {
     Name (TCRT, 0x0F5A)
     Method (_CRT, 0, NotSerialized) { Return (\_SB.TZ59.TCRT) }
 
-    Name (TTC1, One)
+    Name (TTC1, 1)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ59.TTC1) }
 
     Name (TTC2, 0x02)
@@ -920,15 +920,15 @@ ThermalZone (TZ59) {
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ59.TTSP) }
 
     Method (_DEP, 0, NotSerialized) {
-        Return (Package (One) {\_SB.MBS2})
+        Return (Package () {\_SB.MBS2})
     }
 }
 
 ThermalZone (TZ31) {
     Name (_HID, "QCOM0A5F")
-    Name (_UID, Zero)
+    Name (_UID, 0)
 
-    Name (TTC1, One)
+    Name (TTC1, 1)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ31.TTC1) }
 
     Name (TTC2, 0x05)
@@ -937,7 +937,7 @@ ThermalZone (TZ31) {
     Name (TTSP, 0x1E)
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ31.TTSP) }
 
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
 
     Method (_DEP, 0, NotSerialized) {
         Return (Package (0x02) {\_SB.PEP0, \_SB.ADC1})
@@ -946,7 +946,7 @@ ThermalZone (TZ31) {
 
 ThermalZone (TZ32) {
     Name (_HID, "QCOM0A61")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Method (_DEP, 0, NotSerialized) {
         Return (Package (0x02) {\_SB.PEP0, \_SB.ADC1})
     }
@@ -962,7 +962,7 @@ ThermalZone (TZ32) {
 
     Name (_MTL, 0x14)
 
-    Name (TTC1, Zero)
+    Name (TTC1, 0)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ32.TTC1) }
 
     Name (TTC2, 0x14)
@@ -970,20 +970,20 @@ ThermalZone (TZ32) {
 
     Name (TTSP, 0x28)
 
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ32.TTSP) }
 }
 
 ThermalZone (TZ33) {
     Name (_HID, "QCOM0A63")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Method (_DEP, 0, NotSerialized) {
         Return (Package (0x02) {\_SB.PEP0, \_SB.ADC1})
     }
 
     Name (_MTL, 0x14)
 
-    Name (TTC1, Zero)
+    Name (TTC1, 0)
     Method (_TC1, 0, NotSerialized) { Return (\_SB.TZ33.TTC1) }
 
     Name (TTC2, 0x14)
@@ -991,7 +991,7 @@ ThermalZone (TZ33) {
 
     Name (TTSP, 0x1E)
 
-    Name (_TZP, Zero)
+    Name (_TZP, 0)
     Method (_TSP, 0, NotSerialized) { Return (\_SB.TZ33.TTSP) }
 }
 

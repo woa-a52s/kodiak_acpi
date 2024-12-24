@@ -16,7 +16,7 @@ Device (SEN2)
     Alias (\_SB.PSUB, _SUB)
     Name (_CID, "QCOM0A67")
 
-    Name (_PLD, Package (One)
+    Name (_PLD, Package (0x1)
     {
         Buffer (0x14)
         {

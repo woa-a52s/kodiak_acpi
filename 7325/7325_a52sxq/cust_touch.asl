@@ -1,23 +1,16 @@
 //
-// Touch entry - Focaltech FT5652 Touchscreen Controller
+// Touch entry - FingerTipS Capacitive Touch FTS556A Touchscreen Controller
 //
-Device (TSC1)
-{
-    Name (_HID, "FTTS0001")
-    Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (0x03)
-    {
-        \_SB.PEP0,
-        \_SB.GIO0,
-        \_SB.SP14
-    })
+Device(TSC1) {
+    Name(_HID, "STFT556A")
+    Alias(\_SB_.PSUB, _SUB)
+    Name(_DEP, Package(0x3) {\_SB_.GIO0, \_SB_.IC14, \_SB_.PEP0})
 
-    Method (_CRS, 0, NotSerialized)
-    {
-        Name (RBUF, ResourceTemplate ()
-        {
-            SpiSerialBus(0x0000, PolarityLow, FourWireMode, 0x08, ControllerInitiated, 0x005B8D80, ClockPolarityLow, ClockPhaseFirst, "\\_SB.SP14", 0x00, ResourceConsumer, ,)
-            GpioInt(Edge, ActiveLow, ExclusiveAndWake, PullUp, 0x0000, "\\_SB.GIO0", 0x00, ResourceConsumer, ,) {0x0051}
+    Method(_CRS, 0x0, NotSerialized) {
+        Name (RBUF, ResourceTemplate () {
+
+            I2cSerialBus (0x0049, ControllerInitiated, 0x00061A80, AddressingMode7Bit, "\\_SB.IC14", 0x00, ResourceConsumer, ,)
+            GpioInt (Level, ActiveLow, Exclusive, PullUp, 0x0000, "\\_SB.GIO0", 0x00, ResourceConsumer, ,) {0x0051} // From touchscreen node, sec,irq_gpio = <0x3c 0x51 0x00>;
         })
         Return (RBUF)
     }
@@ -27,7 +20,7 @@ Device (TSC1)
 
     Name(DBUF, Buffer(DBFL) {})             // Device ID buffer - PGID( Pep given ID )
     CreateByteField(DBUF, 0x0, STAT)        // STATUS 1 BYTE
-                                            // HIDDEN 1 BYTE ( SIZE )
+    // HIDDEN 1 BYTE ( SIZE )
     CreateByteField(DBUF, 2, DVAL )         // Packet value, 1 BYTES Device Status
     CreateField(DBUF, 24, 160, DEID)        // Device ID, 20 BYTES(160 Bits)
 

@@ -1,0 +1,4 @@
+cust_camera_exasoc.asl
+dsdt_common.asl
+pmic_core.asl
+pep_common.asl

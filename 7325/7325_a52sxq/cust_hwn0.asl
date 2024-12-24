@@ -14,7 +14,7 @@ Device(HWN0)
             Return(0)
         }
         Else {
-            Return(0x0F)
+            Return(0)
         }
     }
 

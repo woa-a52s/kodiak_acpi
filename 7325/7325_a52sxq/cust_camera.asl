@@ -144,7 +144,7 @@ Device (VFE0)
             Memory32Fixed (ReadWrite, 0x0ACCB000, 0x00005000)
 
             // ICP FW
-            Memory32Fixed (ReadWrite, 0x85C00000, 0x00500000)
+            Memory32Fixed (ReadWrite, 0x83C00000, 0x00500000)
 
 
             //

@@ -13,12 +13,12 @@
  * QCADC
  * -------------------------------------------------------------------------*/
 
-Device (ADC1)
+Device(ADC1)
 {
     /*----------------------------------------------------------------------------
      * Dependencies
      * -------------------------------------------------------------------------*/
-    Name (_DEP, Package (0x02)
+    Name(_DEP, Package (0x02)
     {
         \_SB.SPMI,
         \_SB.PMIC
@@ -27,32 +27,32 @@ Device (ADC1)
     /*----------------------------------------------------------------------------
      * HID
      * -------------------------------------------------------------------------*/
-    Name (_HID, "QCOM0A11")
-    Name (_UID, 0)
-    Alias (\_SB.PSUB, _SUB)
+    Name(_HID, "QCOM0A11")
+    Name(_UID, 0)
+    Alias(\_SB.PSUB, _SUB)
 
     /*----------------------------------------------------------------------------
      * ADC Resources
      * -------------------------------------------------------------------------*/
-    Method (_CRS, 0, NotSerialized)
+    Method(_CRS)
     {
         /*
          * Interrupts
          */
-        Name (INTB, ResourceTemplate ()
+        Name(INTB, ResourceTemplate ()
         {
 
-            GpioInt (Edge, ActiveHigh, ExclusiveAndWake, PullUp, 0x0000, "\\_SB.PM01", 0x00, ResourceConsumer, , RawDataBuffer (0x01){0x02}) {0x0020}
-            GpioInt (Edge, ActiveHigh, ExclusiveAndWake, PullUp, 0x0000, "\\_SB.PM01", 0x00, ResourceConsumer, , RawDataBuffer (0x01){0x02}) {0x0028}
+            GpioInt(Edge, ActiveHigh, ExclusiveAndWake, PullUp, 0x0000, "\\_SB.PM01", 0x00, ResourceConsumer, , RawDataBuffer (0x01){0x02}) {0x0020}
+            GpioInt(Edge, ActiveHigh, ExclusiveAndWake, PullUp, 0x0000, "\\_SB.PM01", 0x00, ResourceConsumer, , RawDataBuffer (0x01){0x02}) {0x0028}
         })
 
         /*
          * SPMI peripherals
          */
-        Name (NAM, Buffer (0x0A) {"\\_SB.SPMI"})
+        Name(NAM, Buffer () {"\\_SB.SPMI"})
 
         // VAdc
-        Name (VUSR, Buffer (0x0C)
+        Name(VUSR, Buffer ()
         {
             0x8E,       // SPB Descriptor
             0x13, 0x00, // Length including NAM above
@@ -66,7 +66,7 @@ Device (ADC1)
         })
 
         // VAdc TM
-        Name (VBTM, Buffer (0x0C)
+        Name(VBTM, Buffer ()
         {
             0x8E,       // SPB Descriptor
             0x13, 0x00, // Length including NAM above
@@ -79,10 +79,10 @@ Device (ADC1)
             0x00, 0x00  // +0x07 type specific data length
         })
 
-        Concatenate (VUSR, NAM, Local1)
-        Concatenate (VBTM, NAM, Local2)
-        Concatenate (Local1, Local2, Local3)
-        Concatenate (Local3, INTB, Local0)
+        Concatenate(VUSR, NAM, Local1)
+        Concatenate(VBTM, NAM, Local2)
+        Concatenate(Local1, Local2, Local3)
+        Concatenate(Local3, INTB, Local0)
 
         Return (Local0)
     }
