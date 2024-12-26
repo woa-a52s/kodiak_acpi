@@ -9,2555 +9,1957 @@
 Scope(\_SB_.PEP0)
 {
 
-    Method(MPMD, 0x0, NotSerialized)
+    Method(MPMD)
     {
         Return(MPCC)
     }
 
-    Name(MPCC, Package(0x0)
-    {
-    })
+    Name(MPCC, Package() {})
 }
 
 Scope(\_SB_.PEP0)
 {
-    Method(OPMD, 0x0, NotSerialized)
+    Method(OPMD)
     {
         Return(OPCC)
     }
 
-    Name(OPCC, Package(0x0)
-    {
-    })
+    Name(OPCC, Package() {})
 }
 
 Scope(\_SB_.PEP0)
 {
-    Method(LPMD, 0x0, NotSerialized)
+    Method(LPMD)
     {
         Return(LPCC)
     }
 
-    Name(LPCC, Package(0x5)
+    Name(LPCC,
+    Package()
     {
-        Package(0x7)
+        Package()
         {
             "DEVICE",
             "\\_SB.URS0",
-            Package(0x5)
+            Package()
             {
                 "COMPONENT",
-                Zero,
-                Package(0x2) {"FSTATE", Zero},
-                Package(0x2) {"PSTATE", Zero},
-                Package(0x2) {"PSTATE", One}
+                0x0,
+                Package() {"FSTATE", 0},
+                Package() {"PSTATE", 0},
+                Package() {"PSTATE", 1}
             },
-            Package(0x2) {"DSTATE", Zero},
-            Package(0x2) {"DSTATE", One},
-            Package(0x2) {"DSTATE", 0x2},
-            Package(0x2) {"DSTATE", 0x3}
+            Package() {"DSTATE", 0},
+            Package() {"DSTATE", 1},
+            Package() {"DSTATE", 2},
+            Package() {"DSTATE", 3}
         },
 
         //USB SS/HS1 core (Host Stack)
-        Package(0x8)
+        Package()
         {
             "DEVICE",
             "\\_SB.URS0.USB0",
-            Package(0x4)
+            Package()
             {
                 "COMPONENT",
-                Zero, // Component 0.
-                Package(0x2) { "FSTATE", Zero },
-                Package(0x2) { "PSTATE", Zero }
+                0x0, // Component 0.
+                Package() { "FSTATE", 0 },
+                Package() { "PSTATE", 0 }
             },
-            Package(0x13)
-            {
+            //D states
+            Package()
+            { // HOST D0
                 "DSTATE",
-                Zero,
-                Package(0x2)
+                0x0,
+                //Power Grid for SM7325
+                Package()
                 {
                     // L01C
                     "PMICVREGVOTE",                 // PMIC VREG resource
-                    Package(0x6)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO1_C",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0x1b7740,                   // Voltage V : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x7,                        // SW Power Mode
-                        Zero                        // Head Room
+                        1,                          // Voltage Regulator type = LDO
+                        1800000,                    // Voltage 1.8V : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode
+                        0                           // Head Room
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     // L01B
                     "PMICVREGVOTE",                 // PMIC VREG resource
-                    Package(0x6)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO1_B",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0xdea80,                    // Voltage V : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x7,                        // SW Power Mode
-                        Zero                        // Head Room
+                        1,                          // Voltage Regulator type = LDO
+                        912000,                     // Voltage 0.912V : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode
+                        0                           // Head Room
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     // L02B
                     "PMICVREGVOTE",                 // PMIC VREG resource
-                    Package(0x6)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO2_B",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0x2ee000,                   // Voltage V : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x7,                        // SW Power Mode
-                        Zero                        // Head Room
+                        1,                          // Voltage Regulator type = LDO
+                        3072000,                    // Voltage 3.072V : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode
+                        0                           // Head Room
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     // L06B
                     "PMICVREGVOTE",                 // PMIC VREG resource
-                    Package(0x6)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO6_B",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0x124f80,                   // Voltage V : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x7,                        // SW Power Mode
-                        Zero                        // Head Room
+                        1,                          // Voltage Regulator type = LDO
+                        1200000,                    // Voltage 1.2V : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode
+                        0                           // Head Room
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     // L10C
                     "PMICVREGVOTE",                 // PMIC VREG resource
-                    Package(0x6)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO10_C",  // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0xd6d80,                    // Voltage V : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x7,                        // SW Power Mode
-                        Zero                        // Head Room
+                        1,                          // Voltage Regulator type = LDO
+                        880000,                     // Voltage 0.880V : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode
+                        0                           // Head Room
                     }
                 },
 
                 // Enable gcc_usb30_prim_gdsc power domain
-                Package(0x2)
+                Package()
                 {
                     "FOOTSWITCH",                   // Footswitch
-                    Package(0x2)
+                    Package()
                     {
                         "gcc_usb30_prim_gdsc",      // USB 3.0 Core Power domain
-                        One                         // 1==Enable
+                        1                           // 1==Enable
                     }
                 },
 
                 // Now Enable all the clocks
 
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb30_prim_sleep_clk", One}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb3_prim_phy_pipe_clk", One}},
-                Package(0x2) {"CLOCK", Package(0x4) {"gcc_aggre_usb3_prim_axi_clk", 0x8, 0xc8, 0x9}},
-                Package(0x2) {"CLOCK", Package(0x4) {"gcc_cfg_noc_usb3_prim_axi_clk", 0x8, 0xc8, 0x9}},
-                Package(0x2) {"CLOCK", Package(0x4) {"gcc_usb30_prim_master_clk", 0x8, 0xc8, 0x9}},
-                Package(0x2) {"CLOCK", Package(0x4) {"gcc_usb30_prim_mock_utmi_clk", 0x8, 0x4b00, 0x7}},
-                Package(0x2) {"CLOCK", Package(0x4) {"gcc_usb3_prim_phy_aux_clk", 0x8, 0x4b00, 0x7}},
-                Package(0x2) {"CLOCK", Package(0x4) {"gcc_usb3_prim_phy_com_aux_clk", 0x8, 0x4b00, 0x7}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_sleep_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_pipe_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_prim_axi_clk", 8, 200, 9}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_prim_axi_clk", 8, 200, 9}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 8, 200, 9}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_mock_utmi_clk", 8, 19200, 7}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_aux_clk", 8, 19200, 7}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_com_aux_clk", 8, 19200, 7}},
 
-                Package(0x2)
+                // Nominal==block vdd_min:
+                Package()
                 {
                     "NPARESOURCE",
-                    Package(0x3) {One, "/arc/client/rail_cx", 0x100}
+                    Package() {1, "/arc/client/rail_cx", 256}
                 },
 
-                Package(0x2)
+                // Vote for max freq: BUS Arbiter Request (Type-3)
+                // Instantaneous BW BytesPerSec = 671088640;
+                // Arbitrated BW BytesPerSec = 671088640 (5  x 1024 X 1024 x 1024)/8
+                Package()
                 {
                     "BUSARB",
-                    Package(0x5)
+                    Package()
                     {
-                        0x3,                        // Req Type
+                        3,                          // Req Type
                         "ICBID_MASTER_USB3_0",      // Master
                         "ICBID_SLAVE_EBI1",         // Slave
-                        0x28000000,                 // IB=5Gbps
-                        0x28000000                  // AB=5Gbps
+                        671088640,                  // IB=5Gbps
+                        671088640                   // AB=5Gbps
                     }
                 },
 
-                Package(0x2)
+                // Vote for CNOC 100 MHz - 200 MB/s IB-only (AB = 0)
+                // Required for gcc_usb_phy_cfg_ahb2phy_clk
+                //BUS Arbiter Request (Type-3)
+                Package()
                 {
                     "BUSARB",
-                    Package(0x5)
+                    Package()
                     {
-                        0x3,
-                        "ICBID_MASTER_APPSS_PROC",
-                        "ICBID_SLAVE_USB3_0",
-                        0xbebc200,
-                        Zero
+                        3,                          // Req Type
+                        "ICBID_MASTER_APPSS_PROC",  // Master
+                        "ICBID_SLAVE_USB3_0",       // Slave
+                        200000000,                  // IB=200 MBps
+                        0                           // AB=0 MBps
                     }
                 }
             },
-            Package(0x13)
-            {
-                "DSTATE",
-                One,
+            Package()
+            { // HOST D1
+                "DSTATE",  // D1 state
+                0x1,
 
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb3_prim_phy_pipe_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_aggre_usb3_prim_axi_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_cfg_noc_usb3_prim_axi_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x4) {"gcc_usb30_prim_master_clk", 0x3, 0x2580, 0x5}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb30_prim_master_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb30_prim_mock_utmi_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb3_prim_phy_aux_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb3_prim_phy_com_aux_clk", 0x2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_pipe_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 3, 9600, 5}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_mock_utmi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_aux_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_com_aux_clk", 2}},
 
-                Package(0x2)
+                // BUS Arbiter Request (Type-3)
+                // Vote for 0 freq
+                Package()
                 {
                     "BUSARB",
-                    Package(0x5)
+                    Package()
                     {
-                        0x3,                        // Req Type
+                        3,                          // Req Type
                         "ICBID_MASTER_USB3_0",      // Master
                         "ICBID_SLAVE_EBI1",         // Slave
-                        Zero,                       // IB=0 MBps
-                        Zero                        // AB=0 MBps
+                        0,                          // IB=0 MBps
+                        0                           // AB=0 MBps
                     }
                 },
 
-                Package(0x2)
+                // Remove Vote for CNOC 100 MHz
+                // Required for gcc_usb_phy_cfg_ahb2phy_clk
+                // BUS Arbiter Request (Type-3)
+                // Vote for 0 freq
+                Package()
                 {
                     "BUSARB",
-                    Package(0x5)
+                    Package()
                     {
-                        0x3,                        // Req Type
+                        3,                          // Req Type
                         "ICBID_MASTER_APPSS_PROC",  // Master
                         "ICBID_SLAVE_USB3_0",       // Slave
-                        Zero,                       // IB=0 MBps
-                        Zero                        // AB=0 MBps
+                        0,                          // IB=0 MBps
+                        0                           // AB=0 MBps
                     }
                 },
 
-                Package(0x2)
+                Package()
                 {
                     "FOOTSWITCH",                   // Footswitch
-                    Package(0x2)
+                    Package()
                     {
                         "gcc_usb30_prim_gdsc",      // USB 3.0 Core Power domain
-                        One                         // 1==Enable
+                        1                           // 1==Enable
                     }
                 },
 
-                Package(0x2)
+                // enable vdd_min
+                Package()
                 {
                     "NPARESOURCE",
-                    Package(0x3) {One, "/arc/client/rail_cx", Zero}
+                    Package() {1, "/arc/client/rail_cx", 0}
                 },
 
-                Package(0x2)
+                Package()
                 {
                     "PMICVREGVOTE",                 // Vote for L01C
-                    Package(0x6)
+                    Package()
                     {
                         // L01C
                         "PPP_RESOURCE_ID_LDO1_C",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0x1b7740,                   // Voltage         : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x4,                        // SW Power Mode =
-                        Zero                        // Head Room
+                        1,                          // Voltage Regulator type = LDO
+                        1800000,                    // Voltage 1.800V: microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     "PMICVREGVOTE",                 // Vote for L01B
-                    Package(0x6)
+                    Package()
                     {
                         // L01B
                         "PPP_RESOURCE_ID_LDO1_B",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0xdea80,                    // Voltage         : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x4,                        // SW Power Mode =
-                        Zero                        // Head Room
+                        1,                          // Voltage Regulator type = LDO
+                        912000,                     // Voltage 0.912V: microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     "PMICVREGVOTE",                 // Vote for L02B
-                    Package(0x6)
+                    Package()
                     {
                         // L02B
                         "PPP_RESOURCE_ID_LDO2_B",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0x2ee000,                   // Voltage         : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x4,                        // SW Power Mode =
-                        Zero                        // Head Room
+                        1,                          // Voltage Regulator type = LDO
+                        3072000,                    // Voltage 3.072V: microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     "PMICVREGVOTE",                 // Vote for L06B
-                    Package(0x6)
+                    Package()
                     {
                         // L06B
                         "PPP_RESOURCE_ID_LDO6_B",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0x124f80,                   // Voltage         : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x4,                        // SW Power Mode =
-                        Zero                        // Head Room
+                        1,                          // Voltage Regulator type = LDO
+                        1200000,                    // Voltage 1.200V: microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     "PMICVREGVOTE",                 // Vote for L10C
-                    Package(0x6)
+                    Package()
                     {
                         // L10C
                         "PPP_RESOURCE_ID_LDO10_C",  // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0xd6d80,                    // Voltage         : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x4,                        // SW Power Mode =
-                        Zero                        // Head Room
+                        1,                          // Voltage Regulator type = LDO
+                        880000,                     // Voltage 0.880V: microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
                     }
                 }
             },
-            Package(0x13)
+            Package()
+            { // HOST D2
+                "DSTATE",
+                0x2, // Slave device disconnect (host cable is still connected)
+
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_pipe_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 3, 9600000, 1}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_mock_utmi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_aux_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_com_aux_clk", 2}},
+
+                // Vote for 0 freq
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,                          // Req Type
+                        "ICBID_MASTER_USB3_0",      // Master
+                        "ICBID_SLAVE_EBI1",         // Slave
+                        0,                          // IB=0 MBps
+                        0                           // AB=0 MBps
+                    }
+                },
+
+                // Remove Vote for CNOC 100 MHz
+                // Required for gcc_usb_phy_cfg_ahb2phy_clk
+                // BUS Arbiter Request (Type-3)
+                // Vote for 0 freq
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,                        // Req Type
+                        "ICBID_MASTER_APPSS_PROC",  // Master
+                        "ICBID_SLAVE_USB3_0",       // Slave
+                        0,                       // IB=0 MBps
+                        0                        // AB=0 MBps
+                    }
+                },
+
+                // Enable usb30_prim_gdsc power domain
+                Package()
+                {
+                    "FOOTSWITCH",                   // Footswitch
+                    Package()
+                    {
+                        "gcc_usb30_prim_gdsc",      // USB 3.0 Core Power domain
+                        1                           // 1==Enable
+                    }
+                },
+
+                // enable vdd_min
+                Package()
+                {
+                    "NPARESOURCE",
+                    Package() { 1, "/arc/client/rail_cx", 0}
+                },
+
+                //Power Grid for SM7325
+                Package()
+                {
+                    "PMICVREGVOTE",                 // Vote for L01C
+                    Package()
+                    {
+                        // L01C
+                        "PPP_RESOURCE_ID_LDO1_C",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        1800000,                    // Voltage 1.800V: microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // Vote for L01B
+                    Package()
+                    {
+                        // L01B
+                        "PPP_RESOURCE_ID_LDO1_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        912000,                     // Voltage 0.912V: microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // Vote for L02B
+                    Package()
+                    {
+                        // L02B
+                        "PPP_RESOURCE_ID_LDO2_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        3072000,                    // Voltage 3.072V: microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // Vote for L02B
+                    Package()
+                    {
+                        // L06B
+                        "PPP_RESOURCE_ID_LDO6_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        1200000,                    // Voltage 1.2V: microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // Vote for L02B
+                    Package()
+                    {
+                        // L10C
+                        "PPP_RESOURCE_ID_LDO10_C",  // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        880000,                     // Voltage 0.880V: microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                }
+
+            },
+            Package()
+            { // HOST D3
+                "DSTATE",
+                0x3, // Abandon state
+
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_sleep_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_pipe_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 3, 9600000, 1}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_mock_utmi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_aux_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_com_aux_clk", 2}},
+
+                //Vote for 0 freq
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,                          // Req Type
+                        "ICBID_MASTER_USB3_0",      // Master
+                        "ICBID_SLAVE_EBI1",         // Slave
+                        0,                          // IB=0 MBps
+                        0                           // AB=0 MBps
+                    }
+                },
+
+                // Remove Vote for CNOC 100 MHz
+                // Required for gcc_usb_phy_cfg_ahb2phy_clk
+                // BUS Arbiter Request (Type-3)
+                // Vote for 0 freq
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,                          // Req Type
+                        "ICBID_MASTER_APPSS_PROC",  // Master
+                        "ICBID_SLAVE_USB3_0",       // Slave
+                        0,                          // IB=0 MBps
+                        0                           // AB=0 MBps
+                    }
+                },
+
+                // Disable usb30_prim_gdsc power domain
+                Package()
+                {
+                    "FOOTSWITCH",                   // Footswitch
+                    Package()
+                    {
+                        "gcc_usb30_prim_gdsc",      // USB 3.0 Core Power domain
+                        2                           // 2==Disable
+                    }
+                },
+
+                // enable vdd_min
+                Package() {"NPARESOURCE", Package() {1, "/arc/client/rail_cx", 0}},
+
+                //Power Grid for SM7325
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L02B
+                    {
+                        "PPP_RESOURCE_ID_LDO2_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        0,                          // Voltage = 0 V
+                        0,                          // SW Enable = Disable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L01B
+                    {
+                        "PPP_RESOURCE_ID_LDO1_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        0,                          // Voltage = 0 V
+                        0,                          // SW Enable = Disable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L01C
+                    {
+                        "PPP_RESOURCE_ID_LDO1_C",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        0,                          // Voltage = 0 V
+                        0,                          // SW Enable = Disable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L06B
+                    {
+                        "PPP_RESOURCE_ID_LDO6_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        0,                          // Voltage = 0 V
+                        0,                          // SW Enable = Disable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L10C
+                    {
+                        "PPP_RESOURCE_ID_LDO10_C",  // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        0,                          // Voltage = 0 V
+                        0,                          // SW Enable = Disable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                }
+            },
+            // Define Abandon State for USB0 (host) stack ie. Power State invoked when stack unloads/tears down
+            Package()
+            {
+                "ABANDON_DSTATE",
+                3                                   // Abandon D state defined as D3
+            }
+        }, //End USB0
+
+        //USB Primary Core (Host Stack) Standalone
+        Package()
+        {
+            "DEVICE",
+            "\\_SB.USB0",
+            Package()
+            {
+                "COMPONENT",
+                0x0, // Component 0.
+                Package() { "FSTATE", 0x0 },
+                Package()
+                {
+                    "PSTATE",
+                    0x0
+                }
+            },
+            //D states
+            Package()
+            { // HOST D0
+                "DSTATE",
+                0x0,
+                //Power Grid for SM7325
+                Package()
+                {
+                    // L01C
+                    "PMICVREGVOTE",                 // PMIC VREG resource
+                    Package()                       // Vote for L01C
+                    {
+                        "PPP_RESOURCE_ID_LDO1_C",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        1800000,                    // Voltage 1.8V        : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    // L01B
+                    "PMICVREGVOTE",                 // PMIC VREG resource
+                    Package()                       // Vote for L01B
+                    {
+                        "PPP_RESOURCE_ID_LDO1_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        912000,                     // Voltage 0.912V        : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    // L02B
+                    "PMICVREGVOTE",                 // PMIC VREG resource
+                    Package()                       // Vote for L02B
+                    {
+                        "PPP_RESOURCE_ID_LDO2_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        3072000,                    // Voltage 3.072V        : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    // L06B
+                    "PMICVREGVOTE",                 // PMIC VREG resource
+                    Package()                       // Vote for L06B
+                    {
+                        "PPP_RESOURCE_ID_LDO6_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        1200000,                    // Voltage 1.2V        : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    // L10C
+                    "PMICVREGVOTE",                 // PMIC VREG resource
+                    Package()                       // Vote for L10C
+                    {
+                        "PPP_RESOURCE_ID_LDO10_C",  // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        880000,                     // Voltage 0.880V        : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+
+                // Enable usb30_prim_gdsc power domain
+                Package()
+                {
+                    "FOOTSWITCH",                   // Footswitch
+                    Package()
+                    {
+                        "gcc_usb30_prim_gdsc",      // USB 3.0 Core Power domain
+                        1                           // 1 == Enable
+                    }
+                },
+
+                // Now Enable all the clocks
+
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_sleep_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_pipe_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_prim_axi_clk", 8, 200, 9}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_prim_axi_clk", 8, 200, 9}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 8, 200, 9}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_mock_utmi_clk", 8, 19200, 7}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_aux_clk", 8, 19200, 7}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_com_aux_clk", 8, 19200, 7}},
+
+                // Nominal==block vdd_min:
+                Package()
+                {
+                    "NPARESOURCE",
+                    Package() {1, "/arc/client/rail_cx", 256}
+                },
+
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,                          // Req Type
+                        "ICBID_MASTER_USB3_0",      // Master
+                        "ICBID_SLAVE_EBI1",         // Slave
+                        671088640,                  // IB=671 MBps
+                        671088640                   // AB=671 MBps
+                    }
+                },
+
+                // Vote for CNOC 100 MHz - 200 MB/s IB-only (AB = 0)
+                // Required for gcc_usb_phy_cfg_ahb2phy_clk
+                //BUS Arbiter Request (Type-3)
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,                          // Req Type
+                        "ICBID_MASTER_APPSS_PROC",  // Master
+                        "ICBID_SLAVE_USB3_0",       // Slave
+                        200000000,                  // IB=200 MBps
+                        0                           // AB=0 MBps
+                    }
+                }
+            },
+
+            Package()
+            { // HOST D1
+                "DSTATE", // D1 state (Suspend State - HS Suspend + SS disconnect /SS Suspend + HS disconnect/ HS + SS suspend)
+                0x1,
+
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_pipe_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 3, 9600, 5}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_mock_utmi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_aux_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_com_aux_clk", 2}},
+
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,                          // Req Type
+                        "ICBID_MASTER_USB3_0",      // Master
+                        "ICBID_SLAVE_EBI1",         // Slave
+                        0,                          // IB=0 MBps
+                        0                           // AB=0 MBps
+                    }
+                },
+
+                // Remove Vote for CNOC 100 MHz
+                // Required for gcc_usb_phy_cfg_ahb2phy_clk
+                // BUS Arbiter Request (Type-3)
+                // Vote for 0 freq
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,                          // Req Type
+                        "ICBID_MASTER_APPSS_PROC",  // Master
+                        "ICBID_SLAVE_USB3_0",       // Slave
+                        0,                          // IB=0 MBps
+                        0                           // AB=0 MBps
+                    }
+                },
+                Package()
+                {
+                    "FOOTSWITCH",
+                    Package()
+                    {
+                        "gcc_usb30_prim_gdsc",
+                        1
+                    }
+                },
+
+                // enable vdd_min
+                Package()
+                {
+                    "NPARESOURCE",
+                    Package() {1, "/arc/client/rail_cx", 0}
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // Vote for L01C
+                    Package()
+                    {
+                        // L01C
+                        "PPP_RESOURCE_ID_LDO1_C",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        1800000,                    // Voltage         : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L01B
+                    {
+                        // L01B
+                        "PPP_RESOURCE_ID_LDO1_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        912000,                     // Voltage 0.912V         : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L02B
+                    {
+                        // L02B
+                        "PPP_RESOURCE_ID_LDO2_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        3072000,                    // Voltage = 3.072 V
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L06B
+                    {
+                        // L06B
+                        "PPP_RESOURCE_ID_LDO6_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        1200000,                    // Voltage = 1.2 V
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L06B
+                    {
+                        // L10C
+                        "PPP_RESOURCE_ID_LDO10_C",  // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        880000,                     // Voltage (microvolts)
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                }
+            },
+
+            Package()
+            { // HOST D2
+                "DSTATE",
+                0x2, // Slave device disconnect (host cable is still connected)
+
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_pipe_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 3, 9600000, 1}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_mock_utmi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_aux_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_com_aux_clk", 2}},
+
+                // Vote for 0 freq
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,                          // Req Type
+                        "ICBID_MASTER_USB3_0",      // Master
+                        "ICBID_SLAVE_EBI1",         // Slave
+                        0,                          // IB=0 Mbps
+                        0                           // AB=0Mbps
+                    }
+                },
+
+                // Remove Vote for CNOC 100 MHz
+                // Required for gcc_usb_phy_cfg_ahb2phy_clk
+                // BUS Arbiter Request (Type-3)
+                // Vote for 0 freq
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,                          // Req Type
+                        "ICBID_MASTER_APPSS_PROC",  // Master
+                        "ICBID_SLAVE_USB3_0",       // Slave
+                        0,                          // IB=0 MBps
+                        0                           // AB=0 MBps
+                    }
+                },
+
+                // Enable usb30_prim_gdsc power domain
+                Package()
+                {
+                    "FOOTSWITCH",                   // Footswitch
+                    Package()
+                    {
+                        "gcc_usb30_prim_gdsc",      // USB 3.0 Core Power domain
+                        1                           // 1 == Enable
+                    }
+                },
+
+                // enable vdd_min
+                Package()
+                {
+                    "NPARESOURCE",
+                    Package() {1, "/arc/client/rail_cx", 0}
+                },
+
+                // Power Grid for SM7325
+                Package()
+                {
+                    "PMICVREGVOTE",                 // Vote for L01C
+                    Package()
+                    {
+                        // L01C
+                        "PPP_RESOURCE_ID_LDO1_C",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        1800000,                    // Voltage         : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                        }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L01B
+                    {
+                        // L01B
+                        "PPP_RESOURCE_ID_LDO1_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        912000,                     // Voltage (microvolts)
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L02B
+                    {
+                        // L02B
+                        "PPP_RESOURCE_ID_LDO2_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        3072000,                    // Voltage = 3.072 V
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L06B
+                    {
+                        // L06B
+                        "PPP_RESOURCE_ID_LDO6_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        1200000,                    // Voltage = 1.2 V
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L06B
+                    {
+                        // L10C
+                        "PPP_RESOURCE_ID_LDO10_C",  // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        880000,                     // Voltage (microvolts)
+                        1,                          // SW Enable = Enable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                }
+            },
+
+            Package()
+            { // HOST D3
+                "DSTATE",
+                0x3, // Abandon state
+
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_sleep_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_pipe_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 3, 9600000, 1}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_mock_utmi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_aux_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_com_aux_clk", 2}},
+
+                // Vote for 0 freq
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,                          // Req Type
+                        "ICBID_MASTER_USB3_0",      // Master
+                        "ICBID_SLAVE_EBI1",         // Slave
+                        0,                          // IB=0 Mbps
+                        0                           // AB=0Mbps
+                    }
+                },
+
+                // Remove Vote for CNOC 100 MHz
+                // Required for gcc_usb_phy_cfg_ahb2phy_clk
+                // BUS Arbiter Request (Type-3)
+                // Vote for 0 freq
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,                          // Req Type
+                        "ICBID_MASTER_APPSS_PROC",  // Master
+                        "ICBID_SLAVE_USB3_0",       // Slave
+                        0,                          // IB=0 Mbps
+                        0                           // AB=0Mbps
+                    }
+                },
+
+                // Disable usb30_prim_gdsc power domain
+                Package()
+                {
+                    "FOOTSWITCH",                   // Footswitch
+                    Package()
+                    {
+                        "gcc_usb30_prim_gdsc",      // USB 3.0 Core Power domain
+                        2                           // 2 == Disable
+                    }
+                },
+
+                //enable vdd_min
+                Package() {"NPARESOURCE", Package() {1, "/arc/client/rail_cx", 0}},
+
+                //Power Grid for SM7325
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
+                    Package()                       // Vote for L02B
+                    {
+                        "PPP_RESOURCE_ID_LDO2_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        0,                          // Voltage = 0 V
+                        0,                          // SW Enable = Disable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // Vote for L01B
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO1_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        0,                          // Voltage         : 0 microvolts ( V )
+                        0,                          // SW Enable = Disable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMIC VREG resource
+                    Package()                       // Vote for L01C
+                    {
+                        "PPP_RESOURCE_ID_LDO1_C",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        0,                          // Voltage         : 0 microvolts ( V )
+                        0,                          // SW Enable = Disable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMIC VREG resource
+                    Package()                       // Vote for L06B
+                    {
+                        "PPP_RESOURCE_ID_LDO6_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        0,                          // Voltage         : 0 microvolts ( V )
+                        0,                          // SW Enable = Disable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",                 // PMIC VREG resource
+                    Package()                       // Vote for L10C
+                    {
+                        "PPP_RESOURCE_ID_LDO10_C",  // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        0,                          // Voltage         : 0 microvolts ( V )
+                        0,                          // SW Enable = Disable
+                        4,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                }
+            },
+            // Define Abandon State for USB0 (host) stack ie. Power State invoked when stack unloads/tears down
+            Package()
+            {
+                "ABANDON_DSTATE",                   // Abandon D state defined as D3
+                3
+            }
+        },
+
+        //
+        //************************* USB3.0 SS/HS0 core (Peripheral Stack) ****************************
+        //
+        Package()
+        {
+            "DEVICE",
+            "\\_SB.URS0.UFN0",
+            Package()
+            {
+                "COMPONENT",
+                0x0,
+                // F-State placeholders
+                Package()
+                {
+                    "FSTATE",
+                    0x0
+                },
+                Package()
+                {
+                    "PSTATE",
+                    0x0
+                }
+            },
+            Package()
+            { // PERIPH D0
+                "DSTATE",
+                0x0,
+                // Power Grid for SM7325
+                Package()
+                {
+                    // L01C
+                    "PMICVREGVOTE",                 // PMIC VREG resource
+                    Package()                       // Vote for L01C
+                    {
+                        "PPP_RESOURCE_ID_LDO1_C",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type = LDO
+                        1800000,                    // Voltage 1.8V        : microvolts ( V )
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    // L01B
+                    "PMICVREGVOTE",                 // PMIC VREG resource
+                    Package()                       // Vote for L01B
+                    {
+                        "PPP_RESOURCE_ID_LDO1_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        912000,                     // Voltage (microvolts)
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    // L02B
+                    "PMICVREGVOTE",                 // PMIC VREG resource
+                    Package()                       // Vote for L02B
+                    {
+                        "PPP_RESOURCE_ID_LDO2_B",   // Voltage Regulator ID
+                        1,                          // Voltage Regulator type 1 = LDO
+                        3072000,                    // Voltage = 3.072 V
+                        1,                          // SW Enable = Enable
+                        7,                          // SW Power Mode =
+                        0                           // Head Room
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO6_B",
+                        1,
+                        1200000,
+                        1,
+                        7,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO10_C",
+                        1,
+                        880000,
+                        1,
+                        7,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "FOOTSWITCH",
+                    Package()
+                    {
+                        "gcc_usb30_prim_gdsc",
+                        1
+                    }
+                },
+
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_sleep_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_pipe_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_prim_axi_clk", 8, 200, 9}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_prim_axi_clk", 8, 200, 9}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 8, 200, 9}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_mock_utmi_clk", 8, 19200, 7}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_aux_clk", 8, 19200, 7}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_com_aux_clk", 8, 19200, 7}},
+
+                Package()
+                {
+                    "NPARESOURCE",
+                    Package() {1, "/arc/client/rail_cx", 256}
+
+                },
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,
+                        "ICBID_MASTER_USB3_0",
+                        "ICBID_SLAVE_EBI1",
+                        671088640,
+                        671088640
+                    }
+                },
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,
+                        "ICBID_MASTER_APPSS_PROC",
+                        "ICBID_SLAVE_USB3_0",
+                        200000000,
+                        0
+                    }
+                }
+            },
+            Package()
+            {
+                "DSTATE",
+                0x1
+            },
+            Package()
             {
                 "DSTATE",
                 0x2,
 
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb3_prim_phy_pipe_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x4) {"gcc_usb30_prim_master_clk", 0x3, 0x927c00, One}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb30_prim_master_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_aggre_usb3_prim_axi_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_cfg_noc_usb3_prim_axi_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb30_prim_mock_utmi_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb3_prim_phy_aux_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb3_prim_phy_com_aux_clk", 0x2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_pipe_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 3, 9600000, 1}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_mock_utmi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_aux_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_com_aux_clk", 2}},
 
-                Package(0x2)
+                Package()
                 {
                     "BUSARB",
-                    Package(0x5)
+                    Package()
                     {
-                        0x3,                        // Req Type
-                        "ICBID_MASTER_USB3_0",      // Master
-                        "ICBID_SLAVE_EBI1",         // Slave
-                        Zero,                       // IB=0 MBps
-                        Zero                        // AB=0 MBps
+                        3,
+                        "ICBID_MASTER_USB3_0",
+                        "ICBID_SLAVE_EBI1",
+                        0,
+                        0
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     "BUSARB",
-                    Package(0x5)
+                    Package()
                     {
-                        0x3,                        // Req Type
-                        "ICBID_MASTER_APPSS_PROC",  // Master
-                        "ICBID_SLAVE_USB3_0",       // Slave
-                        Zero,                       // IB=0 MBps
-                        Zero                        // AB=0 MBps
+                        3,
+                        "ICBID_MASTER_APPSS_PROC",
+                        "ICBID_SLAVE_USB3_0",
+                        0,
+                        0
                     }
                 },
-
-                Package(0x2)
-                {
-                    "FOOTSWITCH",                   // Footswitch
-                    Package(0x2)
-                    {
-                        "gcc_usb30_prim_gdsc",      // USB 3.0 Core Power domain
-                        One                         // 1==Enable
-                    }
-                },
-
-                Package(0x2)
-                {
-                    "NPARESOURCE",
-                    Package(0x3) { One, "/arc/client/rail_cx", Zero}
-                },
-
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",                 // Vote for L01C
-                    Package(0x6)
-                    {
-                        // L01C
-                        "PPP_RESOURCE_ID_LDO1_C",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0x1b7740,                   // Voltage         : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x4,                        // SW Power Mode =
-                        Zero                        // Head Room
-                    }
-                },
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",                 // Vote for L01B
-                    Package(0x6)
-                    {
-                        // L01B
-                        "PPP_RESOURCE_ID_LDO1_B",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0xdea80,                    // Voltage         : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x4,                        // SW Power Mode =
-                        Zero                        // Head Room
-                    }
-                },
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",                 // Vote for L02B
-                    Package(0x6)
-                    {
-                        // L02B
-                        "PPP_RESOURCE_ID_LDO2_B",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0x2ee000,                   // Voltage         : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x4,                        // SW Power Mode =
-                        Zero                        // Head Room
-                    }
-                },
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",                 // Vote for L02B
-                    Package(0x6)
-                    {
-                        // L06B
-                        "PPP_RESOURCE_ID_LDO6_B",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0x124f80,                   // Voltage         : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x4,                        // SW Power Mode =
-                        Zero                        // Head Room
-                    }
-                },
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",                 // Vote for L02B
-                    Package(0x6)
-                    {
-                        // L10C
-                        "PPP_RESOURCE_ID_LDO10_C",  // Voltage Regulator ID
-                        One,                        // Voltage Regulator type = LDO
-                        0xd6d80,                    // Voltage         : microvolts ( V )
-                        One,                        // SW Enable = Enable
-                        0x4,                        // SW Power Mode =
-                        Zero                        // Head Room
-                    }
-                }
-
-            },
-            Package(0x14)
-            {
-                "DSTATE",
-                0x3,
-
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb30_prim_sleep_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb3_prim_phy_pipe_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_aggre_usb3_prim_axi_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_cfg_noc_usb3_prim_axi_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x4) {"gcc_usb30_prim_master_clk", 0x3, 0x927c00, One}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb30_prim_master_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb30_prim_mock_utmi_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb3_prim_phy_aux_clk", 0x2}},
-                Package(0x2) {"CLOCK", Package(0x2) {"gcc_usb3_prim_phy_com_aux_clk", 0x2}},
-
-                Package(0x2)
-                {
-                    "BUSARB",
-                    Package(0x5)
-                    {
-                        0x3,                        // Req Type
-                        "ICBID_MASTER_USB3_0",      // Master
-                        "ICBID_SLAVE_EBI1",         // Slave
-                        Zero,                       // IB=0 MBps
-                        Zero                        // AB=0 MBps
-                    }
-                },
-                Package(0x2)
-                {
-                    "BUSARB",
-                    Package(0x5)
-                    {
-                        0x3,                        // Req Type
-                        "ICBID_MASTER_APPSS_PROC",  // Master
-                        "ICBID_SLAVE_USB3_0",       // Slave
-                        Zero,                       // IB=0 MBps
-                        Zero                        // AB=0 MBps
-                    }
-                },
-
-                Package(0x2)
-                {
-                    "FOOTSWITCH",                   // Footswitch
-                    Package(0x2)
-                    {
-                        "gcc_usb30_prim_gdsc",      // USB 3.0 Core Power domain
-                        0x2                         // 2==Disable
-                    }
-                },
-
-                Package(0x2)
-                {
-                    "NPARESOURCE",
-                    Package(0x3) { One, "/arc/client/rail_cx", Zero}
-
-                },
-
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",                 // PMICVREGVOTE resource
-                    Package(0x6)                    // Vote for L02B
-                    {
-                        "PPP_RESOURCE_ID_LDO2_B",   // Voltage Regulator ID
-                        One,                        // Voltage Regulator type 1 = LDO
-                        Zero,                       // Voltage = 0 V
-                        Zero,                       // SW Enable = Disable
-                        0x4,                        // SW Power Mode =
-                        Zero                        // Head Room
-                    }
-                },
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",
-                    Package(0x6)
-                    {
-                        "PPP_RESOURCE_ID_LDO1_B",
-                        One,
-                        Zero,
-                        Zero,
-                        0x4,
-                        Zero
-                    }
-                },
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",
-                    Package(0x6)
-                    {
-                        "PPP_RESOURCE_ID_LDO1_C",
-                        One,
-                        Zero,
-                        Zero,
-                        0x4,
-                        Zero
-                    }
-                },
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",
-                    Package(0x6)
-                    {
-                        "PPP_RESOURCE_ID_LDO6_B",
-                        One,
-                        Zero,
-                        Zero,
-                        0x4,
-                        Zero
-                    }
-                },
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",
-                    Package(0x6)
-                    {
-                        "PPP_RESOURCE_ID_LDO10_C",
-                        One,
-                        Zero,
-                        Zero,
-                        0x4,
-                        Zero
-                    }
-                }
-            },
-            Package(0x2)
-            {
-                "ABANDON_DSTATE",
-                0x3
-            }
-        },
-        Package(0x8)
-        {
-            "DEVICE",
-            "\\_SB.USB0",
-            Package(0x4)
-            {
-                "COMPONENT",
-                Zero,
-                Package(0x2)
-                {
-                    "FSTATE",
-                    Zero
-                },
-                Package(0x2)
-                {
-                    "PSTATE",
-                    Zero
-                }
-            },
-            Package(0x13)
-            {
-                "DSTATE",
-                Zero,
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",
-                    Package(0x6)
-                    {
-                        "PPP_RESOURCE_ID_LDO1_C",
-                        One,
-                        0x1b7740,
-                        One,
-                        0x7,
-                        Zero
-                    }
-                },
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",
-                    Package(0x6)
-                    {
-                        "PPP_RESOURCE_ID_LDO1_B",
-                        One,
-                        0xdea80,
-                        One,
-                        0x7,
-                        Zero
-                    }
-                },
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",
-                    Package(0x6)
-                    {
-                        "PPP_RESOURCE_ID_LDO2_B",
-                        One,
-                        0x2ee000,
-                        One,
-                        0x7,
-                        Zero
-                    }
-                },
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",
-                    Package(0x6)
-                    {
-                        "PPP_RESOURCE_ID_LDO6_B",
-                        One,
-                        0x124f80,
-                        One,
-                        0x7,
-                        Zero
-                    }
-                },
-                Package(0x2)
-                {
-                    "PMICVREGVOTE",
-                    Package(0x6)
-                    {
-                        "PPP_RESOURCE_ID_LDO10_C",
-                        One,
-                        0xd6d80,
-                        One,
-                        0x7,
-                        Zero
-                    }
-                },
-                Package(0x2)
+                Package()
                 {
                     "FOOTSWITCH",
-                    Package(0x2)
+                    Package()
                     {
                         "gcc_usb30_prim_gdsc",
-                        One
+                        1
                     }
                 },
-                Package(0x2)
-                {
-                    "CLOCK",
-                    Package(0x2)
-                    {
-                        "gcc_usb30_prim_sleep_clk",
-                        One
-                    }
-                },
-                Package(0x2)
-                {
-                    "CLOCK",
-                    Package(0x2)
-                    {
-                        "gcc_usb3_prim_phy_pipe_clk",
-                        One
-                    }
-                },
-                Package(0x2)
-                {
-                    "CLOCK",
-                    Package(0x4)
-                    {
-                        "gcc_aggre_usb3_prim_axi_clk",
-                        0x8,
-                        0xc8,
-                        0x9
-                    }
-                },
-                Package(0x2)
-                {
-                    "CLOCK",
-                    Package(0x4)
-                    {
-                        "gcc_cfg_noc_usb3_prim_axi_clk",
-                        0x8,
-                        0xc8,
-                        0x9
-                    }
-                },
-                Package(0x2)
-                {
-                    "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_prim_master_clk",
-            0x8,
-            0xc8,
-            0x9
-            }
-                },
-                Package(0x2)
-                {
-                    "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_prim_mock_utmi_clk",
-            0x8,
-            0x4b00,
-            0x7
-            }
-                },
-                Package(0x2)
-                {
-                    "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb3_prim_phy_aux_clk",
-            0x8,
-            0x4b00,
-            0x7
-            }
-                },
-                Package(0x2)
-                {
-                    "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb3_prim_phy_com_aux_clk",
-            0x8,
-            0x4b00,
-            0x7
-            }
-                },
-                Package(0x2)
+                Package()
                 {
                     "NPARESOURCE",
-            Package(0x3)
-            {
-                One,
-            "/arc/client/rail_cx",
-            0x100
-            }
+                    Package()
+                    {
+                        1,
+                        "/arc/client/rail_cx",
+                        0
+                    }
                 },
-                Package(0x2)
+                Package()
                 {
-                    "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_USB3_0",
-            "ICBID_SLAVE_EBI1",
-            0x28000000,
-            0x28000000
-            }
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO1_C",
+                        1,
+                        1800000,
+                        1,
+                        4,
+                        0
+                    }
                 },
-                Package(0x2)
+                Package()
                 {
-                    "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_APPSS_PROC",
-            "ICBID_SLAVE_USB3_0",
-            0xbebc200,
-            Zero
-            }
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO1_B",
+                        1,
+                        912000,
+                        1,
+                        4,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO2_B",
+                        1,
+                        3072000,
+                        1,
+                        4,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO6_B",
+                        1,
+                        1200000,
+                        1,
+                        4,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO10_C",
+                        1,
+                        880000,
+                        1,
+                        4,
+                        0
+                    }
                 }
             },
-            Package(0x13)
+            Package()
             {
                 "DSTATE",
-            One,
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_pipe_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_aggre_usb3_prim_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_cfg_noc_usb3_prim_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_prim_master_clk",
-            0x3,
-            0x2580,
-            0x5
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_master_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_mock_utmi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_aux_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_com_aux_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
                 0x3,
-            "ICBID_MASTER_USB3_0",
-            "ICBID_SLAVE_EBI1",
-            Zero,
-            Zero
-            }
+
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_sleep_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_pipe_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_prim_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 3, 9600000, 1}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_master_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_prim_mock_utmi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_aux_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb3_prim_phy_com_aux_clk", 2}},
+
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,
+                        "ICBID_MASTER_USB3_0",
+                        "ICBID_SLAVE_EBI1",
+                        0,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,
+                        "ICBID_MASTER_APPSS_PROC",
+                        "ICBID_SLAVE_USB3_0",
+                        0,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "FOOTSWITCH",
+                    Package()
+                    {
+                        "gcc_usb30_prim_gdsc",
+                        2
+                    }
+                },
+                Package()
+                {
+                    "NPARESOURCE",
+                    Package() {1, "/arc/client/rail_cx", 0}
+
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO2_B",
+                        1,
+                        0,
+                        0,
+                        4,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO1_B",
+                        1,
+                        0,
+                        0,
+                        4,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO1_C",
+                        1,
+                        0,
+                        0,
+                        4,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO6_B",
+                        1,
+                        0,
+                        0,
+                        4,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO10_C",
+                        1,
+                        0,
+                        0,
+                        4,
+                        0
+                    }
+                }
             },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_APPSS_PROC",
-            "ICBID_SLAVE_USB3_0",
-            Zero,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "FOOTSWITCH",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_gdsc",
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "NPARESOURCE",
-            Package(0x3)
-            {
-                One,
-            "/arc/client/rail_cx",
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_C",
-            One,
-            0x1b7740,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_B",
-            One,
-            0xdea80,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO2_B",
-            One,
-            0x2ee000,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO6_B",
-            One,
-            0x124f80,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO10_C",
-            One,
-            0xd6d80,
-            One,
-            0x4,
-            Zero
-            }
-            }
-            },
-            Package(0x13)
-            {
-                "DSTATE",
-            0x2,
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_pipe_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_prim_master_clk",
-            0x3,
-            0x927c00,
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_master_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_aggre_usb3_prim_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_cfg_noc_usb3_prim_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_mock_utmi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_aux_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_com_aux_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_USB3_0",
-            "ICBID_SLAVE_EBI1",
-            Zero,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_APPSS_PROC",
-            "ICBID_SLAVE_USB3_0",
-            Zero,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "FOOTSWITCH",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_gdsc",
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "NPARESOURCE",
-            Package(0x3)
-            {
-                One,
-            "/arc/client/rail_cx",
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_C",
-            One,
-            0x1b7740,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_B",
-            One,
-            0xdea80,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO2_B",
-            One,
-            0x2ee000,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO6_B",
-            One,
-            0x124f80,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO10_C",
-            One,
-            0xd6d80,
-            One,
-            0x4,
-            Zero
-            }
-            }
-            },
-            Package(0x14)
-            {
-                "DSTATE",
-            0x3,
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_sleep_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_pipe_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_aggre_usb3_prim_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_cfg_noc_usb3_prim_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_prim_master_clk",
-            0x3,
-            0x927c00,
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_master_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_mock_utmi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_aux_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_com_aux_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_USB3_0",
-            "ICBID_SLAVE_EBI1",
-            Zero,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_APPSS_PROC",
-            "ICBID_SLAVE_USB3_0",
-            Zero,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "FOOTSWITCH",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_gdsc",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "NPARESOURCE",
-            Package(0x3)
-            {
-                One,
-            "/arc/client/rail_cx",
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO2_B",
-            One,
-            Zero,
-            Zero,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_B",
-            One,
-            Zero,
-            Zero,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_C",
-            One,
-            Zero,
-            Zero,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO6_B",
-            One,
-            Zero,
-            Zero,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO10_C",
-            One,
-            Zero,
-            Zero,
-            0x4,
-            Zero
-            }
-            }
-            },
-            Package(0x2)
+            Package()
             {
                 "ABANDON_DSTATE",
-            0x3
+                3
             }
         },
-        Package(0x8)
-        {
-            "DEVICE",
-            "\\_SB.URS0.UFN0",
-            Package(0x4)
-            {
-                "COMPONENT",
-            Zero,
-            Package(0x2)
-            {
-                "FSTATE",
-            Zero
-            },
-            Package(0x2)
-            {
-                "PSTATE",
-            Zero
-            }
-            },
-            Package(0x13)
-            {
-                "DSTATE",
-            Zero,
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_C",
-            One,
-            0x1b7740,
-            One,
-            0x7,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_B",
-            One,
-            0xdea80,
-            One,
-            0x7,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO2_B",
-            One,
-            0x2ee000,
-            One,
-            0x7,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO6_B",
-            One,
-            0x124f80,
-            One,
-            0x7,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO10_C",
-            One,
-            0xd6d80,
-            One,
-            0x7,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "FOOTSWITCH",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_gdsc",
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_sleep_clk",
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_pipe_clk",
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_aggre_usb3_prim_axi_clk",
-            0x8,
-            0xc8,
-            0x9
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_cfg_noc_usb3_prim_axi_clk",
-            0x8,
-            0xc8,
-            0x9
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_prim_master_clk",
-            0x8,
-            0xc8,
-            0x9
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_prim_mock_utmi_clk",
-            0x8,
-            0x4b00,
-            0x7
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb3_prim_phy_aux_clk",
-            0x8,
-            0x4b00,
-            0x7
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb3_prim_phy_com_aux_clk",
-            0x8,
-            0x4b00,
-            0x7
-            }
-            },
-            Package(0x2)
-            {
-                "NPARESOURCE",
-            Package(0x3)
-            {
-                One,
-            "/arc/client/rail_cx",
-            0x100
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_USB3_0",
-            "ICBID_SLAVE_EBI1",
-            0x28000000,
-            0x28000000
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_APPSS_PROC",
-            "ICBID_SLAVE_USB3_0",
-            0xbebc200,
-            Zero
-            }
-            }
-            },
-            Package(0x2)
-            {
-                "DSTATE",
-            One
-            },
-            Package(0x13)
-            {
-                "DSTATE",
-            0x2,
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_pipe_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_prim_master_clk",
-            0x3,
-            0x927c00,
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_master_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_aggre_usb3_prim_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_cfg_noc_usb3_prim_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_mock_utmi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_aux_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_com_aux_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_USB3_0",
-            "ICBID_SLAVE_EBI1",
-            Zero,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_APPSS_PROC",
-            "ICBID_SLAVE_USB3_0",
-            Zero,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "FOOTSWITCH",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_gdsc",
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "NPARESOURCE",
-            Package(0x3)
-            {
-                One,
-            "/arc/client/rail_cx",
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_C",
-            One,
-            0x1b7740,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_B",
-            One,
-            0xdea80,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO2_B",
-            One,
-            0x2ee000,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO6_B",
-            One,
-            0x124f80,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO10_C",
-            One,
-            0xd6d80,
-            One,
-            0x4,
-            Zero
-            }
-            }
-            },
-            Package(0x14)
-            {
-                "DSTATE",
-            0x3,
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_sleep_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_pipe_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_aggre_usb3_prim_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_cfg_noc_usb3_prim_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_prim_master_clk",
-            0x3,
-            0x927c00,
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_master_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_mock_utmi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_aux_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb3_prim_phy_com_aux_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_USB3_0",
-            "ICBID_SLAVE_EBI1",
-            Zero,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_APPSS_PROC",
-            "ICBID_SLAVE_USB3_0",
-            Zero,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "FOOTSWITCH",
-            Package(0x2)
-            {
-                "gcc_usb30_prim_gdsc",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "NPARESOURCE",
-            Package(0x3)
-            {
-                One,
-            "/arc/client/rail_cx",
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO2_B",
-            One,
-            Zero,
-            Zero,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_B",
-            One,
-            Zero,
-            Zero,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_C",
-            One,
-            Zero,
-            Zero,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO6_B",
-            One,
-            Zero,
-            Zero,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO10_C",
-            One,
-            Zero,
-            Zero,
-            0x4,
-            Zero
-            }
-            }
-            },
-            Package(0x2)
-            {
-                "ABANDON_DSTATE",
-            0x3
-            }
-        },
-        Package(0x8)
+        Package()
         {
             "DEVICE",
             "\\_SB.USB1",
-            Package(0x4)
+            Package()
             {
                 "COMPONENT",
-            Zero,
-            Package(0x2)
-            {
-                "FSTATE",
-            Zero
-            },
-            Package(0x2)
-            {
-                "PSTATE",
-            Zero
-            }
+                0x0,
+                Package()
+                {
+                    "FSTATE",
+                    0x0
+                },
+                Package()
+                {
+                    "PSTATE",
+                    0x0
+                }
             },
             Package(0xe)
             {
                 "DSTATE",
-            Zero,
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_C",
-            One,
-            0x1b7740,
-            One,
-            0x7,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO10_C",
-            One,
-            0xd6d80,
-            One,
-            0x7,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO2_B",
-            One,
-            0x2ee000,
-            One,
-            0x7,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "FOOTSWITCH",
-            Package(0x2)
-            {
-                "gcc_usb30_sec_gdsc",
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_sec_sleep_clk",
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_aggre_usb3_sec_axi_clk",
-            0x8,
-            0x78,
-            0x9
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_cfg_noc_usb3_sec_axi_clk",
-            0x8,
-            0x78,
-            0x9
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_sec_master_clk",
-            0x8,
-            0x78,
-            0x9
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_sec_mock_utmi_clk",
-            0x8,
-            0x4b00,
-            0x7
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_USB2",
-            "ICBID_SLAVE_EBI1",
-            0x3938700,
-            0x3938700
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_APPSS_PROC",
-            "ICBID_SLAVE_USB2",
-            0xbebc200,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "NPARESOURCE",
-            Package(0x3)
-            {
-                One,
-            "/arc/client/rail_cx",
-            0x100
-            }
-            }
+                0x0,
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO1_C",
+                        1,
+                        1800000,
+                        1,
+                        7,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO10_C",
+                        1,
+                        880000,
+                        1,
+                        7,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO2_B",
+                        1,
+                        3072000,
+                        1,
+                        7,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "FOOTSWITCH",
+                    Package()
+                    {
+                        "gcc_usb30_sec_gdsc",
+                        1
+                    }
+                },
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_sleep_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_sec_axi_clk", 8, 120, 9}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_sec_axi_clk", 8, 120, 9}},
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_master_clk", 8, 120, 9}},
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_mock_utmi_clk", 8, 19200, 7}},
+
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,
+                        "ICBID_MASTER_USB2",
+                        "ICBID_SLAVE_EBI1",
+                        60000000,
+                        60000000
+                    }
+                },
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,
+                        "ICBID_MASTER_APPSS_PROC",
+                        "ICBID_SLAVE_USB2",
+                        200000000,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "NPARESOURCE",
+                    Package()
+                    {
+                        1,
+                        "/arc/client/rail_cx",
+                        256
+                    }
+                }
             },
             Package(0xe)
             {
                 "DSTATE",
-            One,
-            Package(0x2)
-            {
-                "FOOTSWITCH",
-            Package(0x2)
-            {
-                "gcc_usb30_sec_gdsc",
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_sec_master_clk",
-            0x3,
-            0x2580,
-            0x5
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_sec_master_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_cfg_noc_usb3_sec_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_aggre_usb3_sec_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_sec_mock_utmi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_APPSS_PROC",
-            "ICBID_SLAVE_USB2",
-            Zero,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-            Package(0x5)
-            {
-                0x3,
-            "ICBID_MASTER_USB2",
-            "ICBID_SLAVE_EBI1",
-            Zero,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "NPARESOURCE",
-            Package(0x3)
-            {
-                One,
-            "/arc/client/rail_cx",
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO1_C",
-            One,
-            0x1b7740,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO10_C",
-            One,
-            0xd6d80,
-            One,
-            0x4,
-            Zero
-            }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-            Package(0x6)
-            {
-                "PPP_RESOURCE_ID_LDO2_B",
-            One,
-            0x2ee000,
-            One,
-            0x4,
-            Zero
-            }
-            }
+                0x1,
+                Package()
+                {
+                    "FOOTSWITCH",
+                    Package()
+                    {
+                        "gcc_usb30_sec_gdsc",
+                        1
+                    }
+                },
+
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_master_clk", 3, 9600, 5}},
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_master_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_sec_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_sec_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_mock_utmi_clk", 2}},
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,
+                        "ICBID_MASTER_APPSS_PROC",
+                        "ICBID_SLAVE_USB2",
+                        0,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "BUSARB",
+                    Package()
+                    {
+                        3,
+                        "ICBID_MASTER_USB2",
+                        "ICBID_SLAVE_EBI1",
+                        0,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "NPARESOURCE",
+                    Package()
+                    {
+                        1,
+                        "/arc/client/rail_cx",
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO1_C",
+                        1,
+                        1800000,
+                        1,
+                        4,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO10_C",
+                        1,
+                        880000,
+                        1,
+                        4,
+                        0
+                    }
+                },
+                Package()
+                {
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO2_B",
+                        1,
+                        3072000,
+                        1,
+                        4,
+                        0
+                    }
+                }
             },
             Package(0xe)
             {
                 "DSTATE",
-            0x2,
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_aggre_usb3_sec_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_cfg_noc_usb3_sec_axi_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x4)
-            {
-                "gcc_usb30_sec_master_clk",
-            0x3,
-            0x927c00,
-            One
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-            Package(0x2)
-            {
-                "gcc_usb30_sec_master_clk",
-            0x2
-            }
-            },
-            Package(0x2)
-            {
-                "CLOCK",
-                Package(0x2)
+                0x2,
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_sec_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_sec_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_master_clk", 3, 9600000, 1}},
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_master_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_mock_utmi_clk", 2}},
+
+                Package()
                 {
-                    "gcc_usb30_sec_mock_utmi_clk",
-                    0x2
-                }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-                Package(0x5)
+                    "BUSARB",
+                    Package()
+                    {
+                        3,
+                        "ICBID_MASTER_APPSS_PROC",
+                        "ICBID_SLAVE_USB2",
+                        0,
+                        0
+                    }
+                },
+                Package()
                 {
-                    0x3,
-                    "ICBID_MASTER_APPSS_PROC",
-                    "ICBID_SLAVE_USB2",
-                    Zero,
-                    Zero
-                }
-            },
-            Package(0x2)
-            {
-                "BUSARB",
-                Package(0x5)
+                    "BUSARB",
+                    Package()
+                    {
+                        3,
+                        "ICBID_MASTER_USB2",
+                        "ICBID_SLAVE_EBI1",
+                        0,
+                        0
+                    }
+                },
+                Package()
                 {
-                    0x3,
-                    "ICBID_MASTER_USB2",
-                    "ICBID_SLAVE_EBI1",
-                    Zero,
-                    Zero
-                }
-            },
-            Package(0x2)
-            {
-                "FOOTSWITCH",
-                Package(0x2)
+                    "FOOTSWITCH",
+                    Package()
+                    {
+                        "gcc_usb30_sec_gdsc",
+                        1
+                    }
+                },
+                Package()
                 {
-                    "gcc_usb30_sec_gdsc",
-                    One
-                }
-            },
-            Package(0x2)
-            {
-                "NPARESOURCE",
-                Package(0x3)
+                    "NPARESOURCE",
+                    Package()
+                    {
+                        1,
+                        "/arc/client/rail_cx",
+                        0
+                    }
+                },
+                Package()
                 {
-                    One,
-                    "/arc/client/rail_cx",
-                    Zero
-                }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-                Package(0x6)
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO1_C",
+                        1,
+                        1800000,
+                        1,
+                        4,
+                        0
+                    }
+                },
+                Package()
                 {
-                    "PPP_RESOURCE_ID_LDO1_C",
-                    One,
-                    0x1b7740,
-                    One,
-                    0x4,
-                    Zero
-                }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-                Package(0x6)
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO10_C",
+                        1,
+                        880000,
+                        1,
+                        4,
+                        0
+                    }
+                },
+                Package()
                 {
-                    "PPP_RESOURCE_ID_LDO10_C",
-                    One,
-                    0xd6d80,
-                    One,
-                    0x4,
-                    Zero
+                    "PMICVREGVOTE",
+                    Package()
+                    {
+                        "PPP_RESOURCE_ID_LDO2_B",
+                        1,
+                        3072000,
+                        1,
+                        4,
+                        0
+                    }
                 }
-            },
-            Package(0x2)
-            {
-                "PMICVREGVOTE",
-                Package(0x6)
-                {
-                    "PPP_RESOURCE_ID_LDO2_B",
-                    One,
-                    0x2ee000,
-                    One,
-                    0x4,
-                    Zero
-                }
-            }
             },
             Package(0xf)
             {
                 "DSTATE",
                 0x3,
-                Package(0x2)
-                {
-                    "CLOCK",
-                    Package(0x2)
-                    {
-                        "gcc_usb30_sec_sleep_clk",
-                        0x2
-                    }
-                },
-                Package(0x2)
-                {
-                    "CLOCK",
-                    Package(0x2)
-                    {
-                        "gcc_aggre_usb3_sec_axi_clk",
-                        0x2
-                    }
-                },
-                Package(0x2)
-                {
-                    "CLOCK",
-                    Package(0x2)
-                    {
-                        "gcc_cfg_noc_usb3_sec_axi_clk",
-                        0x2
-                    }
-                },
-                Package(0x2)
-                {
-                    "CLOCK",
-                    Package(0x4)
-                    {
-                        "gcc_usb30_sec_master_clk",
-                        0x3,
-                        0x927c00,
-                        One
-                    }
-                },
-                Package(0x2)
-                {
-                    "CLOCK",
-                    Package(0x2)
-                    {
-                        "gcc_usb30_sec_master_clk",
-                        0x2
-                    }
-                },
-                Package(0x2)
-                {
-                    "CLOCK",
-                    Package(0x2)
-                    {
-                        "gcc_usb30_sec_mock_utmi_clk",
-                        0x2
-                    }
-                },
-                Package(0x2)
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_sleep_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_aggre_usb3_sec_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_cfg_noc_usb3_sec_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_master_clk", 3, 9600000, 1}},
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_master_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_usb30_sec_mock_utmi_clk", 2}},
+
+                Package()
                 {
                     "BUSARB",
-                    Package(0x5)
+                    Package()
                     {
-                        0x3,
+                        3,
                         "ICBID_MASTER_APPSS_PROC",
                         "ICBID_SLAVE_USB2",
-                        Zero,
-                        Zero
+                        0,
+                        0
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     "BUSARB",
-                    Package(0x5)
+                    Package()
                     {
-                        0x3,
+                        3,
                         "ICBID_MASTER_USB2",
                         "ICBID_SLAVE_EBI1",
-                        Zero,
-                        Zero
+                        0,
+                        0
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     "FOOTSWITCH",
-                    Package(0x2)
+                    Package()
                     {
                         "gcc_usb30_sec_gdsc",
-                        0x2
+                        2
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     "NPARESOURCE",
-                    Package(0x3)
+                    Package()
                     {
-                        One,
+                        1,
                         "/arc/client/rail_cx",
-                        Zero
+                        0
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package(0x6)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO2_B",
-                        One,
-                        Zero,
-                        Zero,
-                        0x4,
-                        Zero
+                        1,
+                        0,
+                        0,
+                        4,
+                        0
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package(0x6)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO10_C",
-                        One,
-                        Zero,
-                        Zero,
-                        0x4,
-                        Zero
+                        1,
+                        0,
+                        0,
+                        4,
+                        0
                     }
                 },
-                Package(0x2)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package(0x6)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO1_C",
-                        One,
-                        Zero,
-                        Zero,
-                        0x4,
-                        Zero
+                        1,
+                        0,
+                        0,
+                        4,
+                        0
                     }
                 }
             },
-            Package(0x2)
+            Package()
             {
                 "ABANDON_DSTATE",
-                0x3
+                3
             }
         }
     })
@@ -2565,3134 +1967,1254 @@ Scope(\_SB_.PEP0)
 
 Scope (\_SB.PEP0)
 {
-    Method (BPMD, 0, NotSerialized)
+    Method (BPMD)
     {
-        If ((STOR == One))
+        If ((STOR == 1))
         {
-            If ((PUS3 == One))
+            If ((PUS3 == 1))
             {
-                Return (CPCC) /* \_SB_.PEP0.CPCC */
+                Return (CPCC)
             }
             Else
             {
-                Return (BPCC) /* \_SB_.PEP0.BPCC */
+                Return (BPCC)
             }
         }
-        ElseIf ((STOR == 0x02))
+        ElseIf ((STOR == 2))
         {
-            Return (DPCC) /* \_SB_.PEP0.DPCC */
+            Return (DPCC)
         }
         Else
         {
-            Return (FPCC) /* \_SB_.PEP0.FPCC */
+            Return (FPCC)
         }
     }
 
-    Method (SDMD, 0, NotSerialized)
+    Method (SDMD)
     {
-        Return (SDCC) /* \_SB_.PEP0.SDCC */
+        Return (SDCC)
     }
 
-    Name (BPCC, Package (One)
+    Name (BPCC,
+    Package()
     {
-        Package (0x07)
+        Package()
         {
             "DEVICE",
             "\\_SB.UFS0",
-            Package (0x07)
+            Package()
             {
                 "COMPONENT",
-                Zero,
-                Package (0x05)
+                0x0,
+                Package()
                 {
                     "FSTATE",
-                    Zero,
-                    Package (0x02)
-                    {
-                        "PSTATE_ADJUST",
-                        Package (0x02)
-                        {
-                            Zero,
-                            Zero
-                        }
-                    },
-
-                    Package (0x02)
-                    {
-                        "PSTATE_ADJUST",
-                        Package (0x02)
-                        {
-                            One,
-                            Zero
-                        }
-                    },
-
-                    Package (0x02)
-                    {
-                        "PSTATE_ADJUST",
-                        Package (0x02)
-                        {
-                            0x02,
-                            Zero
-                        }
-                    }
+                    0x0,
+                    Package() { "PSTATE_ADJUST", Package() { 0, 0 } },
+                    Package() { "PSTATE_ADJUST", Package() { 1, 0 } },
+                    Package() { "PSTATE_ADJUST", Package() { 2, 0 } }
                 },
-
-                Package (0x05)
+                Package()
                 {
                     "FSTATE",
-                    One,
-                    Package (0x02)
-                    {
-                        "PSTATE_ADJUST",
-                        Package (0x02)
-                        {
-                            0x02,
-                            One
-                        }
-                    },
-
-                    Package (0x02)
-                    {
-                        "PSTATE_ADJUST",
-                        Package (0x02)
-                        {
-                            One,
-                            One
-                        }
-                    },
-
-                    Package (0x02)
-                    {
-                        "PSTATE_ADJUST",
-                        Package (0x02)
-                        {
-                            Zero,
-                            One
-                        }
-                    }
+                    0x1,
+                    Package() { "PSTATE_ADJUST", Package() { 2, 1 } },
+                    Package() { "PSTATE_ADJUST", Package() { 1, 1 } },
+                    Package() { "PSTATE_ADJUST", Package() { 0, 1 } }
                 },
 
-                Package (0x04)
+                Package()
                 {
                     "PSTATE_SET",
-                    Zero,
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "FOOTSWITCH",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_gdsc",
-                                One
-                            }
-                        }
-                    },
+                    0x0,
 
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "FOOTSWITCH",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_gdsc",
-                                0x02
-                            }
-                        }
+                        0x0,
+                        Package() { "FOOTSWITCH", Package() { "gcc_ufs_phy_gdsc", 1 }}
+                    },
+                    Package()
+                    {
+                        "PSTATE",
+                        0x1,
+                        Package() { "FOOTSWITCH", Package() { "gcc_ufs_phy_gdsc", 2 }}
                     }
                 },
 
-                Package (0x04)
+                Package()
                 {
                     "PSTATE_SET",
-                    One,
-                    Package (0x0D)
+                    0x1,
+
+                    Package()
                     {
                         "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_ufs_phy_axi_clk",
-                                0x08,
-                                0x11E1A300,
-                                0x02
-                            }
-                        },
+                        0x0,
 
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_ufs_phy_unipro_core_clk",
-                                0x08,
-                                0x11E1A300,
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_ice_core_clk",
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x03)
-                            {
-                                "gcc_ufs_phy_ice_core_clk",
-                                0x09,
-                                0x12
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_ufs_phy_ice_core_clk",
-                                0x03,
-                                0x11E1A300,
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_aggre_ufs_phy_axi_clk",
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_ahb_clk",
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_phy_aux_clk",
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_tx_symbol_0_clk",
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_rx_symbol_0_clk",
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_rx_symbol_1_clk",
-                                One
-                            }
-                        }
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_axi_clk", 8, 300000000, 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_unipro_core_clk", 8, 300000000, 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_ice_core_clk", 1}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_ice_core_clk", 9, 18}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_ice_core_clk", 3, 300000000, 2}},
+                        Package() {"CLOCK", Package() {"gcc_aggre_ufs_phy_axi_clk", 1}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_ahb_clk", 1}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_phy_aux_clk", 1}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_tx_symbol_0_clk", 1}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_rx_symbol_0_clk", 1}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_rx_symbol_1_clk", 1}}
                     },
-
-                    Package (0x0B)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_aggre_ufs_phy_axi_clk",
-                                0x02
-                            }
-                        },
+                        0x1,
 
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_ahb_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_phy_aux_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_tx_symbol_0_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_rx_symbol_0_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_rx_symbol_1_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_ice_core_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_unipro_core_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_axi_clk",
-                                0x02
-                            }
-                        }
+                        Package() {"CLOCK", Package() {"gcc_aggre_ufs_phy_axi_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_ahb_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_phy_aux_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_tx_symbol_0_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_rx_symbol_0_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_rx_symbol_1_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_ice_core_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_unipro_core_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_axi_clk", 2}}
                     }
                 },
 
-                Package (0x04)
+                Package()
                 {
                     "PSTATE_SET",
                     0x02,
-                    Package (0x04)
+
+                    Package()
                     {
                         "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_UFS_MEM",
-                                "ICBID_SLAVE_EBI1",
-                                0x47868C00,
-                                0x47868C00
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_APPSS_PROC",
-                                "ICBID_SLAVE_UFS_MEM_CFG",
-                                0x11D260C0,
-                                Zero
-                            }
-                        }
+                        0x0,
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_UFS_MEM", "ICBID_SLAVE_EBI1", 1200000000, 1200000000}},
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_APPSS_PROC", "ICBID_SLAVE_UFS_MEM_CFG", 299000000, 0}}
                     },
-
-                    Package (0x04)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_APPSS_PROC",
-                                "ICBID_SLAVE_UFS_MEM_CFG",
-                                Zero,
-                                Zero
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_UFS_MEM",
-                                "ICBID_SLAVE_EBI1",
-                                Zero,
-                                Zero
-                            }
-                        }
+                        0x1,
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_APPSS_PROC", "ICBID_SLAVE_UFS_MEM_CFG", 0, 0}},
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_UFS_MEM", "ICBID_SLAVE_EBI1", 0, 0}}
                     }
                 }
             },
 
-            Package (0x0A)
+            Package()
             {
                 "DSTATE",
-                Zero,
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x02,
-                        Zero
-                    }
-                },
+                0x0,
 
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        Zero,
-                        Zero
-                    }
-                },
+                Package() {"PSTATE_ADJUST", Package() { 2, 0 } },
+                Package() {"PSTATE_ADJUST", Package() { 0, 0 } },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO7_B",
-                        One,
-                        0x002C4FC0,
-                        One,
-                        0x07,
-                        Zero
+                        1,
+                        2904000,
+                        1,
+                        7,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO9_B",
-                        One,
-                        0x00124F80,
-                        One,
-                        0x07,
-                        Zero
+                        1,
+                        1200000,
+                        1,
+                        7,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO6_B",
-                        One,
-                        0x00124F80,
-                        One,
-                        0x07,
-                        Zero
+                        1,
+                        1200000,
+                        1,
+                        7,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO10_C",
-                        One,
-                        0x000D6D80,
-                        One,
-                        0x07,
-                        Zero
+                        1,
+                        880000,
+                        1,
+                        7,
+                        0
                     }
                 },
 
-                Package (0x02)
-                {
-                    "DELAY",
-                    Package (One)
-                    {
-                        0x23
-                    }
-                },
+                Package() {"DELAY", Package() { 35 } },
 
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        One,
-                        Zero
-                    }
-                }
+                Package() {"PSTATE_ADJUST", Package() { 1, 0 } }
             },
-
-            Package (0x09)
+            Package()
             {
                 "DSTATE",
                 0x03,
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        One,
-                        One
-                    }
-                },
 
-                Package (0x02)
+                Package() {"PSTATE_ADJUST", Package() { 1, 1 } },
+
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO10_C",
-                        One,
-                        0x000D6D80,
-                        One,
-                        0x04,
-                        Zero
+                        1,
+                        880000,
+                        1,
+                        4,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO6_B",
-                        One,
-                        Zero,
-                        Zero,
-                        Zero,
-                        Zero
+                        1,
+                        0,
+                        0,
+                        0,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO9_B",
-                        One,
-                        0x00124F80,
-                        One,
-                        0x04,
-                        Zero
+                        1,
+                        1200000,
+                        1,
+                        4,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO7_B",
-                        One,
-                        Zero,
-                        Zero,
-                        Zero,
-                        Zero
+                        1,
+                        0,
+                        0,
+                        0,
+                        0
                     }
                 },
 
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        Zero,
-                        One
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x02,
-                        One
-                    }
-                }
+                Package() {"PSTATE_ADJUST", Package() { 0, 1 } },
+                Package() {"PSTATE_ADJUST", Package() { 2, 1 } }
             },
-
-            Package (0x02)
+            Package()
             {
                 "CRASHDUMP_EXCEPTION",
-                Package (0x02)
-                {
-                    "EXECUTE_FUNCTION",
-                    Package (One)
-                    {
-                        "ExecuteOcdEMMCExceptions"
-                    }
-                }
+                Package() {"EXECUTE_FUNCTION", Package() {"ExecuteOcdEMMCExceptions"}}
             },
-
-            Package (0x02)
-            {
-                "CRASHDUMP_DSTATE",
-                Zero
-            }
+            Package() {"CRASHDUMP_DSTATE", 0}
         }
     })
-    Name (CPCC, Package (One)
+
+    Name (CPCC,
+    Package()
     {
-        Package (0x06)
+        Package()
         {
             "DEVICE",
             "\\_SB.UFS0",
-            Package (0x07)
+            Package()
             {
                 "COMPONENT",
-                Zero,
-                Package (0x05)
+                0x0,
+                Package()
                 {
                     "FSTATE",
-                    Zero,
-                    Package (0x02)
-                    {
-                        "PSTATE_ADJUST",
-                        Package (0x02)
-                        {
-                            Zero,
-                            Zero
-                        }
-                    },
-
-                    Package (0x02)
-                    {
-                        "PSTATE_ADJUST",
-                        Package (0x02)
-                        {
-                            One,
-                            Zero
-                        }
-                    },
-
-                    Package (0x02)
-                    {
-                        "PSTATE_ADJUST",
-                        Package (0x02)
-                        {
-                            0x02,
-                            Zero
-                        }
-                    }
+                    0x0,
+                    Package() {"PSTATE_ADJUST", Package() { 0, 0 } },
+                    Package() {"PSTATE_ADJUST", Package() { 1, 0 } },
+                    Package() {"PSTATE_ADJUST", Package() { 2, 0 } }
                 },
-
-                Package (0x05)
+                Package()
                 {
                     "FSTATE",
-                    One,
-                    Package (0x02)
-                    {
-                        "PSTATE_ADJUST",
-                        Package (0x02)
-                        {
-                            0x02,
-                            One
-                        }
-                    },
-
-                    Package (0x02)
-                    {
-                        "PSTATE_ADJUST",
-                        Package (0x02)
-                        {
-                            One,
-                            One
-                        }
-                    },
-
-                    Package (0x02)
-                    {
-                        "PSTATE_ADJUST",
-                        Package (0x02)
-                        {
-                            Zero,
-                            One
-                        }
-                    }
+                    0x1,
+                    Package() {"PSTATE_ADJUST", Package() { 2, 1 } },
+                    Package() {"PSTATE_ADJUST", Package() { 1, 1 } },
+                    Package() {"PSTATE_ADJUST", Package() { 0, 1 } }
                 },
 
-                Package (0x04)
+                Package()
                 {
                     "PSTATE_SET",
-                    Zero,
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "FOOTSWITCH",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_gdsc",
-                                One
-                            }
-                        }
-                    },
+                    0x0,
 
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "FOOTSWITCH",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_gdsc",
-                                0x02
-                            }
-                        }
+                        0x0,
+                        Package() { "FOOTSWITCH", Package() { "gcc_ufs_phy_gdsc", 1 }}
+                    },
+                    Package()
+                    {
+                        "PSTATE",
+                        0x1,
+                        Package() { "FOOTSWITCH", Package() { "gcc_ufs_phy_gdsc", 2 }}
                     }
                 },
 
-                Package (0x04)
+                Package()
                 {
                     "PSTATE_SET",
-                    One,
-                    Package (0x0D)
+                    0x1,
+
+                    Package()
                     {
                         "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_ufs_phy_axi_clk",
-                                0x08,
-                                0x11E1A300,
-                                0x02
-                            }
-                        },
+                        0x0,
 
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_ufs_phy_unipro_core_clk",
-                                0x08,
-                                0x11E1A300,
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_ice_core_clk",
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x03)
-                            {
-                                "gcc_ufs_phy_ice_core_clk",
-                                0x09,
-                                0x12
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_ufs_phy_ice_core_clk",
-                                0x03,
-                                0x11E1A300,
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_aggre_ufs_phy_axi_clk",
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_ahb_clk",
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_phy_aux_clk",
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_tx_symbol_0_clk",
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_rx_symbol_0_clk",
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_rx_symbol_1_clk",
-                                One
-                            }
-                        }
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_axi_clk", 8, 300000000, 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_unipro_core_clk", 8, 300000000, 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_ice_core_clk", 1}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_ice_core_clk", 9, 18}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_ice_core_clk", 3, 300000000, 2}},
+                        Package() {"CLOCK", Package() {"gcc_aggre_ufs_phy_axi_clk", 1}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_ahb_clk", 1}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_phy_aux_clk", 1}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_tx_symbol_0_clk", 1}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_rx_symbol_0_clk", 1}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_rx_symbol_1_clk", 1}}
                     },
-
-                    Package (0x0B)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_aggre_ufs_phy_axi_clk",
-                                0x02
-                            }
-                        },
+                        0x1,
 
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_ahb_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_phy_aux_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_tx_symbol_0_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_rx_symbol_0_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_rx_symbol_1_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_ice_core_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_unipro_core_clk",
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_ufs_phy_axi_clk",
-                                0x02
-                            }
-                        }
+                        Package() {"CLOCK", Package() {"gcc_aggre_ufs_phy_axi_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_ahb_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_phy_aux_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_tx_symbol_0_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_rx_symbol_0_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_rx_symbol_1_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_ice_core_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_unipro_core_clk", 2}},
+                        Package() {"CLOCK", Package() {"gcc_ufs_phy_axi_clk", 2}}
                     }
                 },
 
-                Package (0x04)
+                Package()
                 {
                     "PSTATE_SET",
                     0x02,
-                    Package (0x04)
+
+                    Package()
                     {
                         "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_UFS_MEM",
-                                "ICBID_SLAVE_EBI1",
-                                0x8F0D1800,
-                                0x8F0D1800
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_APPSS_PROC",
-                                "ICBID_SLAVE_UFS_MEM_CFG",
-                                0x11D260C0,
-                                Zero
-                            }
-                        }
+                        0x0,
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_UFS_MEM", "ICBID_SLAVE_EBI1", 2400000000, 2400000000}},
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_APPSS_PROC", "ICBID_SLAVE_UFS_MEM_CFG", 299000000, 0}}
                     },
-
-                    Package (0x04)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_APPSS_PROC",
-                                "ICBID_SLAVE_UFS_MEM_CFG",
-                                Zero,
-                                Zero
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_UFS_MEM",
-                                "ICBID_SLAVE_EBI1",
-                                Zero,
-                                Zero
-                            }
-                        }
+                        0x1,
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_APPSS_PROC", "ICBID_SLAVE_UFS_MEM_CFG", 0, 0}},
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_UFS_MEM", "ICBID_SLAVE_EBI1", 0, 0}}
                     }
                 }
             },
 
-            Package (0x0A)
+            Package()
             {
                 "DSTATE",
-                Zero,
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x02,
-                        Zero
-                    }
-                },
+                0x0,
 
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        Zero,
-                        Zero
-                    }
-                },
+                Package() {"PSTATE_ADJUST", Package() { 2, 0 } },
+                Package() {"PSTATE_ADJUST", Package() { 0, 0 } },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO7_B",
-                        One,
-                        0x00263540,
-                        One,
-                        0x07,
-                        Zero
+                        1,
+                        2504000,
+                        1,
+                        7,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO9_B",
-                        One,
-                        0x00124F80,
-                        One,
-                        0x07,
-                        Zero
+                        1,
+                        1200000,
+                        1,
+                        7,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO6_B",
-                        One,
-                        0x00124F80,
-                        One,
-                        0x07,
-                        Zero
+                        1,
+                        1200000,
+                        1,
+                        7,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO10_C",
-                        One,
-                        0x000D6D80,
-                        One,
-                        0x07,
-                        Zero
+                        1,
+                        880000,
+                        1,
+                        7,
+                        0
                     }
                 },
 
-                Package (0x02)
-                {
-                    "DELAY",
-                    Package (One)
-                    {
-                        0x23
-                    }
-                },
+                Package() {"DELAY", Package() { 35 }},
 
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        One,
-                        Zero
-                    }
-                }
+                Package() {"PSTATE_ADJUST", Package() { 1, 0 } }
             },
-
-            Package (0x09)
+            Package()
             {
                 "DSTATE",
                 0x03,
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        One,
-                        One
-                    }
-                },
 
-                Package (0x02)
+                Package() {"PSTATE_ADJUST", Package() { 1, 1 } },
+
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO10_C",
-                        One,
-                        0x000D6D80,
-                        One,
-                        0x04,
-                        Zero
+                        1,
+                        880000,
+                        1,
+                        4,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO6_B",
-                        One,
-                        Zero,
-                        Zero,
-                        Zero,
-                        Zero
+                        1,
+                        0,
+                        0,
+                        0,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO9_B",
-                        One,
-                        0x00124F80,
-                        One,
-                        0x04,
-                        Zero
+                        1,
+                        1200000,
+                        1,
+                        4,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO7_B",
-                        One,
-                        Zero,
-                        Zero,
-                        Zero,
-                        Zero
+                        1,
+                        0,
+                        0,
+                        0,
+                        0
                     }
                 },
 
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        Zero,
-                        One
-                    }
-                },
+                Package() {"PSTATE_ADJUST", Package() { 0, 1 } },
 
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x02,
-                        One
-                    }
-                }
+                Package() {"PSTATE_ADJUST", Package() { 2, 1 } }
             },
 
-            Package (0x02)
-            {
-                "CRASHDUMP_DSTATE",
-                Zero
-            }
+            Package() {"CRASHDUMP_DSTATE", 0}
         }
     })
-    Name (FPCC, Package (One)
+    Name (FPCC,
+    Package()
     {
-        Package (0x06)
+        Package()
         {
             "DEVICE",
             "\\_SB.UFS0",
-            Package (0x04)
+            Package()
             {
                 "COMPONENT",
-                Zero,
-                Package (0x02)
+                0x0,
+                Package()
                 {
                     "FSTATE",
-                    Zero
+                    0x0
                 },
-
-                Package (0x02)
+                Package()
                 {
                     "FSTATE",
-                    One
+                    0x1
                 }
             },
 
-            Package (0x02)
+            Package()
             {
                 "PRELOAD_DSTATE",
                 0x03
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                Zero
+                0x0
             },
 
-            Package (0x04)
+            Package()
             {
                 "DSTATE",
                 0x03,
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO9_B",
-                        One,
-                        Zero,
-                        Zero,
-                        Zero,
-                        Zero
+                        1,
+                        0,
+                        0,
+                        0,
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO7_B",
-                        One,
-                        Zero,
-                        Zero,
-                        Zero,
-                        Zero
+                        1,
+                        0,
+                        0,
+                        0,
+                        0
                     }
                 }
             }
         }
     })
-    Name (DPCC, Package (One)
+    Name (DPCC,
+    Package()
     {
-        Package (0x07)
+        Package()
         {
             "DEVICE",
             "\\_SB.SDC1",
-            Package (0x0A)
+            Package()
             {
                 "COMPONENT",
-                Zero,
-                Package (0x02)
+                0x0,
+                Package()
                 {
                     "FSTATE",
-                    Zero
+                    0x0
                 },
-
-                Package (0x02)
+                Package()
                 {
                     "FSTATE",
-                    One
+                    0x1
                 },
 
                 Package (0x1A)
                 {
                     "PSTATE_SET",
-                    Zero,
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
+                    0x0,
 
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x02,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x03,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x04,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x05,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x06,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x07,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x08,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x09,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x0A,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x0B,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x0C,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x0D,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x0E,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x0F,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x10,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x11,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x12,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x13,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x14,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x15,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x05)
-                    {
-                        "PSTATE",
-                        0x16,
-                        Package (0x02)
+                    //
+                    // Contract with SDBUS for card frequencies
+                    //
+                    // P-State      Note
+                    // --------     -----
+                    // 0 - 19       Reserved (Legacy)
+                    // 20           Reset to 3.3v signal voltage (max fixed at 2.95v)
+                    // 21           1.8v signal voltage (max fixed at 1.85v)
+                    Package(){"PSTATE",     0, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",     1, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",     2, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",     3, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",     4, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",     5, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",     6, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",     7, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",     8, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",     9, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    10, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    11, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    12, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    13, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    14, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    15, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    16, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    17, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    18, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    19, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    20, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    21, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    22,
+                        Package()
                         {
                             "PMICVREGVOTE",
-                            Package (0x06)
+                            Package()
                             {
                                 "PPP_RESOURCE_ID_LDO7_B",
-                                One,
-                                0x002D2A80,
-                                One,
-                                0x07,
-                                Zero
+                                1,
+                                2960000,
+                                1,
+                                7,
+                                0
                             }
                         },
 
-                        Package (0x02)
+                        Package()
                         {
                             "PMICVREGVOTE",
-                            Package (0x06)
+                            Package()
                             {
                                 "PPP_RESOURCE_ID_LDO19_B",
-                                One,
-                                0x001B7740,
-                                One,
-                                0x07,
-                                Zero
+                                1,
+                                1800000,
+                                1,
+                                7,
+                                0
                             }
                         },
 
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                0x23
-                            }
-                        }
+                        Package() {"DELAY", Package() { 35 }}
                     },
 
-                    Package (0x04)
-                    {
-                        "PSTATE",
-                        0x17,
-                        Package (0x02)
+                    Package() {"PSTATE",   23,
+                        Package()
                         {
                             "PMICVREGVOTE",
-                            Package (0x06)
+                            Package()
                             {
                                 "PPP_RESOURCE_ID_LDO7_B",
-                                One,
-                                Zero,
-                                Zero,
-                                Zero,
-                                Zero
+                                1,
+                                0,
+                                0,
+                                0,
+                                0
                             }
                         },
 
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                0x23
-                            }
-                        }
+                        Package() {"DELAY", Package() { 35 }}
                     }
                 },
 
-                Package (0x0A)
+                Package()
                 {
                     "PSTATE_SET",
-                    One,
-                    Package (0x03)
+                    0x1,
+
+                    Package()
                     {
                         "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_sdcc1_apps_clk",
-                                0x02
-                            }
-                        }
+                        0x0,
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_apps_clk", 2}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_sdcc1_apps_clk",
-                                0x08,
-                                0x00061A80,
-                                0x02
-                            }
-                        }
+                        0x1,
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_apps_clk", 8, 400000, 2}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x02,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_sdcc1_apps_clk",
-                                0x08,
-                                0x01312D00,
-                                0x02
-                            }
-                        }
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_apps_clk", 8, 20000000, 2}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x03,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_sdcc1_apps_clk",
-                                0x08,
-                                0x017D7840,
-                                0x02
-                            }
-                        }
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_apps_clk", 8, 25000000, 2}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x04,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_sdcc1_apps_clk",
-                                0x08,
-                                0x02FAF080,
-                                0x02
-                            }
-                        }
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_apps_clk", 8, 50000000, 2}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x05,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_sdcc1_apps_clk",
-                                0x08,
-                                0x05F5E100,
-                                0x02
-                            }
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_apps_clk", 8, 100000000, 2}
                         }
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x06,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_sdcc1_apps_clk",
-                                0x08,
-                                0x0B71B000,
-                                0x02
-                            }
-                        }
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_apps_clk", 8, 192000000, 2}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x07,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_sdcc1_apps_clk",
-                                0x08,
-                                0x16E36000,
-                                0x02
-                            }
-                        }
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_apps_clk", 8, 384000000, 2}}
                     }
                 },
 
-                Package (0x07)
+                Package()
                 {
                     "PSTATE_SET",
                     0x02,
-                    Package (0x03)
+
+                    Package()
                     {
                         "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_SDCC_1",
-                                "ICBID_SLAVE_EBI1",
-                                0x2FAF0800,
-                                0x17D78400
-                            }
-                        }
+                        0x0,
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_SDCC_1", "ICBID_SLAVE_EBI1", 800000000, 400000000}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_SDCC_1",
-                                "ICBID_SLAVE_EBI1",
-                                0x17D78400,
-                                0x0BEBC200
-                            }
-                        }
+                        0x1,
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_SDCC_1", "ICBID_SLAVE_EBI1", 400000000, 200000000}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x02,
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_SDCC_1",
-                                "ICBID_SLAVE_EBI1",
-                                0x0BEBC200,
-                                0x05F5E100
-                            }
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_SDCC_1", "ICBID_SLAVE_EBI1", 200000000, 100000000}
                         }
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x03,
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_SDCC_1",
-                                "ICBID_SLAVE_EBI1",
-                                0x02625A00,
-                                0x01312D00
-                            }
-                        }
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_SDCC_1", "ICBID_SLAVE_EBI1", 40000000, 20000000}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x04,
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_SDCC_1",
-                                "ICBID_SLAVE_EBI1",
-                                Zero,
-                                Zero
-                            }
-                        }
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_SDCC_1", "ICBID_SLAVE_EBI1", 0, 0}}
                     }
                 },
 
-                Package (0x04)
+                Package()
                 {
                     "PSTATE_SET",
                     0x03,
-                    Package (0x05)
+
+                    Package()
                     {
                         "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "PSTATE_ADJUST",
-                            Package (0x02)
-                            {
-                                One,
-                                0x07
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "PSTATE_ADJUST",
-                            Package (0x02)
-                            {
-                                0x02,
-                                Zero
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "PSTATE_ADJUST",
-                            Package (0x02)
-                            {
-                                0x05,
-                                0x03
-                            }
-                        }
+                        0x0,
+                        Package() {"PSTATE_ADJUST", Package() { 1, 7 } },
+                        Package() {"PSTATE_ADJUST", Package() { 2, 0 } },
+                        Package() {"PSTATE_ADJUST", Package() { 5, 3 } }
                     },
 
-                    Package (0x05)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "PSTATE_ADJUST",
-                            Package (0x02)
-                            {
-                                One,
-                                0x05
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "PSTATE_ADJUST",
-                            Package (0x02)
-                            {
-                                0x02,
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "PSTATE_ADJUST",
-                            Package (0x02)
-                            {
-                                0x05,
-                                One
-                            }
-                        }
+                        0x1,
+                        Package() {"PSTATE_ADJUST", Package() { 1, 5 } },
+                        Package() {"PSTATE_ADJUST", Package() { 2, 2 } },
+                        Package() {"PSTATE_ADJUST", Package() { 5, 1 } }
                     }
                 },
 
-                Package (0x04)
+                Package()
                 {
                     "PSTATE_SET",
                     0x04,
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_sdcc1_ahb_clk",
-                                One
-                            }
-                        }
-                    },
 
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_sdcc1_ahb_clk",
-                                0x02
-                            }
-                        }
+                        0x0,
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_ahb_clk", 1}}
+                    },
+                    Package()
+                    {
+                        "PSTATE",
+                        0x1,
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_ahb_clk", 2}}
                     }
                 },
 
-                Package (0x06)
+                Package()
                 {
                     "PSTATE_SET",
                     0x05,
-                    Package (0x03)
+
+                    Package()
                     {
                         "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_sdcc1_ice_core_clk",
-                                0x02
-                            }
-                        }
+                        0x0,
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_ice_core_clk", 2}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_sdcc1_ice_core_clk",
-                                0x08,
-                                0x05F5E100,
-                                0x02
-                            }
-                        }
+                        0x1,
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_ice_core_clk", 8, 100000000, 2}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x02,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_sdcc1_ice_core_clk",
-                                0x08,
-                                0x08F0D180,
-                                0x02
-                            }
-                        }
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_ice_core_clk", 8, 0x08F0D180, 2}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x03,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_sdcc1_ice_core_clk",
-                                0x08,
-                                0x11E1A300,
-                                0x02
-                            }
-                        }
+                        Package() {"CLOCK", Package() {"gcc_sdcc1_ice_core_clk", 8, 300000000, 2}}
                     }
                 }
             },
 
-            Package (0x0A)
+            Package()
             {
                 "DSTATE",
-                Zero,
-                Package (0x02)
-                {
-                    "TLMMPORT",
-                    Package (0x03)
-                    {
-                        0x001B3000,
-                        0x0001FFFF,
-                        0x1FE4
-                    }
-                },
+                0x0,
 
-                Package (0x02)
-                {
-                    "TLMMPORT",
-                    Package (0x03)
-                    {
-                        0x001B3004,
-                        0x0001FFFF,
-                        One
-                    }
-                },
+                Package() {"TLMMPORT", Package() { 1781760, 131071, 8164 }},
+                Package() {"TLMMPORT", Package() { 1781764, 131071, 1 }},
+                Package() {"PSTATE_ADJUST", Package() { 1, 7 }},
+                Package() {"PSTATE_ADJUST", Package() { 2, 0 }},
+                Package() {"PSTATE_ADJUST", Package() { 5, 3 }},
+                Package() {"PSTATE_ADJUST", Package() { 4, 0 }},
 
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        One,
-                        0x07
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x02,
-                        Zero
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x05,
-                        0x03
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x04,
-                        Zero
-                    }
-                },
-
-                Package (One)
+                Package()
                 {
                     "PSTATE_RESTORE"
                 },
 
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        Zero,
-                        0x16
-                    }
-                }
+                Package() {"PSTATE_ADJUST", Package() { 0, 22 }}
             },
 
-            Package (0x09)
+            Package()
             {
                 "DSTATE",
                 0x03,
-                Package (One)
+
+                Package()
                 {
                     "PSTATE_SAVE"
                 },
 
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x05,
-                        Zero
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x04,
-                        One
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        One,
-                        Zero
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x02,
-                        0x04
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "TLMMPORT",
-                    Package (0x03)
-                    {
-                        0x001B3000,
-                        0x0001FFFF,
-                        Zero
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "TLMMPORT",
-                    Package (0x03)
-                    {
-                        0x001B3004,
-                        0x0001FFFF,
-                        Zero
-                    }
-                }
+                Package() {"PSTATE_ADJUST", Package() { 5, 0 }},
+                Package() {"PSTATE_ADJUST", Package() { 4, 1 }},
+                Package() {"PSTATE_ADJUST", Package() { 1, 0 }},
+                Package() {"PSTATE_ADJUST", Package() { 2, 4 }},
+                Package() {"TLMMPORT", Package() { 1781760, 131071, 0 }},
+                Package() {"TLMMPORT", Package() { 1781764, 131071, 0 }}
             },
 
-            Package (0x02)
+            Package()
             {
                 "CRASHDUMP_EXCEPTION",
-                Package (0x02)
-                {
-                    "EXECUTE_FUNCTION",
-                    Package (One)
-                    {
-                        "ExecuteOcdEMMCExceptions"
-                    }
-                }
+                Package() {"EXECUTE_FUNCTION", Package() {"ExecuteOcdEMMCExceptions"}}
             },
 
-            Package (0x02)
+            Package()
             {
                 "CRASHDUMP_DSTATE",
-                Zero
+                0
             }
         }
     })
-    Name (SDCC, Package (One)
+    Name (SDCC,
+    Package()
     {
-        Package (0x07)
+        Package()
         {
             "DEVICE",
             "\\_SB.SDC2",
-            Package (0x09)
+            Package()
             {
                 "COMPONENT",
-                Zero,
-                Package (0x02)
+                0x0,
+                Package()
                 {
                     "FSTATE",
-                    Zero
+                    0x0
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "FSTATE",
-                    One
+                    0x1
                 },
 
-                Package (0x19)
+                Package ()
                 {
                     "PSTATE_SET",
-                    Zero,
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
+                    0x0,
 
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x02,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x03,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x04,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x05,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x06,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x07,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x08,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x09,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x0B,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x0C,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x0D,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x0E,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x0F,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x10,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x11,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x12,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        0x13,
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                One
-                            }
-                        }
-                    },
-
-                    Package (0x08)
-                    {
-                        "PSTATE",
-                        0x14,
-                        Package (0x02)
+                    //
+                    // Contract with SDBUS for card frequencies
+                    //
+                    // P-State      Note
+                    // --------     -----
+                    // 0 - 19       Reserved (Legacy)
+                    // 20           Reset to 3.3v signal voltage (max fixed at 2.95v)
+                    // 21           1.8v signal voltage (max fixed at 1.85v)
+                    Package(){"PSTATE",    0, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    1, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    2, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    3, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    4, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    5, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    6, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    7, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    8, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",    9, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",   11, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",   12, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",   13, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",   14, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",   15, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",   16, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",   17, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",   18, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",   19, Package(){"DELAY", Package() { 1 }}},
+                    Package(){"PSTATE",   20,
+                        Package()
                         {
                             "PMICVREGVOTE",
-                            Package (0x06)
+                            Package()
                             {
                                 "PPP_RESOURCE_ID_LDO9_C",
-                                One,
-                                Zero,
-                                Zero,
-                                Zero,
-                                Zero
+                                1,
+                                0,
+                                0,
+                                0,
+                                0
                             }
                         },
 
-                        Package (0x02)
+                        Package()
                         {
                             "PMICVREGVOTE",
-                            Package (0x06)
+                            Package()
                             {
                                 "PPP_RESOURCE_ID_LDO6_C",
-                                One,
-                                Zero,
-                                Zero,
-                                Zero,
-                                Zero
+                                1,
+                                0,
+                                0,
+                                0,
+                                0
                             }
                         },
 
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                0x23
-                            }
-                        },
+                        Package() {"DELAY", Package() { 35 }},
 
-                        Package (0x02)
+                        Package()
                         {
                             "PMICVREGVOTE",
-                            Package (0x06)
+                            Package()
                             {
                                 "PPP_RESOURCE_ID_LDO9_C",
-                                One,
-                                0x002D2A80,
-                                One,
-                                0x07,
-                                Zero
+                                1,
+                                2960000,
+                                1,
+                                7,
+                                0
                             }
                         },
 
-                        Package (0x02)
+                        Package()
                         {
                             "PMICVREGVOTE",
-                            Package (0x06)
+                            Package()
                             {
                                 "PPP_RESOURCE_ID_LDO6_C",
-                                One,
-                                0x002D0370,
-                                One,
-                                0x07,
-                                Zero
+                                1,
+                                2950000,
+                                1,
+                                7,
+                                0
                             }
                         },
 
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                0x23
-                            }
-                        }
+                        Package() {"DELAY", Package() { 35 }}
                     },
-
-                    Package (0x04)
-                    {
-                        "PSTATE",
-                        0x15,
-                        Package (0x02)
+                    Package(){"PSTATE",   0x15,
+                        Package()
                         {
                             "PMICVREGVOTE",
-                            Package (0x06)
+                            Package()
                             {
                                 "PPP_RESOURCE_ID_LDO6_C",
-                                One,
-                                0x001B7740,
-                                One,
-                                0x07,
-                                Zero
+                                1,
+                                1800000,
+                                1,
+                                7,
+                                0
                             }
                         },
 
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                0x23
-                            }
-                        }
+                        Package() {"DELAY", Package() { 35 }}
                     },
 
-                    Package (0x05)
-                    {
-                        "PSTATE",
-                        0x16,
-                        Package (0x02)
+                    Package(){"PSTATE",   0x16,
+                        Package()
                         {
                             "PMICVREGVOTE",
-                            Package (0x06)
+                            Package()
                             {
                                 "PPP_RESOURCE_ID_LDO9_C",
-                                One,
-                                0x002D2A80,
-                                One,
-                                0x07,
-                                Zero
+                                1,
+                                2960000,
+                                1,
+                                7,
+                                0
                             }
                         },
 
-                        Package (0x02)
+                        Package()
                         {
                             "PMICVREGVOTE",
-                            Package (0x06)
+                            Package()
                             {
                                 "PPP_RESOURCE_ID_LDO6_C",
-                                One,
-                                0x002D0370,
-                                One,
+                                1,
+                                2950000,
+                                1,
                                 0x07,
-                                Zero
+                                0
                             }
                         },
 
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                0x23
-                            }
-                        }
+                        Package() {"DELAY", Package() { 35 }}
                     },
 
-                    Package (0x05)
-                    {
-                        "PSTATE",
-                        0x17,
-                        Package (0x02)
+                    Package(){"PSTATE",   0x17,
+                        Package()
                         {
                             "PMICVREGVOTE",
-                            Package (0x06)
+                            Package()
                             {
                                 "PPP_RESOURCE_ID_LDO9_C",
-                                One,
-                                Zero,
-                                Zero,
-                                Zero,
-                                Zero
+                                1,
+                                0,
+                                0,
+                                0,
+                                0
                             }
                         },
 
-                        Package (0x02)
+                        Package()
                         {
                             "PMICVREGVOTE",
-                            Package (0x06)
+                            Package()
                             {
                                 "PPP_RESOURCE_ID_LDO6_C",
-                                One,
-                                Zero,
-                                Zero,
-                                Zero,
-                                Zero
+                                1,
+                                0,
+                                0,
+                                0,
+                                0
                             }
                         },
 
-                        Package (0x02)
-                        {
-                            "DELAY",
-                            Package (One)
-                            {
-                                0x23
-                            }
-                        }
+                        Package() {"DELAY", Package() { 35 }}
                     }
                 },
 
-                Package (0x05)
+                Package()
                 {
                     "PSTATE_SET",
-                    One,
-                    Package (0x03)
+                    0x1,
+
+                    Package()
                     {
                         "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_sdcc2_apps_clk",
-                                0x02
-                            }
-                        }
+                        0x0,
+                        Package() {"CLOCK", Package() {"gcc_sdcc2_apps_clk", 2}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_sdcc2_apps_clk",
-                                0x08,
-                                0x05F5E100,
-                                0x02
-                            }
-                        }
+                        0x1,
+                        Package() {"CLOCK", Package() {"gcc_sdcc2_apps_clk", 8, 100000000, 2}}
                     },
-
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x02,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x04)
-                            {
-                                "gcc_sdcc2_apps_clk",
-                                0x08,
-                                0x0C0A4680,
-                                0x02
-                            }
-                        }
+                        Package() {"CLOCK", Package() {"gcc_sdcc2_apps_clk", 8, 202000000, 2}}
                     }
                 },
 
-                Package (0x05)
+                Package()
                 {
                     "PSTATE_SET",
                     0x02,
-                    Package (0x03)
+
+                    Package()
                     {
                         "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_SDCC_2",
-                                "ICBID_SLAVE_EBI1",
-                                0x17D78400,
-                                0x0BEBC200
-                            }
-                        }
+                        0x0,
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_SDCC_2", "ICBID_SLAVE_EBI1", 400000000, 200000000}}
                     },
 
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_SDCC_2",
-                                "ICBID_SLAVE_EBI1",
-                                0x0BEBC200,
-                                0x05F5E100
-                            }
-                        }
+                        0x1,
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_SDCC_2", "ICBID_SLAVE_EBI1", 200000000, 100000000}}
                     },
 
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
                         0x02,
-                        Package (0x02)
-                        {
-                            "BUSARB",
-                            Package (0x05)
-                            {
-                                0x03,
-                                "ICBID_MASTER_SDCC_2",
-                                "ICBID_SLAVE_EBI1",
-                                Zero,
-                                Zero
-                            }
-                        }
+                        Package() {"BUSARB", Package() {3, "ICBID_MASTER_SDCC_2", "ICBID_SLAVE_EBI1", 0, 0}}
                     }
                 },
 
-                Package (0x04)
+                Package()
                 {
                     "PSTATE_SET",
                     0x03,
-                    Package (0x04)
+
+                    Package()
                     {
                         "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "PSTATE_ADJUST",
-                            Package (0x02)
-                            {
-                                One,
-                                0x02
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "PSTATE_ADJUST",
-                            Package (0x02)
-                            {
-                                0x02,
-                                Zero
-                            }
-                        }
+                        0x0,
+                        Package() { "PSTATE_ADJUST", Package() { 1, 2 } },
+                        Package() { "PSTATE_ADJUST", Package() { 2, 0 } }
                     },
-
-                    Package (0x04)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "PSTATE_ADJUST",
-                            Package (0x02)
-                            {
-                                One,
-                                One
-                            }
-                        },
-
-                        Package (0x02)
-                        {
-                            "PSTATE_ADJUST",
-                            Package (0x02)
-                            {
-                                0x02,
-                                One
-                            }
-                        }
+                        0x1,
+                        Package() { "PSTATE_ADJUST", Package() { 1, 1 } },
+                        Package() { "PSTATE_ADJUST", Package() { 2, 1 } }
                     }
                 },
 
-                Package (0x04)
+                Package()
                 {
                     "PSTATE_SET",
                     0x04,
-                    Package (0x03)
-                    {
-                        "PSTATE",
-                        Zero,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_sdcc2_ahb_clk",
-                                One
-                            }
-                        }
-                    },
 
-                    Package (0x03)
+                    Package()
                     {
                         "PSTATE",
-                        One,
-                        Package (0x02)
-                        {
-                            "CLOCK",
-                            Package (0x02)
-                            {
-                                "gcc_sdcc2_ahb_clk",
-                                0x02
-                            }
-                        }
+                        0x0,
+                        Package() {"CLOCK", Package() {"gcc_sdcc2_ahb_clk", 1}}
+                    },
+                    Package()
+                    {
+                        "PSTATE",
+                        0x1,
+                        Package() {"CLOCK", Package() {"gcc_sdcc2_ahb_clk", 2}}
                     }
                 }
             },
 
-            Package (0x07)
+            Package()
             {
                 "DSTATE",
-                Zero,
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        Zero,
-                        0x16
-                    }
-                },
+                0x0,
 
-                Package (0x02)
-                {
-                    "TLMMPORT",
-                    Package (0x03)
-                    {
-                        0x001B4000,
-                        0x7FFF,
-                        0x1FE4
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x02,
-                        Zero
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x04,
-                        Zero
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        One,
-                        0x02
-                    }
-                }
+                Package() {"PSTATE_ADJUST", Package() { 0, 22 }},
+                Package() {"TLMMPORT", Package() { 1785856, 32767, 8164 }},
+                Package() {"PSTATE_ADJUST", Package() { 2, 0 }},
+                Package() {"PSTATE_ADJUST", Package() { 4, 0 }},
+                Package() {"PSTATE_ADJUST", Package() { 1, 2 }}
             },
-
-            Package (0x07)
+            Package()
             {
                 "DSTATE",
                 0x03,
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        One,
-                        Zero
-                    }
-                },
 
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x04,
-                        One
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        0x02,
-                        0x02
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "TLMMPORT",
-                    Package (0x03)
-                    {
-                        0x001B4000,
-                        0x7FFF,
-                        0x0A00
-                    }
-                },
-
-                Package (0x02)
-                {
-                    "PSTATE_ADJUST",
-                    Package (0x02)
-                    {
-                        Zero,
-                        0x17
-                    }
-                }
+                Package() {"PSTATE_ADJUST", Package() { 1, 0 }},
+                Package() {"PSTATE_ADJUST", Package() { 4, 1 }},
+                Package() {"PSTATE_ADJUST", Package() { 2, 2 }},
+                Package() {"TLMMPORT", Package() { 1785856, 32767, 2560 }},
+                Package() {"PSTATE_ADJUST", Package() { 0, 23 }}
             },
 
-            Package (0x02)
+            Package()
             {
                 "CRASHDUMP_EXCEPTION",
-                Package (0x02)
-                {
-                    "EXECUTE_FUNCTION",
-                    Package (One)
-                    {
-                        "ExecuteOcdSdCardExceptions"
-                    }
-                }
+                Package() {"EXECUTE_FUNCTION", Package() {"ExecuteOcdSdCardExceptions"}}
             },
 
-            Package (0x02)
+            Package()
             {
                 "CRASHDUMP_DSTATE",
-                Zero
+                0
             }
         }
     })
