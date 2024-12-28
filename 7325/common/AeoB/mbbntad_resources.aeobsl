@@ -1,0 +1,65 @@
+Package ()
+{
+    "DEVICE",
+    "\_SB.IPA.NTAD",
+    Package ()
+    {
+        "COMPONENT",
+        0x0000000000000000,
+        Package ()
+        {
+            "FSTATE",
+            0x0000000000000000,
+        },
+    },
+    Package ()
+    {
+        "DSTATE",
+        0x0000000000000000,
+        Package ()
+        {
+            "NPARESOURCE",
+            Package ()
+            {
+                0x0000000000000001,
+                "/arc/client/rail_cx",
+                0x0000000000000001,
+            },
+        },
+    },
+    Package ()
+    {
+        "DSTATE",
+        0x0000000000000001,
+    },
+    Package ()
+    {
+        "DSTATE",
+        0x0000000000000002,
+        Package ()
+        {
+            "NPARESOURCE",
+            Package ()
+            {
+                0x0000000000000001,
+                "/arc/client/rail_cx",
+                0x0000000000000000,
+            },
+        },
+    },
+    Package ()
+    {
+        "DSTATE",
+        0x0000000000000003,
+        Package ()
+        {
+            "NPARESOURCE",
+            Package ()
+            {
+                0x0000000000000001,
+                "/arc/client/rail_cx",
+                0x0000000000000000,
+            },
+        },
+    },
+},

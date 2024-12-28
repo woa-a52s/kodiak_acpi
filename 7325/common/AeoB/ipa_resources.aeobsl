@@ -1,0 +1,86 @@
+Package ()
+{
+    "DEVICE",
+    "\_SB.IPA",
+    Package ()
+    {
+        "COMPONENT",
+        0x0000000000000000,
+        Package ()
+        {
+            "FSTATE",
+            0x0000000000000000,
+            Package ()
+            {
+                "BUSARB",
+                Package ()
+                {
+                    0x0000000000000003,
+                    "ICBID_MASTER_IPA_CORE",
+                    "ICBID_SLAVE_IPA_CORE",
+                    0x0000000000009218,
+                    0x0000000000000000,
+                    "HLOS_DRV",
+                },
+            },
+        },
+        Package ()
+        {
+            "FSTATE",
+            0x0000000000000001,
+            Package ()
+            {
+                "BUSARB",
+                Package ()
+                {
+                    0x0000000000000003,
+                    "ICBID_MASTER_IPA_CORE",
+                    "ICBID_SLAVE_IPA_CORE",
+                    0x0000000000000000,
+                    0x0000000000000000,
+                    "HLOS_DRV",
+                },
+            },
+        },
+        Package ()
+        {
+            "PSTATE_SET",
+            0x0000000000000000,
+            Package ()
+            {
+                "PSTATE",
+                0x0000000000000000,
+                Package ()
+                {
+                    "NPARESOURCE",
+                    Package ()
+                    {
+                        0x0000000000000001,
+                        "/ipa/pc",
+                        0x0000000000000000,
+                    },
+                },
+            },
+            Package ()
+            {
+                "PSTATE",
+                0x0000000000000001,
+                Package ()
+                {
+                    "NPARESOURCE",
+                    Package ()
+                    {
+                        0x0000000000000001,
+                        "/ipa/pc",
+                        0x0000000000000001,
+                    },
+                },
+            },
+            Package ()
+            {
+                "PREPARE_PSTATE",
+                0x0000000000000000,
+            },
+        },
+    },
+},

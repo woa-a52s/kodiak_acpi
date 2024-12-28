@@ -1,0 +1,21 @@
+Package ()
+{
+    Package ()
+    {
+        "ReadWrite",
+        0x000000000ACAF000,
+        0x0000000000005000,
+    },
+    Package ()
+    {
+        "ReadWrite",
+        0x000000000ACB6000,
+        0x0000000000005000,
+    },
+    Package ()
+    {
+        "ReadWrite",
+        0x000000000ACBD000,
+        0x0000000000005000,
+    },
+},

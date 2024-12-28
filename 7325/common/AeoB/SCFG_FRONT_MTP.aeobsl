@@ -1,0 +1,8 @@
+Package ()
+{
+    "com.qti.sensormodule.truly_imx476.bin",
+    "com.qti.tuned.truly_imx476.bin",
+    0x0000000000160034,
+    0x0000000004760016,
+    0x0000000000000000,
+},
