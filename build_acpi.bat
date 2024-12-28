@@ -3,7 +3,7 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 
 :: Check if at least 4 arguments are provided
 IF "%~4"=="" (
-    ECHO Usage: script.bat -plat <platform> -var <variant>
+    ECHO Usage: script.bat -p <platform> -d <device>
     EXIT /B
 )
 
@@ -14,13 +14,13 @@ SET VARIANT=
 :: Parse arguments
 :ARG_LOOP
 IF "%~1"=="" GOTO END_ARGS
-IF /I "%~1"=="-plat" (
+IF /I "%~1"=="-p" (
     SET PLATFORM=%~2
     SHIFT
     SHIFT
     GOTO ARG_LOOP
 )
-IF /I "%~1"=="-var" (
+IF /I "%~1"=="-d" (
     SET VARIANT=%~2
     SHIFT
     SHIFT
@@ -32,12 +32,12 @@ GOTO ARG_LOOP
 
 :: Check if required arguments are set
 IF "%PLATFORM%"=="" (
-    ECHO Error: Platform (-s) not specified.
+    ECHO Error: Platform (-p) not specified.
     EXIT /B
 )
 
 IF "%VARIANT%"=="" (
-    ECHO Error: Variant (-v) not specified.
+    ECHO Error: Device (-d) not specified.
     EXIT /B
 )
 
@@ -46,7 +46,7 @@ SET BASE_DIR=%PLATFORM%
 SET COMMON_DIR=%BASE_DIR%\common
 SET TARGET_DIR=%BASE_DIR%\%BASE_DIR%_%VARIANT%
 SET TEMP_DIR=temp
-SET ASL_EXECUTABLE=/home/arminas/Documents/kodiak_acpi_src/bin/asl.exe
+SET ASL_EXECUTABLE=/home/arminas/Documents/kodiak_acpi/bin/asl.exe
 
 :: Check if required directories exist
 IF NOT EXIST "%COMMON_DIR%" (

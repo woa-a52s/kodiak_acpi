@@ -8,496 +8,497 @@
 
 Scope (\_SB.PEP0)
 {
-    // PCIe Intra-Soc ports
-    Method (PEMD, 0, NotSerialized)
+    Method (PEMD)
     {
-        If ((SKUV == One))
+        If ((SKUV == 1))
         {
+            // PCIe Intra-Soc ports
             Return (PEMC)
         }
         Else
         {
+            // PCIe HP port
             Return (PEMX)
         }
     }
 
     Name (PEMC,
-    Package (0x02)
+    Package()
     {
-        Package (0x09)
+        Package()
         {
             "DEVICE",
             "\\_SB.PCI1",
-            Package (0x04)
+            Package()
             {
                 "COMPONENT",
-                Zero, // Component 0.
-                Package (0x02)
+                0x0, // Component 0.
+                Package()
                 {
                     "FSTATE",
-                    Zero // f0 state
+                    0x0 // f0 state
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "FSTATE",
-                    One // f1 state
+                    0x1 // f1 state
                 }
             },
 
-            Package (0x0F)
+            Package()
             {
                 "DSTATE",
-                Zero, // D0 state
-                Package (0x02)
+                0x0, // D0 state
+                Package()
                 {
-                    "TLMMGPIO",
-                    Package (0x07)
+                    "TLMMGPIO",                             // TLMMGPIO resource
+                    Package()
                     {
-                        0x13,
-                        One,
-                        Zero,
-                        One,
-                        Zero,
-                        Zero,
-                        Zero
+                        19,                                 // PIN number = 19
+                        1,                                  // State: active
+                        0,                                  // Function select = GPIO
+                        1,                                  // direction = Output.
+                        0,                                  // Pull value = No Pull
+                        0,                                  // Drive Strength: 0x0 = 2mA
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",                         // PMIC VREG resource
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO6_B",           // Voltage Regulator ID
-                        One,                                // Voltage Regulator type = LDO
-                        0x00124F80,                         // Voltage 1.2V        : microvolts ( V )
-                        One,                                // Enable = Enable
-                        One,                                // Power Mode = NPM
-                        Zero                                // Head Room
+                        1,                                  // Voltage Regulator type = LDO
+                        1200000,                            // Voltage 1.2V        : microvolts ( V )
+                        1,                                  // Enable = Enable
+                        1,                                  // Power Mode = NPM
+                        0                                   // Head Room
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO10_C",
-                        One,            // Voltage Regulator Type, 1 = LDO
-                        0x000D6D80,     // Voltage (uV)
-                        One,            // Enable = Enable
-                        One,            // Power Mode = NPM
-                        Zero            // Headroom
+                        1,                                  // Voltage Regulator Type, 1 = LDO
+                        880000,                             // Voltage (uV)
+                        1,                                  // Enable = Enable
+                        1,                                  // Power Mode = NPM
+                        0                                   // Headroom
                     }
                 },
 
                 // Turning on PCIe core
-                Package (0x02) {"FOOTSWITCH", Package (0x02) {"gcc_pcie_1_gdsc", One}},
+                Package() {"FOOTSWITCH", Package() {"gcc_pcie_1_gdsc", 1}},
 
                 // ICB votes through PSTATE
-                Package (0x02) {"BUSARB", Package (0x05) {0x03, "ICBID_MASTER_PCIE_1", "ICBID_SLAVE_EBI1", 0x74D33A00, 0x74D33A00}},
+                Package() {"BUSARB", Package() {3, "ICBID_MASTER_PCIE_1", "ICBID_SLAVE_EBI1", 1960000000, 1960000000}},
 
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_pipe_clk", One}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_slv_axi_clk", One}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_slv_q2a_axi_clk", One}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_mstr_axi_clk", One}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_cfg_ahb_clk", One}},
-                Package (0x02) {"CLOCK", Package (0x04) {"gcc_pcie_1_aux_clk", 0x08, 0x0124F800, 0x03}},
-                Package (0x02) {"CLOCK", Package (0x04) {"gcc_pcie1_phy_rchng_clk", 0x08, 0x05F5E100, 0x03}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_pipe_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_slv_axi_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_slv_q2a_axi_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_mstr_axi_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_cfg_ahb_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_aux_clk", 8, 19200000, 3}},
+                Package() {"CLOCK", Package() {"gcc_pcie1_phy_rchng_clk", 8, 100000000, 3}},
 
-                Package (0x02)
+                Package()
                 {
-                    "TLMMGPIO",
-                    Package (0x07)
+                    "TLMMGPIO",                             // TLMMGPIO resource
+                    Package()
                     {
-                        0x4F,
-                        Zero,
-                        0x03,
-                        Zero,
-                        0x03,
-                        Zero,
-                        Zero
+                        79,                                 // PIN number = 79
+                        0,                                  // State = Inactive
+                        3,                                  // Function select =
+                        0,                                  // direction = Input
+                        3,                                  // Pull value =
+                        0,                                  // Drive Strength = 2mA
+                        0
                     }
                 }
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                One // D1 state
+                0x1 // D1 state
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                0x02 // D2 state
+                0x2 // D2 state
             },
 
             Package (0x0E)
             {
                 "DSTATE",
-                0x03, // D3 state
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_aux_clk", 0x02}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_slv_axi_clk", 0x02}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_slv_q2a_axi_clk", 0x02}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_mstr_axi_clk", 0x02}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_cfg_ahb_clk", 0x02}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie1_phy_rchng_clk", 0x02}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_pipe_clk", 0x02}},
+                0x3, // D3 state
+                Package() {"CLOCK", Package() {"gcc_pcie_1_aux_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_slv_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_slv_q2a_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_mstr_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_cfg_ahb_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_pcie1_phy_rchng_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_pipe_clk", 2}},
 
                 // ICB votes
-                Package (0x02) {"BUSARB", Package (0x05) {0x03, "ICBID_MASTER_PCIE_1", "ICBID_SLAVE_EBI1", Zero, Zero}},
+                Package() {"BUSARB", Package() {3, "ICBID_MASTER_PCIE_1", "ICBID_SLAVE_EBI1", 0, 0}},
 
                 // Turn off PCIe core
-                Package (0x02) {"FOOTSWITCH", Package (0x02) {"gcc_pcie_1_gdsc", 0x02}},
+                Package() {"FOOTSWITCH", Package() {"gcc_pcie_1_gdsc", 2}},
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",                         // PMIC VREG resource
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO10_C",          // Voltage Regulator ID
-                        One,                                // Voltage Regulator type = LDO
-                        Zero,                               // Voltage 1.2V        : microvolts ( V )
-                        Zero,                               // Enable = Disable
-                        Zero,                               // Power Mode = NPM
-                        Zero                                // Head Room
+                        1,                                  // Voltage Regulator type = LDO
+                        0,                                  // Voltage 1.2V        : microvolts ( V )
+                        0,                                  // Enable = Disable
+                        0,                                  // Power Mode = NPM
+                        0                                   // Head Room
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO6_B",
-                        One,            // Voltage Regulator Type, 1 = LDO
-                        Zero,           // Voltage (uV)
-                        Zero,           // Enable = Disable
-                        Zero,           // Power Mode = NPM
-                        Zero            // Headroom
+                        1,                                  // Voltage Regulator Type, 1 = LDO
+                        0,                                  // Voltage (uV)
+                        0,                                  // Enable = Disable
+                        0,                                  // Power Mode = NPM
+                        0                                   // Headroom
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
-                    "TLMMGPIO",
-                    Package (0x07)
+                    "TLMMGPIO",                             // TLMMGPIO resource
+                    Package()
                     {
-                        0x13,
-                        Zero,
-                        Zero,
-                        One,
-                        Zero,
-                        Zero,
-                        Zero
+                        19,                                 // PIN number = 19
+                        0,                                  // State = Inactive
+                        0,                                  // Function select = GPIO
+                        1,                                  // direction = Output
+                        0,                                  // Pull value = No Pull
+                        0,                                  // Drive Strength = 2mA
+                        0
                     }
                 }
             },
 
-            Package (0x02)
+            Package()
             {
                 "CRASHDUMP_EXCEPTION",
-                Package (0x02)
+                Package()
                 {
                     "EXECUTE_FUNCTION",
-                    Package (One)
+                    Package ()
                     {
                         "ExecuteOcdPCIeExceptions"
                     }
                 }
             },
 
-            Package (0x02)
+            Package()
             {
                 "CRASHDUMP_DSTATE",
-                Zero
+                0
             }
         },
 
-        Package (0x07)
+        Package()
         {
             "DEVICE",
             "\\_SB.PCI1.RP1",
-            Package (0x04)
+            Package()
             {
                 "COMPONENT",
-                Zero, // Component 0
-                Package (0x02)
+                0x0, // Component 0
+                Package()
                 {
                     "FSTATE",
-                    Zero // f0 state
+                    0x0 // f0 state
                 },
-                Package (0x02)
+                Package()
                 {
                     "FSTATE",
-                    One // f1 state
+                    0x1 // f1 state
                 }
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                Zero // D0 state
+                0x0 // D0 state
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                One // D1 state
+                0x1 // D1 state
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                0x02 // D2 state
+                0x2 // D2 state
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                0x03 // D3 state
+                0x3 // D3 state
             }
         }
     })
     Name (PEMX,
-    Package (0x02)
+    Package()
     {
-        Package (0x09)
+        Package()
         {
             "DEVICE",
             "\\_SB.PCI1",
-            Package (0x04)
+            Package()
             {
                 "COMPONENT",
-                Zero, // Component 0.
-                Package (0x02)
+                0x0, // Component 0.
+                Package()
                 {
                     "FSTATE",
-                    Zero // f0 state
+                    0x0 // f0 state
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "FSTATE",
-                    One // f1 state
+                    0x1 // f1 state
                 }
             },
             Package (0x0F)
             {
                 "DSTATE",
-                Zero, // D0 state
-                Package (0x02)
+                0x0, // D0 state
+                Package()
                 {
-                    "TLMMGPIO",
-                    Package (0x07)
+                    "TLMMGPIO",                             // TLMMGPIO resource
+                    Package()
                     {
-                        0x33,
-                        One,
-                        Zero,
-                        One,
-                        Zero,
-                        Zero,
-                        Zero
+                        51,                                 // PIN number = 51
+                        1,                                  // State = active
+                        0,                                  // Function select = GPIO
+                        1,                                  // direction = Output
+                        0,                                  // Pull value = No Pull
+                        0,                                  // Drive Strength = 2mA
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",                         // PMIC VREG resource
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO6_B",           // Voltage Regulator ID
-                        One,                                // Voltage Regulator type = LDO
-                        0x00124F80,                         // Voltage 1.2V        : microvolts ( V )
-                        One,                                // Enable = Enable
-                        One,                                // Power Mode = NPM
-                        Zero                                // Head Room
+                        1,                                  // Voltage Regulator type = LDO
+                        1200000,                            // Voltage 1.2V        : microvolts ( V )
+                        1,                                  // Enable = Enable
+                        1,                                  // Power Mode = NPM
+                        0                                   // Head Room
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO10_C",
-                        One,            // Voltage Regulator Type, 1 = LDO
-                        0x000D6D80,     // Voltage (uV)
-                        One,            // Enable = Enable
-                        One,            // Power Mode = NPM
-                        Zero            // Headroom
+                        1,                                  // Voltage Regulator Type, 1 = LDO
+                        880000,                             // Voltage (uV)
+                        1,                                  // Enable = Enable
+                        1,                                  // Power Mode = NPM
+                        0                                   // Headroom
                     }
                 },
 
                 // Turning on PCIe core
-                Package (0x02) {"FOOTSWITCH", Package (0x02) {"gcc_pcie_1_gdsc", One}},
+                Package() {"FOOTSWITCH", Package() {"gcc_pcie_1_gdsc", 1}},
 
                 // ICB votes
-                Package (0x02) {"BUSARB", Package (0x05) {0x03, "ICBID_MASTER_PCIE_1", "ICBID_SLAVE_EBI1", 0x74D33A00, 0x74D33A00}},
+                Package() {"BUSARB", Package() {3, "ICBID_MASTER_PCIE_1", "ICBID_SLAVE_EBI1", 1960000000, 1960000000}},
 
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_pipe_clk", One}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_slv_axi_clk", One}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_slv_q2a_axi_clk", One}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_mstr_axi_clk", One}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_cfg_ahb_clk", One}},
-                Package (0x02) {"CLOCK", Package (0x04) {"gcc_pcie_1_aux_clk", 0x08, 0x0124F800, 0x03}},
-                Package (0x02) {"CLOCK", Package (0x04) {"gcc_pcie1_phy_rchng_clk", 0x08, 0x05F5E100, 0x03}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_pipe_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_slv_axi_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_slv_q2a_axi_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_mstr_axi_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_cfg_ahb_clk", 1}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_aux_clk", 8, 19200000, 3}},
+                Package() {"CLOCK", Package() {"gcc_pcie1_phy_rchng_clk", 8, 100000000, 3}},
 
-                Package (0x02)
+                Package()
                 {
-                    "TLMMGPIO",
-                    Package (0x07)
+                    "TLMMGPIO",                             // TLMMGPIO resource
+                    Package()
                     {
-                        0x4F,
-                        Zero,
-                        0x03,
-                        Zero,
-                        0x03,
-                        Zero,
-                        Zero
+                        79,                                 // PIN number = 79
+                        0,                                  // State = Inactive
+                        3,                                  // Function select =
+                        0,                                  // direction = Input
+                        3,                                  // Pull value =
+                        0,                                  // Drive Strength = 2mA
+                        0
                     }
                 }
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                One // D1 state
+                0x1 // D1 state
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                0x02 // D2 state
+                0x2 // D2 state
             },
 
-            Package (0x0E)
+            Package()
             {
                 "DSTATE",
-                0x03, // D3 state
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_aux_clk", 0x02}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_slv_axi_clk", 0x02}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_slv_q2a_axi_clk", 0x02}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_mstr_axi_clk", 0x02}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_cfg_ahb_clk", 0x02}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie1_phy_rchng_clk", 0x02}},
-                Package (0x02) {"CLOCK", Package (0x02) {"gcc_pcie_1_pipe_clk", 0x02}},
+                0x3, // D3 state
+                Package() {"CLOCK", Package() {"gcc_pcie_1_aux_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_slv_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_slv_q2a_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_mstr_axi_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_cfg_ahb_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_pcie1_phy_rchng_clk", 2}},
+                Package() {"CLOCK", Package() {"gcc_pcie_1_pipe_clk", 2}},
 
                 // ICB votes
-                Package (0x02) {"BUSARB", Package (0x05) {0x03, "ICBID_MASTER_PCIE_1", "ICBID_SLAVE_EBI1", Zero, Zero}},
+                Package() {"BUSARB", Package() {3, "ICBID_MASTER_PCIE_1", "ICBID_SLAVE_EBI1", 0, 0}},
 
                 // Turn off PCIe core
-                Package (0x02) {"FOOTSWITCH", Package (0x02) {"gcc_pcie_1_gdsc", 0x02}},
+                Package() {"FOOTSWITCH", Package() {"gcc_pcie_1_gdsc", 2}},
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",                         // PMIC VREG resource
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO10_C",          // Voltage Regulator ID
-                        One,                                // Voltage Regulator type = LDO
-                        Zero,                               // Voltage 1.2V        : microvolts ( V )
-                        Zero,                               // Enable = Disable
-                        Zero,                               // Power Mode = NPM
-                        Zero                                // Head Room
+                        1,                                  // Voltage Regulator type = LDO
+                        0,                                  // Voltage 1.2V        : microvolts ( V )
+                        0,                                  // Enable = Disable
+                        0,                                  // Power Mode = NPM
+                        0                                   // Head Room
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_LDO6_B",
-                        One,            // Voltage Regulator Type, 1 = LDO
-                        Zero,           // Voltage (uV)
-                        Zero,           // Enable = Disable
-                        Zero,           // Power Mode = NPM
-                        Zero            // Headroom
+                        1,                                  // Voltage Regulator Type, 1 = LDO
+                        0,                                  // Voltage (uV)
+                        0,                                  // Enable = Disable
+                        0,                                  // Power Mode = NPM
+                        0                                   // Headroom
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
-                    "TLMMGPIO",
-                    Package (0x07)
+                    "TLMMGPIO",                             // TLMMGPIO resource
+                    Package()
                     {
-                        0x33,
-                        Zero,
-                        Zero,
-                        One,
-                        Zero,
-                        Zero,
-                        Zero
+                        51,                                 // PIN number = 51
+                        0,                                  // State = Inactive
+                        0,                                  // Function select = GPIO
+                        1,                                  // direction = Output
+                        0,                                  // Pull value = No Pull
+                        0,                                  // Drive Strength = 2mA
+                        0
                     }
                 }
             },
 
-            Package (0x02)
+            Package()
             {
                 "CRASHDUMP_EXCEPTION",
-                Package (0x02)
+                Package()
                 {
                     "EXECUTE_FUNCTION",
-                    Package (One)
+                    Package ()
                     {
                         "ExecuteOcdPCIeExceptions"
                     }
                 }
             },
 
-            Package (0x02)
+            Package()
             {
                 "CRASHDUMP_DSTATE",
-                Zero
+                0
             }
         },
 
-        Package (0x07)
+        Package()
         {
             "DEVICE",
             "\\_SB.PCI1.RP1",
-            Package (0x04)
+            Package()
             {
                 "COMPONENT",
-                Zero, // Component 0
-                Package (0x02)
+                0x0, // Component 0
+                Package()
                 {
                     "FSTATE",
-                    Zero // f0 state
+                    0x0 // f0 state
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "FSTATE",
-                    One // f1 state
+                    0x1 // f1 state
                 }
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                Zero // D0 state
+                0x0 // D0 state
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                One // D1 state
+                0x1 // D1 state
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                0x02 // D2 state
+                0x2 // D2 state
             },
 
-            Package (0x02)
+            Package()
             {
                 "DSTATE",
-                0x03 // D3 state
+                0x3 // D3 state
             }
         }
     })

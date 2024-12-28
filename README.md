@@ -9,14 +9,14 @@ Some remarks/comments in the ASL bindings may contain errors.
 ## Build
 1. In build_acpi.bat file change the asl.exe path to yours:
 ```
-SET ASL_EXECUTABLE=/home/arminas/Documents/kodiak_acpi_src/bin/asl.exe
+SET ASL_EXECUTABLE=/home/arminas/Documents/kodiak_acpi/bin/asl.exe
 ```
 
 2. To build:
 ```
-.\build_acpi.bat -plat 7325 -var QRD
+.\build_acpi.bat -p 7325 -d QRD
 ```
  - Can also be used on Linux with Wine:
  ```
- wine build_acpi.bat -plat 7325 -var QRD
+ wine build_acpi.bat -p 7325 -d QRD
  ```

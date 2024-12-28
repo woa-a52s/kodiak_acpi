@@ -7,23 +7,20 @@
 //
 Device (GPS)
 {
-    Name (_DEP, Package (One)
+    Name (_DEP, Package ()
     {
         \_SB.GLNK
     })
 
     Name (_HID, "QCOM0A6C")
     Alias (\_SB.PSUB, _SUB)
-    Name (_UID, Zero)
+    Name (_UID, 0)
 }
 
 Scope (\_SB.GPS)
 {
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
-        If ((SKUV == 0x04))
-        { Return (Zero) }
-        Else
-        { Return (0x0F) }
+        Return (0x0F)
     }
 }

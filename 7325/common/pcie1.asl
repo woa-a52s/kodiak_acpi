@@ -1,39 +1,39 @@
 // PCIE1 asl
 
 Device (PCI1) {
-    Name (_DEP, Package (0x02) {
+    Name (_DEP, Package () {
         \_SB.PEP0,
         \_SB.QPPX
     })
     Name (_HID, EisaId ("PNP0A08"))
     Name (_CID, EisaId ("PNP0A03"))
-    Name (_UID, One)
-    Name (_SEG, One)
-    Name (_BBN, Zero)
-    Name (_PRT, Package (0x04) {
-        Package (0x04) {0xFFFF, Zero, Zero, 0x01D2}, // Slot 1, INTA
-        Package (0x04) {0xFFFF, One, Zero, 0x01D3},  // Slot 1, INTB
-        Package (0x04) {0xFFFF, 0x02, Zero, 0x01D6}, // Slot 1, INTC
-        Package (0x04) {0xFFFF, 0x03, Zero, 0x01D7}  // Slot 1, INTD
+    Name (_UID, 1)
+    Name (_SEG, 1)
+    Name (_BBN, 0)
+    Name (_PRT, Package () {
+        Package () {0xFFFF, 0, 0, 466}, // Slot 1, INTA
+        Package () {0xFFFF, 1, 0, 467}, // Slot 1, INTB
+        Package () {0xFFFF, 2, 0, 470}, // Slot 1, INTC
+        Package () {0xFFFF, 3, 0, 471}  // Slot 1, INTD
     })
 
     Method (_CCA, 0, NotSerialized)
     {
-        Return (One)
+        Return (0x1)
     }
 
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
-        If ((PRP1 == One)) {
+        If ((PRP1 == 1)) {
             Return (0x0F) // EndPoints available
         }
         Else {
-            Return (Zero) // No EndPoints available.
+            Return (0) // No EndPoints available.
         }
     }
 
     Method (_PSC, 0, NotSerialized) {
-        Return (Zero)
+        Return (0)
     }
 
     Method (_CRS, 0, NotSerialized) {
@@ -44,19 +44,19 @@ Device (PCI1) {
                 MinFixed,  // IsMinFixed
                 MaxFixed,  // IsMaxFixed
                 PosDecode, // Decode: PosDecode
-                0x0000,    // AddressGranularity
-                0x0000,    // AddressMinimum
-                0x0001,    // AddressMaximum
-                0x0000,    // AddressTranslation
-                0x0002,    // RangeLength
+                0,         // AddressGranularity
+                0,         // AddressMinimum
+                1,         // AddressMaximum
+                0,         // AddressTranslation
+                2,         // RangeLength
                 ,
                 ,)
         })
 
         Return (RBUF)
     }
-    Name (SUPP, Zero)
-    Name (CTRL, Zero)
+    Name (SUPP, 0)
+    Name (CTRL, 0)
 
     Method (_DSW, 3, NotSerialized) {
     }
@@ -216,44 +216,44 @@ Device (PCI1) {
         }
     }
 
-    Name (_S0W, 0x04)
+    Name (_S0W, 4)
 
-    Name (_PR0, Package (One) {
+    Name (_PR0, Package () {
         \_SB.P1RR
     })
-    Name (_PR3, Package (One) {
+    Name (_PR3, Package () {
         \_SB.P1RR
     })
 
     // PCIe Root Port 1
     Device (RP1) {
         Method (_ADR, 0, Serialized) {
-            Return (Zero)
+            Return (0)
         }
 
-        Name (_PR0, Package (One) {
+        Name (_PR0, Package () {
             \_SB.R1RR
         })
-        Name (_PR3, Package (One) {
+        Name (_PR3, Package () {
             \_SB.R1RR
         })
-        Name (_PRR, Package (One) {
+        Name (_PRR, Package () {
             \_SB.R1RR
         })
 
-        Name (_S0W, 0x04)
+        Name (_S0W, 4)
 
         Name (_DSD, Package () {
             ToUUID("6211E2C0-58A3-4AF3-90E1-927A4E0C55A4"),
               Package () {
-                  Package (2) {"HotPlugSupportInD3", 1},
+                  Package () {"HotPlugSupportInD3", 1},
               }
         })
 
         Method (_CRS, 0, NotSerialized) {
             Name (RBUF, ResourceTemplate ()
             {
-                GpioInt (Edge, ActiveLow, ExclusiveAndWake, PullUp, 0x0000, "\\_SB.GIO0", 0x00, ResourceConsumer, ,) {0x0003}
+                GpioInt (Edge, ActiveLow, ExclusiveAndWake, PullUp, 0, "\\_SB.GIO0", 0, ResourceConsumer, ,) {3}
             })
             Return (RBUF)
         }
@@ -296,13 +296,13 @@ Device (PCI1) {
 }
 
 PowerResource (P1RR, 0x05, 0x0000) {
-    Method (_STA, 0, NotSerialized) {Return (Zero)}
+    Method (_STA, 0, NotSerialized) {Return (0)}
     Method (_ON, 0, NotSerialized) {}
     Method (_OFF, 0, NotSerialized) {}
 }
 
 PowerResource (R1RR, 0x05, 0x0000) {
-    Method (_STA, 0, NotSerialized) {Return (Zero)}
+    Method (_STA, 0, NotSerialized) {Return (0)}
     Method (_ON, 0, NotSerialized) {}
     Method (_OFF, 0, NotSerialized) {}
     Method (_RST, 0, NotSerialized) {}
@@ -310,22 +310,22 @@ PowerResource (R1RR, 0x05, 0x0000) {
 
 Device (QPPX) {
     Name (_HID, "QCOM0A96")
-    Name (_UID, Zero)
-    Name (_CCA, Zero)
+    Name (_UID, 0)
+    Name (_CCA, 0)
     Alias (\_SB.PSUB, _SUB)
 
-    Method (_STA, 0, NotSerialized) {
+    Method (_STA) {
         Return (0x0F)
     }
 
     Method (_CRS, 0, Serialized) {
         Name (RBUF, ResourceTemplate () {
-            GpioIo (Shared, PullNone, 0x0000, 0x0000, IoRestrictionNone, "\\_SB.GIO0", 0x00, ResourceConsumer, , RawDataBuffer (0x01) {0x01}) {0x0002}
+            GpioIo (Shared, PullNone, 0, 0, IoRestrictionNone, "\\_SB.GIO0", 0, ResourceConsumer, , RawDataBuffer (1) {1}) {2}
         })
         Return (RBUF)
     }
 
     Method (_QPG, 0, Serialized) {
-        Return (Package (One) {One})
+        Return (Package () {0x1})
     }
 }

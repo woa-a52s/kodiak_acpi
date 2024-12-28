@@ -62,12 +62,9 @@ Device (DSBY)
 //
 Scope (\_SB.RMNT)
 {
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
-        If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
-        Else
-        { Return (0x0F) }
+        Return (0x0F)
     }
 }
 
@@ -76,12 +73,9 @@ Scope (\_SB.RMNT)
 //
 Scope (\_SB.MBRG)
 {
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
-        If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
-        Else
-        { Return (0x0F) }
+        Return (0x0F)
     }
 }
 
@@ -90,12 +84,9 @@ Scope (\_SB.MBRG)
 //
 Scope (\_SB.RMAT)
 {
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
-        If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
-        Else
-        { Return (0x0F) }
+        Return (0x0F)
     }
 }
 
@@ -104,12 +95,9 @@ Scope (\_SB.RMAT)
 //
 Scope (\_SB.DPLB)
 {
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
-        If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
-        Else
-        { Return (0x0F) }
+        Return (0x0F)
     }
 }
 
@@ -118,12 +106,9 @@ Scope (\_SB.DPLB)
 //
 Scope (\_SB.CCID)
 {
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
-        If ((((\_SB.SKUV == 0x04) || (\_SB.SKUV == 0x06)) || (\_SB.SKUV == 0x07)))
-        { Return (Zero) }
-        Else
-        { Return (0x0F) }
+        Return (0x0F)
     }
 }
 
@@ -132,6 +117,8 @@ Scope (\_SB.CCID)
 //
 Scope (\_SB.DSBY)
 {
-    Method (_STA, 0, NotSerialized)
-    { Return (Zero) }
+    Method (_STA)
+    {
+        Return (0)
+    }
 }

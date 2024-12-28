@@ -9,7 +9,7 @@
 Device (PMBM) {
     Name (_HID, "QCOM0A2A")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One)
+    Name (_DEP, Package()
     {
         \_SB.PMGK
     })
@@ -26,28 +26,29 @@ Device (PMBM) {
 Device (BCL1) {
     Name (_HID, "QCOM0A77")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One)
+    Name (_DEP, Package()
     {
         \_SB.PMIC
     })
 
     Method (_CRS, 0, NotSerialized) {
         Name (RBUF, ResourceTemplate () {
-            GpioInt (Edge, ActiveLow, Shared, PullUp, 0x0000, "\\_SB.PM01", 0x00, ResourceConsumer, ,) {0x0108}
-            GpioInt (Edge, ActiveHigh, Shared, PullUp, 0x0000, "\\_SB.PM01", 0x00, ResourceConsumer, ,) {0x0109}
-            GpioInt (Edge, ActiveHigh, Shared, PullUp, 0x0000, "\\_SB.PM01", 0x00, ResourceConsumer, ,) {0x010A}
-            GpioInt (Edge, ActiveHigh, Shared, PullUp, 0x0000, "\\_SB.PM01", 0x00, ResourceConsumer, ,) {0x010B}
-            GpioInt (Edge, ActiveLow, Shared, PullUp, 0x0000, "\\_SB.PM01", 0x00, ResourceConsumer, ,) {0x0160}
-            GpioInt (Edge, ActiveHigh, Shared, PullUp, 0x0000, "\\_SB.PM01", 0x00, ResourceConsumer, ,) {0x0161}
-            GpioInt (Edge, ActiveHigh, Shared, PullUp, 0x0000, "\\_SB.PM01", 0x00, ResourceConsumer, ,) {0x0162}
-            GpioInt (Edge, ActiveHigh, Shared, PullUp, 0x0000, "\\_SB.PM01", 0x00, ResourceConsumer, ,) {0x0163}
+            GpioInt (Edge, ActiveLow, Shared, PullUp, 0, "\\_SB.PM01", 0, ResourceConsumer, ,) {264}
+            GpioInt (Edge, ActiveHigh, Shared, PullUp, 0, "\\_SB.PM01", 0, ResourceConsumer, ,) {265}
+            GpioInt (Edge, ActiveHigh, Shared, PullUp, 0, "\\_SB.PM01", 0, ResourceConsumer, ,) {266}
+            GpioInt (Edge, ActiveHigh, Shared, PullUp, 0, "\\_SB.PM01", 0, ResourceConsumer, ,) {267}
+            GpioInt (Edge, ActiveLow, Shared, PullUp, 0, "\\_SB.PM01", 0, ResourceConsumer, ,) {352}
+            GpioInt (Edge, ActiveHigh, Shared, PullUp, 0, "\\_SB.PM01", 0, ResourceConsumer, ,) {353}
+            GpioInt (Edge, ActiveHigh, Shared, PullUp, 0, "\\_SB.PM01", 0, ResourceConsumer, ,) {354}
+            GpioInt (Edge, ActiveHigh, Shared, PullUp, 0, "\\_SB.PM01", 0, ResourceConsumer, ,) {355}
         })
         Return (RBUF)
     }
 
     // ACPI methods for Interrupt Name
-    Method (BCLQ, 0, NotSerialized) {
-        Name (CFG0, Package (0x08) {
+    Method (BCLQ) {
+        Name (CFG0,
+        Package() {
             "PM3_BCLBIG_LVL0",
             "PM3_BCLBIG_LVL1",
             "PM3_BCLBIG_LVL2",

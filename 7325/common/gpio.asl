@@ -1,36 +1,32 @@
 //
-// Copyright (c) 2015, Qualcomm Technologies, Inc. All rights reserved.
-//
-
-//
 // TLMM controller.
 //
 Device (GIO0)
 {
     Name (_HID, "QCOM0A0C")
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Alias (\_SB.PSUB, _SUB)
 
     Method (_CRS, 0, NotSerialized) {
         Name (RBUF, ResourceTemplate ()
         {
             // TLMM register address space
-            Memory32Fixed (ReadWrite, 0x0F100000, 0x00300000,)
+            Memory32Fixed (ReadWrite, 0x0F100000, 0x00300000)
 
             // Summary Interrupt shared by all banks
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, ) {0x000000F0,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, ) {0x000000F0,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, ) {0x000000F0,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, ) {0x0000022E,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, ) {0x00000228,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, ) {0x00000285,}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, , , ) {240}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, , , ) {240}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, , , ) {240}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, , , ) {558}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, , , ) {552}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, , , ) {645}
         })
         Return (RBUF)
     }
 
     // ACPI method to return Num pins
     Method (OFNI, 0, NotSerialized) {
-        Name (RBUF, Buffer (0x02)
+        Name (RBUF, Buffer ()
         {
                 0xAF,   // 0: TOTAL_GPIO_PINS
                 0x00    // 1: TOTAL_GPIO_PINS
@@ -38,18 +34,21 @@ Device (GIO0)
         Return (RBUF)
     }
 
-    Name (GABL, Zero)
-    Method (_REG, 2, NotSerialized) {
-        If ((Arg0 == 0x08))
+    Name (GABL, 0)
+    Method(_REG, 0x2, NotSerialized)
+    {
+        If(LEqual(Arg0, 0x8))
         {
-            GABL = Arg1
+            Store(Arg1, GABL)
         }
     }
-    Method (_AEI, 0, NotSerialized) {
+
+    // ACPI event-based notification method for detecting HDMI hot plug-in event
+    Method (_AEI, 0, NotSerialized)
+    {
         Name (RBF0, ResourceTemplate ()
         {
-            // PCIE Hot Plug PRSNT DTCT
-            GpioInt (Edge, ActiveHigh, Exclusive, PullDown, 0x01F4, "\\_SB.GIO0", 0x00, ResourceConsumer, ,) {0x0003}
+            GpioInt (Edge, ActiveHigh, Exclusive, PullDown, 500, "\\_SB.GIO0", 0, ResourceConsumer, ,) {3}
         })
         Return (RBF0)
     }

@@ -22,7 +22,7 @@ Device (CAMP)
     })
 
     Name (_HID, "QCOM0A32")
-    Name (_UID, 0x1B)
+    Name (_UID, 27)
 
     Method (_STA)
     {
@@ -33,14 +33,14 @@ Device (CAMP)
     {
         Name (RBUF, ResourceTemplate ()
         {
-            Memory32Fixed (ReadWrite, 0x0AC40000, 0x00001000, )
-            Memory32Fixed (ReadWrite, 0x0AC9F000, 0x00008000, )
-            Memory32Fixed (ReadWrite, 0x0AC4A000, 0x00001000, )
-            Memory32Fixed (ReadWrite, 0x0AC4B000, 0x00001000, )
+            Memory32Fixed (ReadWrite, 0x0AC40000, 0x00001000 )
+            Memory32Fixed (ReadWrite, 0x0AC9F000, 0x00008000 )
+            Memory32Fixed (ReadWrite, 0x0AC4A000, 0x00001000 )
+            Memory32Fixed (ReadWrite, 0x0AC4B000, 0x00001000 )
 
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) { 0x000001EC, }
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) { 0x0000012F, }
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) { 0x000001EB, }
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) { 492 }
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) { 303 }
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) { 491 }
         })
 
         Return (RBUF)
@@ -52,13 +52,13 @@ Device (CAMP)
 //
 Device (CAMS)
 {
-    Name (_DEP, Package (One)
+    Name (_DEP, Package (0x1)
     {
-        \_SB.MPCS
+        \_SB.MPCS                                       // MPCS has dependency on CAMP, which eventually ends up with PEP0 and PMIC
     })
 
     Name (_HID, "QCOM0A26")
-    Name (_UID, 0x15)
+    Name (_UID, 21)
     Alias (\_SB.PSUB, _SUB)
 
     // Return 0x0 to disable CAMS sensor
@@ -68,22 +68,22 @@ Device (CAMS)
     }
 
     // PEP Proxy Support
-    Name (PGID, Buffer (0x0A) {"\\_SB.CAMS"})           // Device ID buffer - PGID (Pep given ID)
+    Name (PGID, Buffer (10) {"\\_SB.CAMS"})             // Device ID buffer - PGID (Pep given ID)
 
     Name (DBUF, Buffer (DBFL){})                        // Device ID buffer - PGID (Pep given ID)
-    CreateByteField (DBUF, Zero, STAT)                  // STATUS 1 BYTE
+    CreateByteField (DBUF, 0x0, STAT)                   // STATUS 1 BYTE
                                                         // HIDDEN 1 BYTE (SIZE)
-    CreateByteField (DBUF, 0x02, DVAL)                  // Packet value, 1 BYTES Device Status
-    CreateField (DBUF, 0x18, 0xA0, DEID)                // Device ID, 20 BYTES (160 Bits)
+    CreateByteField (DBUF, 2, DVAL)                     // Packet value, 1 BYTES Device Status
+    CreateField (DBUF, 24, 160, DEID)                   // Device ID, 20 BYTES (160 Bits)
 
-    Method (_S1D, 0, NotSerialized) { Return (0x03) }   // S1 => D3
-    Method (_S2D, 0, NotSerialized) { Return (0x03) }   // S2 => D3
-    Method (_S3D, 0, NotSerialized) { Return (0x03) }   // S3 => D3
+    Method (_S1D, 0) { Return (3) }                     // S1 => D3
+    Method (_S2D, 0) { Return (3) }                     // S2 => D3
+    Method (_S3D, 0) { Return (3) }                     // S3 => D3
 
     Method (_PS0, 0, NotSerialized)
     {
         DEID = Buffer (ESNL){}
-        DVAL = Zero
+        DVAL = 0
         DEID = PGID
         If (\_SB.ABD.AVBL)
         {
@@ -94,7 +94,7 @@ Device (CAMS)
     Method (_PS3, 0, NotSerialized)
     {
         DEID = Buffer (ESNL){}
-        DVAL = 0x03
+        DVAL = 3
         DEID = PGID
         If (\_SB.ABD.AVBL)
         {
@@ -108,13 +108,13 @@ Device (CAMS)
 //
 Device (CAMF)
 {
-    Name (_DEP, Package (One)
+    Name (_DEP, Package (0x1)
     {
         \_SB.MPCS
     })
 
     Name (_HID, "QCOM0A06")
-    Name (_UID, 0x1A)
+    Name (_UID, 26)
 
     Method (_SUB, 0, NotSerialized)
     {
@@ -128,22 +128,22 @@ Device (CAMF)
     }
 
     // PEP Proxy Support
-    Name (PGID, Buffer (0x0A) {"\\_SB.CAMF"})           // Device ID buffer - PGID (Pep given ID)
+    Name (PGID, Buffer (10) {"\\_SB.CAMF"})             // Device ID buffer - PGID (Pep given ID)
 
     Name (DBUF, Buffer (DBFL){})                        // Device ID buffer - PGID (Pep given ID)
-    CreateByteField (DBUF, Zero, STAT)                  // STATUS 1 BYTE
+    CreateByteField (DBUF, 0x0, STAT)                   // STATUS 1 BYTE
                                                         // HIDDEN 1 BYTE (SIZE)
-    CreateByteField (DBUF, 0x02, DVAL)                  // Packet value, 1 BYTES Device Status
-    CreateField (DBUF, 0x18, 0xA0, DEID)                // Device ID, 20 BYTES (160 Bits)
+    CreateByteField (DBUF, 2, DVAL)                     // Packet value, 1 BYTES Device Status
+    CreateField (DBUF, 24, 160, DEID)                   // Device ID, 20 BYTES (160 Bits)
 
-    Method (_S1D, 0, NotSerialized) { Return (0x03) }   // S1 => D3
-    Method (_S2D, 0, NotSerialized) { Return (0x03) }   // S2 => D3
-    Method (_S3D, 0, NotSerialized) { Return (0x03) }   // S3 => D3
+    Method (_S1D, 0) { Return (3) }                     // S1 => D3
+    Method (_S2D, 0) { Return (3) }                     // S2 => D3
+    Method (_S3D, 0) { Return (3) }                     // S3 => D3
 
     Method (_PS0, 0, NotSerialized)
     {
         DEID = Buffer (ESNL){}
-        DVAL = Zero
+        DVAL = 0
         DEID = PGID
         If (\_SB.ABD.AVBL)
         {
@@ -154,7 +154,7 @@ Device (CAMF)
     Method (_PS3, 0, NotSerialized)
     {
         DEID = Buffer (ESNL){}
-        DVAL = 0x03
+        DVAL = 3
         DEID = PGID
         If (\_SB.ABD.AVBL)
         {
@@ -168,13 +168,13 @@ Device (CAMF)
 //
 Device (CAMI)
 {
-    Name (_DEP, Package (One)
+    Name (_DEP, Package (0x1)
     {
         \_SB.MPCS
     })
 
     Name (_HID, "QCOM0A99")
-    Name (_UID, 0x1C)
+    Name (_UID, 28)
 
     Method (_SUB, 0, NotSerialized)
     {
@@ -184,9 +184,9 @@ Device (CAMI)
     // Return 0x0 to disable CAMI sensor
     Method (_STA)
     {
-        If ((\_SB.SKUV == One))
+        If ((\_SB.SKUV == 1))
         {
-            Return (Zero)
+            Return (0)
         }
         Else
         {
@@ -195,22 +195,22 @@ Device (CAMI)
     }
 
     // PEP Proxy Support
-    Name (PGID, Buffer (0x0A) {"\\_SB.CAMI"})           // Device ID buffer - PGID (Pep given ID)
+    Name (PGID, Buffer (10) {"\\_SB.CAMI"})             // Device ID buffer - PGID (Pep given ID)
 
     Name (DBUF, Buffer (DBFL){})                        // Device ID buffer - PGID (Pep given ID)
-    CreateByteField (DBUF, Zero, STAT)                  // STATUS 1 BYTE
+    CreateByteField (DBUF, 0x0, STAT)                   // STATUS 1 BYTE
                                                         // HIDDEN 1 BYTE (SIZE)
-    CreateByteField (DBUF, 0x02, DVAL)                  // Packet value, 1 BYTES Device Status
-    CreateField (DBUF, 0x18, 0xA0, DEID)                // Device ID, 20 BYTES (160 Bits)
+    CreateByteField (DBUF, 2, DVAL)                     // Packet value, 1 BYTES Device Status
+    CreateField (DBUF, 24, 160, DEID)                   // Device ID, 20 BYTES (160 Bits)
 
-    Method (_S1D, 0, NotSerialized) { Return (0x03) }   // S1 => D3
-    Method (_S2D, 0, NotSerialized) { Return (0x03) }   // S2 => D3
-    Method (_S3D, 0, NotSerialized) { Return (0x03) }   // S3 => D3
+    Method (_S1D, 0) { Return (3) }                     // S1 => D3
+    Method (_S2D, 0) { Return (3) }                     // S2 => D3
+    Method (_S3D, 0) { Return (3) }                     // S3 => D3
 
     Method (_PS0, 0, NotSerialized)
     {
         DEID = Buffer (ESNL){}
-        DVAL = Zero
+        DVAL = 0
         DEID = PGID
         If (\_SB.ABD.AVBL)
         {
@@ -221,7 +221,7 @@ Device (CAMI)
     Method (_PS3, 0, NotSerialized)
     {
         DEID = Buffer (ESNL){}
-        DVAL = 0x03
+        DVAL = 3
         DEID = PGID
         If (\_SB.ABD.AVBL)
         {
@@ -235,13 +235,13 @@ Device (CAMI)
 //
 Device (CAMT)
 {
-    Name (_DEP, Package (One)
+    Name (_DEP, Package (0x1)
     {
         \_SB.MPCS
     })
 
     Name (_HID, "QCOM0ACE")
-    Name (_UID, 0x1D)
+    Name (_UID, 29)
     Alias (\_SB.PSUB, _SUB)
 
     // Return 0x0 to disable CAMT sensor
@@ -251,22 +251,22 @@ Device (CAMT)
     }
 
     // PEP Proxy Support
-    Name (PGID, Buffer (0x0A) {"\\_SB.CAMT"})           // Device ID buffer - PGID (Pep given ID)
+    Name (PGID, Buffer (10) {"\\_SB.CAMT"})             // Device ID buffer - PGID (Pep given ID)
 
     Name (DBUF, Buffer (DBFL){})                        // Device ID buffer - PGID (Pep given ID)
-    CreateByteField (DBUF, Zero, STAT)                  // STATUS 1 BYTE
+    CreateByteField (DBUF, 0x0, STAT)                   // STATUS 1 BYTE
                                                         // HIDDEN 1 BYTE (SIZE)
-    CreateByteField (DBUF, 0x02, DVAL)                  // Packet value, 1 BYTES Device Status
-    CreateField (DBUF, 0x18, 0xA0, DEID)                // Device ID, 20 BYTES (160 Bits)
+    CreateByteField (DBUF, 2, DVAL)                     // Packet value, 1 BYTES Device Status
+    CreateField (DBUF, 24, 160, DEID)                   // Device ID, 20 BYTES (160 Bits)
 
-    Method (_S1D, 0, NotSerialized) { Return (0x03) }   // S1 => D3
-    Method (_S2D, 0, NotSerialized) { Return (0x03) }   // S2 => D3
-    Method (_S3D, 0, NotSerialized) { Return (0x03) }   // S3 => D3
+    Method (_S1D, 0) { Return (3) }                     // S1 => D3
+    Method (_S2D, 0) { Return (3) }                     // S2 => D3
+    Method (_S3D, 0) { Return (3) }                     // S3 => D3
 
     Method (_PS0, 0, NotSerialized)
     {
         DEID = Buffer (ESNL){}
-        DVAL = Zero
+        DVAL = 0
         DEID = PGID
         If (\_SB.ABD.AVBL)
         {
@@ -277,7 +277,7 @@ Device (CAMT)
     Method (_PS3, 0, NotSerialized)
     {
         DEID = Buffer (ESNL){}
-        DVAL = 0x03
+        DVAL = 3
         DEID = PGID
         If (\_SB.ABD.AVBL)
         {
@@ -291,13 +291,13 @@ Device (CAMT)
 //
 Device (CAMU)
 {
-    Name (_DEP, Package (One)
+    Name (_DEP, Package (0x1)
     {
         \_SB.MPCS
     })
 
     Name (_HID, "QCOM0ACF")
-    Name (_UID, 0x1E)
+    Name (_UID, 30)
     Alias (\_SB.PSUB, _SUB)
 
     // Return 0x0 to disable CAMU sensor
@@ -307,22 +307,22 @@ Device (CAMU)
     }
 
     // PEP Proxy Support
-    Name (PGID, Buffer (0x0A) {"\\_SB.CAMU"})           // Device ID buffer - PGID (Pep given ID)
+    Name (PGID, Buffer (10) {"\\_SB.CAMU"})             // Device ID buffer - PGID (Pep given ID)
 
     Name (DBUF, Buffer (DBFL){})                        // Device ID buffer - PGID (Pep given ID)
-    CreateByteField (DBUF, Zero, STAT)                  // STATUS 1 BYTE
+    CreateByteField (DBUF, 0x0, STAT)                   // STATUS 1 BYTE
                                                         // HIDDEN 1 BYTE (SIZE)
-    CreateByteField (DBUF, 0x02, DVAL)                  // Packet value, 1 BYTES Device Status
-    CreateField (DBUF, 0x18, 0xA0, DEID)                // Device ID, 20 BYTES (160 Bits)
+    CreateByteField (DBUF, 2, DVAL)                     // Packet value, 1 BYTES Device Status
+    CreateField (DBUF, 24, 160, DEID)                   // Device ID, 20 BYTES (160 Bits)
 
-    Method (_S1D, 0, NotSerialized) { Return (0x03) }   // S1 => D3
-    Method (_S2D, 0, NotSerialized) { Return (0x03) }   // S2 => D3
-    Method (_S3D, 0, NotSerialized) { Return (0x03) }   // S3 => D3
+    Method (_S1D, 0) { Return (3) }                     // S1 => D3
+    Method (_S2D, 0) { Return (3) }                     // S2 => D3
+    Method (_S3D, 0) { Return (3) }                     // S3 => D3
 
     Method (_PS0, 0, NotSerialized)
     {
         DEID = Buffer (ESNL){}
-        DVAL = Zero
+        DVAL = 0
         DEID = PGID
         If (\_SB.ABD.AVBL)
         {
@@ -333,7 +333,7 @@ Device (CAMU)
     Method (_PS3, 0, NotSerialized)
     {
         DEID = Buffer (ESNL){}
-        DVAL = 0x03
+        DVAL = 3
         DEID = PGID
         If (\_SB.ABD.AVBL)
         {
@@ -347,13 +347,13 @@ Device (CAMU)
 //
 Device (FLSH)
 {
-    Name (_DEP, Package (One)
+    Name (_DEP, Package (0x1)
     {
         \_SB.CAMP
     })
 
     Name (_HID, "QCOM0A27")
-    Name (_UID, 0x19)
+    Name (_UID, 25)
 
     Method (_SUB, 0, NotSerialized)
     {

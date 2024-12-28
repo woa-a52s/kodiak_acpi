@@ -1490,28 +1490,11 @@ Device (PEP0)
         }
     }
 
-    Name (_DEP, Package (One) {\_SB.IPCC})
+    Name (_DEP, Package() {\_SB.IPCC})
 
-    Method (_SUB, 0, NotSerialized) {
-
-        If (((\_SB.SJTG == 0x001940E1) || (\_SB.SJTG == 0x101940E1))) {
-
-            If ((\_SB.PSUB == "IDP07280")) { Return ("IDP07295") }
-            ElseIf ((\_SB.PSUB == "CRD07280")) { Return ("CRD07295") }
-        }
-
-        ElseIf (((\_SB.SJTG == 0x101930E1) || (\_SB.SJTG == 0x001EB0E1))) {
-
-            If ((\_SB.PSUB == "IDP07280")) { Return ("IDP07280") }
-            ElseIf ((\_SB.PSUB == "CRD07280"))
-            { Return ("CRD07280") }
-        }
-
-        ElseIf (((\_SB.SJTG == 0x101E30E1) || (\_SB.SJTG == 0x1020A0E1))) {
-
-            If ((\_SB.PSUB == "IDP07280")) { Return ("IDP08270") }
-            ElseIf ((\_SB.PSUB == "CRD07280")) { Return ("CRD08270") }
-        }
+    Method (_SUB, 0, NotSerialized)
+    {
+    Return ("IDP07280")
     }
 
     Method (_DSM, 4, NotSerialized) {
@@ -1534,14 +1517,14 @@ Device (PEP0)
                     }
 
                     ElseIf ((_T_1 == One)) {
-                        Name (SUBI, Package (0x06) {
+                        Name (SUBI, Package() {
 
-                            Package (0x03) {"adsp", One, 0x02},
-                            Package (0x03) {"slpi", Zero, 0x03},
-                            Package (0x03) {"cdsp", One, 0x04},
-                            Package (0x03) {"modem", One, 0x05},
-                            Package (0x03) {"spss", Zero, 0x06},
-                            Package (0x03) {"wpss", One, 0x07}
+                            Package() {"adsp", 1, 2},
+                            Package() {"slpi", 0, 3},
+                            Package() {"cdsp", 1, 4},
+                            Package() {"modem", 1, 5},
+                            Package() {"spss", 0, 6},
+                            Package() {"wpss", 1, 7}
                         })
                         Return (SUBI)
                     }
@@ -1558,7 +1541,7 @@ Device (PEP0)
                         }
 
                         Else {
-                            Return (Zero)
+                            Return (0)
                         }
                     }
 
@@ -1574,7 +1557,7 @@ Device (PEP0)
                         }
 
                         Else {
-                            Return (Zero)
+                            Return (0)
                         }
                     }
 
@@ -1590,7 +1573,7 @@ Device (PEP0)
                         }
 
                         Else {
-                            Return (Zero)
+                            Return (0)
                         }
                     }
 
@@ -1607,7 +1590,7 @@ Device (PEP0)
                         }
 
                         Else {
-                            Return (Zero)
+                            Return (0)
                         }
                     }
 
@@ -1623,7 +1606,7 @@ Device (PEP0)
                         }
 
                         Else {
-                            Return (Zero)
+                            Return (0)
                         }
                     }
 
@@ -1639,19 +1622,19 @@ Device (PEP0)
                         }
 
                         Else {
-                            Return (Zero)
+                            Return (0)
                         }
                     }
 
                     Else {
-                        Return (Zero)
+                        Return (0)
                     }
                     Break
                 }
             }
 
             Else {
-                Return (Zero)
+                Return (0)
             }
             Break
         }
@@ -1660,23 +1643,23 @@ Device (PEP0)
     Method (_CRS, 0, NotSerialized)
     {
         Return (ResourceTemplate () {
-            Interrupt (ResourceConsumer, Level, ActiveHigh, ExclusiveAndWake, ,, ) {0x0000021A,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, ExclusiveAndWake, ,, ) {0x0000021C,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, ExclusiveAndWake, ,, ) {0x0000021B,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, ExclusiveAndWake, ,, ) {0x0000021D,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, ) {0x00000025,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, ) {0x0000003E,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, ) {0x0000003F,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, ) {0x00000033,}
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000265,}
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000010D,}
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000113,}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, ExclusiveAndWake, , , ) {538}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, ExclusiveAndWake, , , ) {540}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, ExclusiveAndWake, , , ) {539}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, ExclusiveAndWake, , , ) {541}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, , , ) {37}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, , , ) {62}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, , , ) {63}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, , , ) {51}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {613}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {269}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {275}
         })
     }
 
     Field (\_SB.ABD.ROP1, BufferAcc, NoLock, Preserve) {
         Connection (
-            I2cSerialBus (0x0001, ControllerInitiated, 0x00000000, AddressingMode7Bit, "\\_SB.ABD", 0x00, ResourceConsumer, ,)
+            I2cSerialBus (1, ControllerInitiated, 0, AddressingMode7Bit, "\\_SB.ABD", 0, ResourceConsumer, ,)
         ),
         AccessAs (BufferAcc, AttribRawBytes (0x15)),
         FLD0,   168
@@ -1690,7 +1673,7 @@ Device (PEP0)
         Return (DATA)
     }
 
-    Name (ROST, Zero)
+    Name (ROST, 0x0)
     Method (NPUR, 1, NotSerialized) {
         \_SB.AGR0._PUR [One] = Arg0
         Notify (\_SB.AGR0, 0x80)
@@ -1698,15 +1681,15 @@ Device (PEP0)
 
     // ACPI method to return intr descriptor
     Method (INTR, 0, NotSerialized) {
-        Name (RBUF, Package (0x18) {
+        Name (RBUF, Package() {
             // Version
             0x02,
             // Number of hosts
-            One,
+            0x00000001,
             // number of memory regions
             0x03,
             // number of IPC registers
-            One,
+            0x00000001,
 
             // Rpm: APCS_IPC(0)
             // Host = SMEM_RPM
@@ -1714,9 +1697,9 @@ Device (PEP0)
             // Physical address
             0x17911008,
             // Value
-            One,
+            0x00000001,
             // Reserved
-            Zero,
+            0x00000000,
 
             // Shared memory
             // Start address
@@ -1724,9 +1707,9 @@ Device (PEP0)
             // Size
             0x00200000,
             // Reserved
-            Zero,
+            0x00000000,
             // Reserved
-            Zero,
+            0x00000000,
 
             // MSG RAM
             // Start address
@@ -1734,9 +1717,9 @@ Device (PEP0)
             // Size
             0x1000,
             // Reserved
-            Zero,
+            0x00000000,
             // Reserved
-            Zero,
+            0x00000000,
 
             // IMEM or TZ_WONCE
             // Start address
@@ -1744,29 +1727,30 @@ Device (PEP0)
             // Size
             0x08,
             // Reserved
-            Zero,
+            0x00000000,
             // Reserved
-            Zero,
+            0x00000000,
 
             // IPC register 1
             // Physical addr
             0x17C0000C,
             // Reserved
-            Zero,
+            0x00000000,
             // Reserved
-            Zero,
+            0x00000000,
             // Reserved
-            Zero
+            0x00000000
         })
         Return (RBUF)
     }
 
-    Method (STND, 0, NotSerialized)
+    Method (STND)
     {
         Return (STNX)
     }
 
-    Name (STNX, Package (0x0B)
+    Name (STNX,
+          Package()
     {
         // Power resources for devices
         // Names are reversed (so method OCMD becomes DMCO)
@@ -1791,120 +1775,123 @@ Device (PEP0)
     })
 
     // CPU cap for DCVS Packages
-    Name (DCVS, Zero)
+    Name (DCVS, 0x0)
 
     // Method to return CPU cap for DCVS Package
-    Method (PGDS, 0, NotSerialized)
+    Method (PGDS)
     {
         Return (DCVS)
     }
 
     // PPP Supported Resources Package
     Name (PPPP,
-    Package (0x37)
+    Package()
     {
         // Resource ID
         //------------------------
-        Package (One) {"PPP_RESOURCE_ID_SMPS1_B"},
-        Package (One) {"PPP_RESOURCE_ID_SMPS2_B"},
-        Package (One) {"PPP_RESOURCE_ID_SMPS7_B"},
-        Package (One) {"PPP_RESOURCE_ID_SMPS8_B"},
-        Package (One) {"PPP_RESOURCE_ID_SMPS1_C"},
-        Package (One) {"PPP_RESOURCE_ID_SMPS9_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO1_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO2_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO3_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO6_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO7_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO8_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO9_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO11_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO12_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO13_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO14_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO15_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO16_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO17_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO18_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO19_B"},
-        Package (One) {"PPP_RESOURCE_ID_LDO1_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO2_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO3_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO4_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO5_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO6_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO7_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO8_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO9_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO10_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO11_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO12_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO13_C"},
-        Package (One) {"PPP_RESOURCE_ID_LDO1_P"},
-        Package (One) {"PPP_RESOURCE_ID_LDO2_P"},
-        Package (One) {"PPP_RESOURCE_ID_LDO3_P"},
-        Package (One) {"PPP_RESOURCE_ID_LDO4_P"},
-        Package (One) {"PPP_RESOURCE_ID_LDO5_P"},
-        Package (One) {"PPP_RESOURCE_ID_LDO6_P"},
-        Package (One) {"PPP_RESOURCE_ID_LDO7_P"},
-        Package (One) {"PPP_RESOURCE_ID_LDO1_Q"},
-        Package (One) {"PPP_RESOURCE_ID_LDO2_Q"},
-        Package (One) {"PPP_RESOURCE_ID_LDO3_Q"},
-        Package (One) {"PPP_RESOURCE_ID_LDO4_Q"},
-        Package (One) {"PPP_RESOURCE_ID_LDO5_Q"},
-        Package (One) {"PPP_RESOURCE_ID_LDO6_Q"},
-        Package (One) {"PPP_RESOURCE_ID_LDO7_Q"},
-        Package (One) {"PPP_RESOURCE_ID_CXO_BUFFERS_BBCLK2_A"},
-        Package (One) {"PPP_RESOURCE_ID_CXO_BUFFERS_RFCLK1_A"},
-        Package (One) {"PPP_RESOURCE_ID_CXO_BUFFERS_RFCLK2_A"},
-        Package (One) {"PPP_RESOURCE_ID_BUCK_BOOST1_C"},
-        Package (One) {"PPP_RESOURCE_ID_FIXED_VREG1"},
-        Package (One) {"PPP_RESOURCE_ID_FIXED_VREG2"}
+        Package() {"PPP_RESOURCE_ID_SMPS1_B"},
+        Package() {"PPP_RESOURCE_ID_SMPS2_B"},
+        Package() {"PPP_RESOURCE_ID_SMPS7_B"},
+        Package() {"PPP_RESOURCE_ID_SMPS8_B"},
+        Package() {"PPP_RESOURCE_ID_SMPS1_C"},
+        Package() {"PPP_RESOURCE_ID_SMPS9_C"},
+        Package() {"PPP_RESOURCE_ID_LDO1_B"},
+        Package() {"PPP_RESOURCE_ID_LDO2_B"},
+        Package() {"PPP_RESOURCE_ID_LDO3_B"},
+        Package() {"PPP_RESOURCE_ID_LDO6_B"},
+        Package() {"PPP_RESOURCE_ID_LDO7_B"},
+        Package() {"PPP_RESOURCE_ID_LDO8_B"},
+        Package() {"PPP_RESOURCE_ID_LDO9_B"},
+        Package() {"PPP_RESOURCE_ID_LDO11_B"},
+        Package() {"PPP_RESOURCE_ID_LDO12_B"},
+        Package() {"PPP_RESOURCE_ID_LDO13_B"},
+        Package() {"PPP_RESOURCE_ID_LDO14_B"},
+        Package() {"PPP_RESOURCE_ID_LDO15_B"},
+        Package() {"PPP_RESOURCE_ID_LDO16_B"},
+        Package() {"PPP_RESOURCE_ID_LDO17_B"},
+        Package() {"PPP_RESOURCE_ID_LDO18_B"},
+        Package() {"PPP_RESOURCE_ID_LDO19_B"},
+        Package() {"PPP_RESOURCE_ID_LDO1_C"},
+        Package() {"PPP_RESOURCE_ID_LDO2_C"},
+        Package() {"PPP_RESOURCE_ID_LDO3_C"},
+        Package() {"PPP_RESOURCE_ID_LDO4_C"},
+        Package() {"PPP_RESOURCE_ID_LDO5_C"},
+        Package() {"PPP_RESOURCE_ID_LDO6_C"},
+        Package() {"PPP_RESOURCE_ID_LDO7_C"},
+        Package() {"PPP_RESOURCE_ID_LDO8_C"},
+        Package() {"PPP_RESOURCE_ID_LDO9_C"},
+        Package() {"PPP_RESOURCE_ID_LDO10_C"},
+        Package() {"PPP_RESOURCE_ID_LDO11_C"},
+        Package() {"PPP_RESOURCE_ID_LDO12_C"},
+        Package() {"PPP_RESOURCE_ID_LDO13_C"},
+        Package() {"PPP_RESOURCE_ID_LDO1_P"},
+        Package() {"PPP_RESOURCE_ID_LDO2_P"},
+        Package() {"PPP_RESOURCE_ID_LDO3_P"},
+        Package() {"PPP_RESOURCE_ID_LDO4_P"},
+        Package() {"PPP_RESOURCE_ID_LDO5_P"},
+        Package() {"PPP_RESOURCE_ID_LDO6_P"},
+        Package() {"PPP_RESOURCE_ID_LDO7_P"},
+        Package() {"PPP_RESOURCE_ID_LDO1_Q"},
+        Package() {"PPP_RESOURCE_ID_LDO2_Q"},
+        Package() {"PPP_RESOURCE_ID_LDO3_Q"},
+        Package() {"PPP_RESOURCE_ID_LDO4_Q"},
+        Package() {"PPP_RESOURCE_ID_LDO5_Q"},
+        Package() {"PPP_RESOURCE_ID_LDO6_Q"},
+        Package() {"PPP_RESOURCE_ID_LDO7_Q"},
+        Package() {"PPP_RESOURCE_ID_CXO_BUFFERS_BBCLK2_A"},
+        Package() {"PPP_RESOURCE_ID_CXO_BUFFERS_RFCLK1_A"},
+        Package() {"PPP_RESOURCE_ID_CXO_BUFFERS_RFCLK2_A"},
+        Package() {"PPP_RESOURCE_ID_BUCK_BOOST1_C"},
+        Package() {"PPP_RESOURCE_ID_FIXED_VREG1"},
+        Package() {"PPP_RESOURCE_ID_FIXED_VREG2"}
     })
 
     // Method to return PPP Package
-    Method (PPPM, 0, NotSerialized)
+    Method (PPPM)
     {
         Return (PPPP)
     }
 
     // Method to return System Default config packages
-    Name (PRRP, Package (Zero){})
-    Method (PPRR, 0, NotSerialized)
+    Name (PRRP,
+    Package() {})
+
+    Method (PPRR)
     {
         Return (PRRP)
     }
 
     // Full PEP Device Package
-    Name (FPDP, Zero)
-    Method (FPMD, 0, NotSerialized)
+    Name (FPDP, 0x0)
+    Method (FPMD)
     {
         Return (FPDP)
     }
 
-    Method (DPRF, 0, NotSerialized)
+    Method (DPRF)
     {
         Return (\_SB.DPP0)
     }
 
-    Method (DMRF, 0, NotSerialized)
+    Method (DMRF)
     {
         Return (\_SB.DPP1)
     }
 
-    Method (MPRF, 0, NotSerialized)
+    Method (MPRF)
     {
         Return (\_SB.MPP0)
     }
 
-    Method (MMRF, 0, NotSerialized)
+    Method (MMRF)
     {
         Return (\_SB.MPP1)
     }
 }
 
 Scope(\_SB_.PEP0) {
-    Method(PEPH, 0x0, NotSerialized) {
-        Return(Package(0x1) {"ACPI\\VEN_QCOM&DEV_0A17"})
+    Method(PEPH)
+    {
+        Return(Package() {"ACPI\\VEN_QCOM&DEV_0A17"})
     }
 }

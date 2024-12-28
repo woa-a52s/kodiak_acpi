@@ -6,7 +6,7 @@ Device (GPU0)
 {
     Name (_HID, "QCOM0A36")
     Alias (\_SB.PSUB, _SUB)
-    Name (_UID, Zero)
+    Name (_UID, 0)
     Name (_CLS, 0x0003000000000000)
 
     // Expose the internal monitor device to allow it to be used in a thermal zone
@@ -14,15 +14,15 @@ Device (GPU0)
     //
     Device (MON0)
     {
-        Method (_ADR, 0, NotSerialized)
+        Method (_ADR)
         {
             // 0 is always the address assigned for the internal monitor.
             //
-            Return (Zero)
+            Return (0)
         }
     }
 
-    Name (_DEP, Package (0x0A)
+    Name (_DEP, Package ()
     {
         \_SB.MMU0,
         \_SB.MMU1,
@@ -49,7 +49,7 @@ Device (GPU0)
 
             // MDP Interrupt, vsync (IPCAT->SoC->Interrupts->SM7325->mdp_irq)
             //
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, ) {0x00000073,}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, ) {115}
 
             // GPU register space (IPCAT->SoC->Memory Maps->Config NOC->A6X) from SWI Browser
             //
@@ -61,7 +61,7 @@ Device (GPU0)
 
             // GPU Interrupt (IPCAT->SoC->Interrupts->SDM850->gc_sys_irq[0]) (Source Subsystem = GPU Subsystem, Subsystem Port = gc_sys_irq[0])
             //
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, ) {0x0000014C,}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, ) {332}
 
             // GPU register space (IPCAT->SoC->Memory Maps->Config NOC->A6X) from SWI Browser
             //
@@ -89,11 +89,11 @@ Device (GPU0)
 
             // VIDC Interrupt (IPCAT->SoC->Interrupts->SM7325->VENUS_IRQ)
             //
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, ) {0x000000CE,}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, ) {206}
 
             // TLMM GPIO used to reset the DSI panel
             //
-            GpioIo (Exclusive, PullUp, 0x0000, 0x0000, IoRestrictionNone, "\\_SB.GIO0", 0x00, ResourceConsumer, ,) {0x002C}
+            GpioIo (Exclusive, PullUp, 0, 0, IoRestrictionNone, "\\_SB.GIO0", 0, ResourceConsumer, ,) {44}
         })
         Return (ABUF)
     }
@@ -107,14 +107,14 @@ Device (GPU0)
     //
     Method (RESI, 0, NotSerialized)
     {
-        Name (AINF, Package (0x10)
+        Name (AINF, Package ()
         {
-            0x03,                           // Table Format Major Version
-            Zero,                           // Table Format Minor Version
+            3,                              // Table Format Major Version
+            0,                              // Table Format Minor Version
 
             // MDP register/memory space (IPCAT->SoC->Memory Maps->Config NOC->MMSS->MMSS_MDSS)
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "MDP_REGS",                 // Resource Name
@@ -123,7 +123,7 @@ Device (GPU0)
 
             // DP PHY register/memory space (IPCAT->SoC->Memory Maps->Config NOC->PERIPH_SS_AHB2PHY_NORTH)
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "DP_PHY_REGS",              // Resource Name
@@ -132,7 +132,7 @@ Device (GPU0)
 
             // MDP Interrupt, vsync (IPCAT->SoC->Interrupts->SM7325->mdp_irq)
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "VSYNC_INTERRUPT",          // Resource Name
@@ -141,7 +141,7 @@ Device (GPU0)
 
             // GPU register space (IPCAT->SoC->Memory Maps->Config NOC->A6X) from SWI Browser
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "GFX_REGS",                 // Resource Name
@@ -150,7 +150,7 @@ Device (GPU0)
 
             // GPU register space (IPCAT->SoC->Memory Maps->Config NOC->A6X) from SWI Browser
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "GFX_REG_CONT",             // Resource Name
@@ -159,7 +159,7 @@ Device (GPU0)
 
             // GPU Interrupt (IPCAT->SoC->Interrupts->SDM850->gc_sys_irq[0]) (Source Subsystem = GPU Subsystem, Subsystem Port = gc_sys_irq[0])
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "GFX_INTERRUPT",            // Resource Name
@@ -168,7 +168,7 @@ Device (GPU0)
 
             // GPU register space (IPCAT->SoC->Memory Maps->Config NOC->A6X) from SWI Browser
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "GPU_PDC_SEQ_MEM",          // Resource Name
@@ -177,7 +177,7 @@ Device (GPU0)
 
             // GPU register space (IPCAT->SoC->Memory Maps->Config NOC->A6X) from SWI Browser
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "GPU_PDC_REGS",             // Resource Name
@@ -186,7 +186,7 @@ Device (GPU0)
 
             // GPU register space (IPCAT->SoC->Memory Maps->Config NOC->A6X) from SWI Browser
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "GPU_CC",                   // Resource Name
@@ -195,7 +195,7 @@ Device (GPU0)
 
             //
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "GPU_RSCC",                 // Resource Name
@@ -204,7 +204,7 @@ Device (GPU0)
 
             // GPU RPMh CPRF register range
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "GPU_RPMH_CPRF",            // Resource Name
@@ -213,7 +213,7 @@ Device (GPU0)
 
             // VIDC register address space (IPCAT->SoC->Memory Maps->Config NOC->Video_SS_Wrapper)
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "VIDEO_REGS",               // Resource Name
@@ -222,7 +222,7 @@ Device (GPU0)
 
             // VIDC Interrupt (IPCAT->SoC->Interrupts->SM7325->VENUS_IRQ)
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "VIDC_INTERRUPT",           // Resource Name
@@ -231,7 +231,7 @@ Device (GPU0)
 
             // TLMM GPIO used to reset the DSI panel
             //
-            Package (0x03)
+            Package()
             {
                 "RESOURCE",
                 "DSI_PANEL_RESET",          // Resource Name
@@ -249,7 +249,7 @@ Device (GPU0)
     //
     Include("displayext.asl")
 
-    Name (_DOD, Package (One)
+    Name (_DOD, Package()
     {
         0x00024321
     })
@@ -259,25 +259,25 @@ Device (GPU0)
     // _STA method, would be used to enable/disable GPU device from uefi menu.
     //------------------------------------------------------------------------------
     //
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }
 
     Method (_HRV, 0, NotSerialized)
     {
-        Name (RESU, Zero)
-        Name (TIER, Zero)
-        Name (DREV, Zero)
-        Name (FAMI, Zero)
-        Name (PROD, Zero)
+        Name (RESU, 0)
+        Name (TIER, 0)
+        Name (DREV, 0)
+        Name (FAMI, 0)
+        Name (PROD, 0)
         And(\_SB_.SIDT, 0xf, TIER)
         And(ShiftRight(\_SB_.SJTG, 0x1c, ), 0xf, DREV)
         ShiftLeft(DREV, 0x4, DREV)
         And(ShiftRight(\_SB_.SJTG, 0xc, ), 0xffff, PROD)
         If(Or(LEqual(PROD, 0x193), LEqual(PROD, 0x1eb), ))
         {
-            ShiftLeft(One, 0x8, FAMI)
+            ShiftLeft(1, 0x8, FAMI)
         }
         If(LEqual(PROD, 0x194))
         {
@@ -303,14 +303,14 @@ Device (GPU0)
 
         Method (_CRS, 0, NotSerialized)
         {
-            Name (RBUF, Buffer (0x02)
+            Name (RBUF, Buffer ()
             {
-                    0x79, 0x00
+                0x79, 0x00
             })
             Return (RBUF)
         }
 
-        Name (_DEP, Package (0x03)
+        Name (_DEP, Package()
         {
             \_SB.MMU0,
             \_SB.IMM0,
@@ -325,22 +325,22 @@ Device (GPU0)
     //
     Method (CHDV, 0, NotSerialized)
     {
-        Name (CHIF, Package (0x02)
+        Name (CHIF, Package()
         {
-            One,                                        // Number of Child devices
-            Package (0x07)
+            1,                                          // Number of Child devices
+            Package()
             {
                 "CHILDDEV",
-                Zero,                                   // Child ID
+                0,                                      // Child ID
                 0x00024321,                             // ACPI UID
                 "QCOM_AVStream_7280",                   // Hardware ID
-                Zero,                                   // Instance ID
+                0,                                      // Instance ID
                 "Qualcomm Camera AVStream Mini Driver", // Device Text
 
-                Package (0x04)
+                Package()
                 {
                     "COMPATIBLEIDS",
-                    0x02,                               // Number of Compatible IDs
+                    2,                                  // Number of Compatible IDs
                     "VEN_QCOM&DEV__AVSTREAM",           // Compatible ID 1
                     "QCOM_AVSTREAM"                     // Compatible ID 2
                 }

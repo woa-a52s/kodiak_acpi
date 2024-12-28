@@ -22,9 +22,9 @@ Name(RFMB, 0xcccccccc)
 Name(RFMS, 0xdddddddd)
 Name(RFAB, 0xeeeeeeee)
 Name(RFAS, 0x77777777)
-Name(TCMA, 0xdeadbeef)
-Name(TCML, 0xbeefdead)
-Name(SOSI, 0xdeadbeefffffffff)
+Name(TCMA, 0xdeadbeef)          // Holds TrEE Carveout Memory Address
+Name(TCML, 0xbeefdead)          // Holds TrEE Carveout Memory Length
+Name(SOSI, 0xdeadbeefffffffff)  // Holds the base address of the SoCInfo shared memory region used by ChipInfoLib
 Name(PRP1, 0xffffffff)
 Name(SKUV, 0xffffffff)
 Name(SDDR, 0xffffffff)
@@ -40,8 +40,8 @@ Include("sdc.asl")
 //
 Include("abd.asl")
 
-Name(ESNL, 0x14) // Exsoc name limit 20 characters
-Name(DBFL, 0x17) // buffer Length, should be ESNL+3
+Name(ESNL, 20) // Exsoc name limit 20 characters
+Name(DBFL, 23) // buffer Length, should be ESNL+3
 
 //
 // PMIC driver
@@ -56,17 +56,21 @@ Include("pmic_batt.asl")
 Include("pmgk.asl")
 Include("pep_common.asl")
 Include("audio_resources.asl")
-Include("graphics_preload_resources.asl") // GPU PEP Scope
+Include("graphics_preload_resources.asl")
 Include("corebsp_resources.asl")
 Include("wcnss_resources.asl")
 Include("pcie_resources.asl")
 Include("cust_touch_resources.asl")
 Include("bam.asl")
 Include("buses.asl")
+
+//
 // MPROC Drivers (PIL Driver and Subsystem Drivers)
+//
 Include("win_mproc.asl")
+
 Include("syscache.asl")
-Include("HoyaSmmu.asl")
+Include("smmu.asl")
 Include("graphics.asl")
 Include("SCM.asl")
 
@@ -83,18 +87,18 @@ Include("gpio.asl")
 Device(IPCC)
 {
     Name(_HID, "QCOM06C2")
-    Name(_UID, Zero)
+    Name(_UID, 0)
     Alias(\_SB_.PSUB, _SUB)
     Method(_CRS, 0x0, NotSerialized)
     {
-        Name(RBUF, Buffer(0x26)
+        Name (RBUF, ResourceTemplate ()
         {
-            0x89, 0x06, 0x00, 0x03, 0x01, 0x05, 0x01, 0x00, 0x00, 0x89, 0x06, 0x00,
-            0x03, 0x01, 0x06, 0x01, 0x00, 0x00, 0x89, 0x06, 0x00, 0x03, 0x01, 0x07,
-            0x01, 0x00, 0x00, 0x89, 0x06, 0x00, 0x03, 0x01, 0xea, 0x02, 0x00, 0x00,
-            0x79, 0x00
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {261}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {262}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {263}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {746}
         })
-        Return(RBUF)
+        Return (RBUF)
     }
 }
 
@@ -116,7 +120,7 @@ Include("ipa.asl")
 //
 Device(QDIG)
 {
-    Name(_DEP, Package(One)
+    Name(_DEP, Package()
     {
         \_SB_.GLNK
     })
@@ -132,7 +136,7 @@ Include("Pep_lpi.asl")
 //
 Device(QDCI)
 {
-    Name(_DEP, Package(One)
+    Name(_DEP, Package()
     {
         \_SB_.GLNK
     })
@@ -160,6 +164,7 @@ Device(SOCP)
 
 // QDSS driver
 Include("Qdss.asl")
+
 Include("qcdb.asl")
 
 //

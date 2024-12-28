@@ -7,7 +7,7 @@
 //
 Device (PMIC)
 {
-    Name (_DEP, Package (One)
+    Name (_DEP, Package()
     {
         \_SB.SPMI
     })
@@ -15,20 +15,20 @@ Device (PMIC)
     Name (_CID, "PNP0CA3")
     Alias (\_SB.PSUB, _SUB)
 
-    Method (PMCF, 0, NotSerialized) {
-        Name (CFG0, Package (0x0B) {
+    Method (PMCF) {
+        Name (CFG0, Package() {
             // PMIC Info
-            0x0A, // Number of PMICs, must match the number of info packages
-            Package (0x02) {Zero, 0x10},
-            Package (0x02) {One, 0x10},
-            Package (0x02) {0x02, 0x10},
-            Package (0x02) {0x03, 0x10},
-            Package (0x02) {0x04, 0x10},
-            Package (0x02) {0x10, 0x10},
-            Package (0x02) {0x10, 0x10},
-            Package (0x02) {0x10, 0x10},
-            Package (0x02) {0x10, 0x10},
-            Package (0x02) {0x10, 0x10}
+            10, // Number of PMICs, must match the number of info packages
+            Package() {0, 16},
+            Package() {1, 16},
+            Package() {2, 16},
+            Package() {3, 16},
+            Package() {4, 16},
+            Package() {16, 16},
+            Package() {16, 16},
+            Package() {16, 16},
+            Package() {16, 16},
+            Package() {16, 16}
         })
         Return (CFG0)
     }
@@ -40,7 +40,7 @@ Device (PMIC)
 Device (PML0)
 {
     Name (_HID, "QCOM0AD3")
-    Name (_DEP, Package (0x02) {
+    Name (_DEP, Package() {
         \_SB.I2C2,
         \_SB.PM01
     })
@@ -91,8 +91,8 @@ Device (PM01)
 {
     Name (_HID, "QCOM0A2D")
     Alias (\_SB.PSUB, _SUB)
-    Name (_UID, One)
-    Name (_DEP, Package (One) {
+    Name (_UID, 1)
+    Name (_DEP, Package() {
         \_SB.PMIC
     })
 
@@ -100,7 +100,7 @@ Device (PM01)
         Name (RBUF, ResourceTemplate () {
             // QGIC Interrupt Resource
             // Register for SPMI Interrupt 513
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, ) {0x00000201,}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, ) {513}
         })
         Return (RBUF)
     }
@@ -155,7 +155,7 @@ Device (PM01)
 Device (PMAP) {
     Name (_HID, "QCOM0A2C")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (0x03) {
+    Name (_DEP, Package() {
         \_SB.PMIC,
         \_SB.ABD,
         \_SB.SCM0
@@ -182,18 +182,18 @@ Device (PMAP) {
 //
 Device (PRTC) {
     Name (_HID, "ACPI000E")
-    Name (_DEP, Package (One) {"\\_SB.PMAP"})       // PRTC is dependent on PMAP which implements the RTC Functions
+    Name (_DEP, Package() {"\\_SB.PMAP"})       // PRTC is dependent on PMAP which implements the RTC Functions
 
     // Get the capabilities of the time and alarm device
-    Method (_GCP, 0, NotSerialized)
+    Method (_GCP)
     {
         Return (0x04)
     }
 
     Field (\_SB.ABD.ROP1, BufferAcc, NoLock, Preserve)
     {
-        Connection (I2cSerialBus (0x0002, ControllerInitiated, 0x00000000, AddressingMode7Bit, "\\_SB.ABD", 0x00, ResourceConsumer, ,)),
-        AccessAs (BufferAcc, AttribRawBytes (0x18)),
+        Connection (I2cSerialBus (0x0002, ControllerInitiated, 0x0, AddressingMode7Bit, "\\_SB.ABD", 0x00, ResourceConsumer, ,)),
+        AccessAs (BufferAcc, AttribRawBytes (24)),
         FLD0,   192
     }
 
@@ -210,19 +210,19 @@ Device (PRTC) {
     Method (_SRT, 1, NotSerialized) // Set the Real time
     {
         Name (BUFF, Buffer (0x32){})            // 18 bytes STAT(1), SIZE(1), Time(16)
-        CreateByteField (BUFF, Zero, STAT)      // Create the STAT Field
+        CreateByteField (BUFF, 0x0, STAT)      // Create the STAT Field
         CreateField (BUFF, 0x10, 0x80, TME1)    // Create the TIME Field - For the time
         CreateField (BUFF, 0x90, 0x20, ACT1)    // Create the AC TIMER Field
         CreateField (BUFF, 0xB0, 0x20, ACW1)    // Create the AC Wake Alarm Status Field
-        ACT1 = Zero
+        ACT1 = 0x0
         TME1 = Arg0
-        ACW1 = Zero
+        ACW1 = 0x0
         BUFF = FLD0 = BUFF                      // Write the transaction to the Psuedo I2C Port
 
         // Return the status
-        If ((STAT != Zero)) {
-            Return (One) // Call to OpRegion failed
+        If ((STAT != 0x00)) {
+            Return (1) // Call to OpRegion failed
         }
-        Return (Zero) // success
+        Return (0) // success
     }
 }
