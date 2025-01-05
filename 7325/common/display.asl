@@ -95,7 +95,7 @@ Method (PGRT, 2, NotSerialized) {
 
     // If nothing specified return NULL
 
-    Name (RBUF, Buffer (One) {0x00})
+    Name (RBUF, Buffer() {0x0})
 
     // Return the packet data
     Return (RBUF)
@@ -132,7 +132,7 @@ Method (PBRT, 2, NotSerialized) {
 
     // If nothing specified return NULL
 
-    Name (RBUF, Buffer (One) {0x00})
+    Name (RBUF, Buffer() {0x0})
 
     // Return the packet data
     Return (RBUF)

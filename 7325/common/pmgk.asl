@@ -150,7 +150,10 @@ Device (PMGK)
     }
 
     Method (_CRS, 0, NotSerialized) {
-        Name (RBUF, Buffer (0x02) {0x79, 0x00})
+        Name (RBUF, Buffer ()
+        {
+            0x79, 0x00
+        })
         Return (RBUF)
     }
 
@@ -165,6 +168,6 @@ Device (PMGK)
             I2cSerialBus (3, ControllerInitiated, 0, AddressingMode7Bit, "\\_SB.ABD", 0, ResourceConsumer, , )
         ),
         AccessAs (BufferAcc, AttribRawBytes (0x30)),
-        UCSI,   384
+        UCSI,384
     }
 }

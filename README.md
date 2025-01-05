@@ -1,10 +1,15 @@
-# Kodiak WP ACPI bindings
+# KodiakWP ACPI bindings
 
-Disassembled IDP07280 DSDT acpi table.
+Reverse-engineered and disassembled IDP07280 ACPI tables.
 
-***This is not from a leaked source. Every .asl file was hand-edited/"reverse-engineered". DragonBoard 410c ACPI source was used as a reference for editing kodiak ASL templates.***
+The following project files are not the original Qualcomm sc7280 platform source.
+DSDT table has been manually disassembled and modified. Other SoC tables (including DSDT) were modified using DragonBoard 410c ACPI source (including other publicly available sources).
 
-Some remarks/comments in the ASL bindings may contain errors.
+## Directory structure
+
+- 7325/common directory contains shared ACPI across multiple sc7280 variants.
+- 7325/7325_IDP directory contains board-specific bindings for IDP sc7280 hardware platform.
+- 7325/Devices directory contains devices using SD 778G SoC and share DSDT bindings from 7325_IDP and common directories
 
 ## Build
 1. In build_acpi.bat file change the asl.exe path to yours:
@@ -12,11 +17,27 @@ Some remarks/comments in the ASL bindings may contain errors.
 SET ASL_EXECUTABLE=/home/arminas/Documents/kodiak_acpi/bin/asl.exe
 ```
 
-2. To build:
+2. To build DSDT only:
 ```
 .\build_acpi.bat -p 7325 -d QRD
 ```
- - Can also be used on Linux with Wine:
+
+3. To only build AeoB files:
+```
+.\build_acpi.bat -p 7325 -d QRD -aeob
+```
+
+4. To build ACPI tables (DSDT and other SoC tables):
+```
+.\build_acpi.bat -p 7325 -d QRD -acpi
+```
+
+5. To build everything (DSDT, AeoB, SoC ACPI):
+```
+.\build_acpi.bat -p 7325 -d QRD -all
+```
+
+ - This project can also be built on Linux OS using Wine. Just pass the `wine` command before `build_acpi.bat`:
  ```
  wine build_acpi.bat -p 7325 -d QRD
  ```

@@ -4,204 +4,204 @@
 Scope (\_SB.PEP0)
 {
     // Wireless Connectivity Devices
-    Method (EWMD, 0, NotSerialized)
+    Method (EWMD)
     {
         Return (WBRC)
     }
 
     Name (WBRC,
-    Package (One)
+    Package ()
     {
-        // PEP settings for Wlan iHelium
-        Package (0x07)
+        // PEP settings for Wlan WPSS
+        Package()
         {
             "DEVICE",
             "\\_SB.WPSS.QWLN",
 
-            Package (0x03)
+            Package()
             {
                 "COMPONENT",
-                Zero, // Component 0
+                0x0, // Component 0
 
-                Package (0x02)
+                Package()
                 {
                     "FSTATE",
-                    Zero // F0 state
+                    0x0 // F0 state
                 }
             },
 
-            Package (0x06)
+            Package()
             {
                 "DSTATE",
-                Zero, // D0 state
+                0x0, // D0 state
 
-                Package (0x02)
+                Package()
                 {
                     "NPARESOURCE",
-                    Package (0x03)
+                    Package()
                     {
-                        One,
+                        1,
                         "/arc/client/rail_xo",
-                        0x80
+                        128
                     }
                 },
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_SMPS1_B",      // Resource ID
-                        0x02,                           // Voltage Regulator type 2 = SMPS
-                        0x001C9080,                     // Voltage = 1.872 V
-                        One,                            // Software Enable = Enable
-                        0x06,                           // Software Power Mode = Auto
-                        Zero                            // Head Room
+                        2,                              // Voltage Regulator type 2 = SMPS
+                        1872000,                        // Voltage = 1.872 V
+                        1,                              // Software Enable = Enable
+                        6,                              // Software Power Mode = Auto
+                        0                               // Head Room
                     }
                 },
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_SMPS7_B",      // Resource ID
-                        0x02,                           // Voltage Regulator type 2 = SMPS
-                        0x000E86C0,                     // Voltage = 0.952 V
-                        One,                            // Software Enable = Enable
-                        0x06,                           // Software Power Mode = Auto
-                        Zero                            // Head Room
+                        2,                              // Voltage Regulator type 2 = SMPS
+                        952000,                         // Voltage = 0.952 V
+                        1,                              // Software Enable = Enable
+                        6,                              // Software Power Mode = Auto
+                        0                               // Head Room
                     }
                 },
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_SMPS8_B",      // Resource ID
-                        0x02,                           // Voltage Regulator type 2 = SMPS
-                        0x00132A40,                     // Voltage = 1.256 V
-                        One,                            // Software Enable = Enable
-                        0x06,                           // Software Power Mode = Auto
-                        Zero                            // Head Room
+                        2,                              // Voltage Regulator type 2 = SMPS
+                        1256000,                        // Voltage = 1.256 V
+                        1,                              // Software Enable = Enable
+                        6,                              // Software Power Mode = Auto
+                        0                               // Head Room
                     }
                 }
             },
 
-            Package (0x06)
+            Package()
             {
                 "DSTATE",
                 0x02, // D2 state
-                Package (0x02)
+                Package()
                 {
                     "NPARESOURCE",
-                    Package (0x03)
+                    Package()
                     {
-                        One,
+                        1,
                         "/arc/client/rail_xo",
-                        Zero
+                        0
                     }
                 },
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_SMPS1_B",      // Resource ID
-                        0x02,                           // Voltage Regulator type 2 = SMPS
-                        Zero,                           // Voltage = 0 V
-                        Zero,                           // Software Enable = Disable
-                        0x05,                           // Software Power Mode = LPM
-                        Zero                            // Head Room
+                        2,                              // Voltage Regulator type 2 = SMPS
+                        0,                              // Voltage = 0 V
+                        0,                              // Software Enable = Disable
+                        5,                              // Software Power Mode = LPM
+                        0                               // Head Room
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_SMPS7_B",      // Resource ID
-                        0x02,                           // Voltage Regulator type 2 = SMPS
-                        Zero,                           // Voltage = 0 V
-                        Zero,                           // Software Enable = Disable
-                        0x05,                           // Software Power Mode = LPM
-                        Zero                            // Head Room
+                        2,                              // Voltage Regulator type 2 = SMPS
+                        0,                              // Voltage = 0 V
+                        0,                              // Software Enable = Disable
+                        5,                              // Software Power Mode = LPM
+                        0                               // Head Room
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_SMPS8_B",      // Resource ID
-                        0x02,                           // Voltage Regulator type 2 = SMPS
-                        Zero,                           // Voltage = 0 V
-                        Zero,                           // Software Enable = Disable
-                        0x05,                           // Software Power Mode = LPM
-                        Zero                            // Head Room
+                        2,                              // Voltage Regulator type 2 = SMPS
+                        0,                              // Voltage = 0 V
+                        0,                              // Software Enable = Disable
+                        5,                              // Software Power Mode = LPM
+                        0                               // Head Room
                     }
                 }
             },
 
-            Package (0x06)
+            Package()
             {
                 "DSTATE",
                 0x03, // D3 state
-                Package (0x02)
+                Package()
                 {
                     "NPARESOURCE",
-                    Package (0x03)
+                    Package()
                     {
-                        One,
+                        1,
                         "/arc/client/rail_xo",
-                        Zero
+                        0
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_SMPS1_B",      // Resource ID
-                        0x02,                           // Voltage Regulator type 2 = SMPS
-                        Zero,                           // Voltage = 0 V
-                        Zero,                           // Software Enable = Disable
-                        0x05,                           // Software Power Mode = LPM
-                        Zero                            // Head Room
+                        2,                              // Voltage Regulator type 2 = SMPS
+                        0,                              // Voltage = 0 V
+                        0,                              // Software Enable = Disable
+                        5,                              // Software Power Mode = LPM
+                        0                               // Head Room
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_SMPS7_B",      // Resource ID
-                        0x02,                           // Voltage Regulator type 2 = SMPS
-                        Zero,                           // Voltage = 0 V
-                        Zero,                           // Software Enable = Disable
-                        0x05,                           // Software Power Mode = LPM
-                        Zero                            // Head Room
+                        2,                              // Voltage Regulator type 2 = SMPS
+                        0,                              // Voltage = 0 V
+                        0,                              // Software Enable = Disable
+                        5,                              // Software Power Mode = LPM
+                        0                               // Head Room
                     }
                 },
 
-                Package (0x02)
+                Package()
                 {
                     "PMICVREGVOTE",
-                    Package (0x06)
+                    Package()
                     {
                         "PPP_RESOURCE_ID_SMPS8_B",      // Resource ID
-                        0x02,                           // Voltage Regulator type 2 = SMPS
-                        Zero,                           // Voltage = 0 V
-                        Zero,                           // Software Enable = Disable
-                        0x05,                           // Software Power Mode = LPM
-                        Zero                            // Head Room
+                        2,                              // Voltage Regulator type 2 = SMPS
+                        0,                              // Voltage = 0 V
+                        0,                              // Software Enable = Disable
+                        5,                              // Software Power Mode = LPM
+                        0                               // Head Room
                     }
                 }
             },
 
-            Package (0x02)
+            Package()
             {
                 "ABANDON_DSTATE",
                 0x02                                    // Abandon D state defined as D2

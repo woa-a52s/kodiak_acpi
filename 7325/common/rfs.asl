@@ -3,7 +3,7 @@
 //
 Device (RFS0)
 {
-    Name (_DEP, Package (One)
+    Name (_DEP, Package (0x1)
     {
         \_SB.IPC0
     })
@@ -43,5 +43,8 @@ Device (RFS0)
 }
 
 Scope(\_SB_.RFS0) {
-    Method(_STA, 0x0, NotSerialized) { Return(0xb) }
+    Method(_STA)
+    {
+        Return(0xb)
+    }
 }

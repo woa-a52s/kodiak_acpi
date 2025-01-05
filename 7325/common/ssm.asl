@@ -3,7 +3,7 @@
 //
 Device (SSM)
 {
-    Name (_DEP, Package (0x02)
+    Name (_DEP, Package (0x2)
     {
         \_SB.GLNK,
         \_SB.TREE
@@ -11,8 +11,8 @@ Device (SSM)
     Name (_HID, "QCOM0A14")
     Alias (\_SB.PSUB, _SUB)
 
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
-        Return (Zero)
+        Return (0)
     }
 }

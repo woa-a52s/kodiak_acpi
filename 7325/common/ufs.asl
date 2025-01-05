@@ -6,9 +6,9 @@ Device (UFS0)
     Name (_HID, "QCOM24A5")
     Alias (\_SB.PSUB, _SUB)
     Alias (\_SB.EMUL, EMUL)
-    Name (_UID, Zero)
-    Name (_CCA, Zero)
-    Name (_DEP, Package (One)
+    Name (_UID, 0)
+    Name (_CCA, 0)
+    Name (_DEP, Package (0x1)
     {
         \_SB.PEP0
     })
@@ -18,8 +18,8 @@ Device (UFS0)
         Name (RBUF, ResourceTemplate ()
         {
             // UFS register address space
-            Memory32Fixed (ReadWrite, 0x01D84000, 0x0001C000,)
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, ) {0x00000129,}
+            Memory32Fixed (ReadWrite, 0x1D84000, 0x1C000)
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, , , ) {297}
         })
         Return (RBUF)
     }
@@ -27,15 +27,15 @@ Device (UFS0)
     // UFS Device
     Device (DEV0)
     {
-        Method (_ADR, 0, NotSerialized)
+        Method (_ADR)
         {
-            Return (0x08)
+            Return (8)
         }
 
         // Non-removable
-        Method (_RMV, 0, NotSerialized)
+        Method (_RMV)
         {
-            Return (Zero)
+            Return (0)
         }
     }
 }

@@ -14,11 +14,11 @@ Device (GIO0)
             Memory32Fixed (ReadWrite, 0x0F100000, 0x00300000)
 
             // Summary Interrupt shared by all banks
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, , , ) {240}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, , , ) {240}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, , , ) {240}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, , , ) {558}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, , , ) {552}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared   , , , ) {240}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared   , , , ) {240}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared   , , , ) {240}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared   , , , ) {558}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared   , , , ) {552}
             Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, , , ) {645}
         })
         Return (RBUF)

@@ -7,7 +7,7 @@
 //
 Device (IPC0)
 {
-    Name (_DEP, Package (One)
+    Name (_DEP, Package (0x1)
     {
         \_SB.GLNK
     })
@@ -27,5 +27,5 @@ Device (GLNK)
     })
     Name (_HID, "QCOM0A84")
     Alias (\_SB.PSUB, _SUB)
-    Name (_UID, Zero)
+    Name (_UID, 0)
 }

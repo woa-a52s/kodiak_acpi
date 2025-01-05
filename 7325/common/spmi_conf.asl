@@ -1,9 +1,9 @@
 //
 //SPMI driver configuration.
 //
-Method (CONF, 0, NotSerialized)
+Method (CONF)
 {
-    Name (XBUF, Buffer (0x1A) {
+    Name (XBUF, Buffer () {
         0x00,                       // uThisOwnerNumber
         0x01,                       // polling mode
         0x01,                       // reserved channel enable

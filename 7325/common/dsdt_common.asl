@@ -1,4 +1,6 @@
-Name(PSUB, "IDP07280")
+//
+//
+//
 Name(SOID, 0xffffffff)          // Holds the Chip Id
 Name(STOR, 0xabcabcab)
 Name(SIDS, "899800000000000")   // Holds the Chip ID translated to a string

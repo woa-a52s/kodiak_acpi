@@ -3,7 +3,7 @@
 //
 Device (LLC)
 {
-    Name (_DEP, Package (One)
+    Name (_DEP, Package (0x1)
     {
         \_SB.PEP0
     })
@@ -15,8 +15,8 @@ Device (LLC)
     {
         Return (ResourceTemplate ()
         {
-            Memory32Fixed (ReadWrite, 0x09600000, 0x00050000,)
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000012A,}
+            Memory32Fixed (ReadWrite, 0x09600000, 0x50000)
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {298}
         })
     }
 }

@@ -4,7 +4,7 @@
 //
 
 //
-// Bluetooth
+// (bluetooth soc codename here) Bluetooth
 //
 Device (BTH0)
 {
@@ -41,9 +41,9 @@ Device (BTH0)
                 0x00,                       // ResourceSourceIndex (defaults to 0)
                 ResourceConsumer,           // ResourceUsage       (defaults to ResourceConsumer)
                 ,                           // DescriptorName
-            )
+                )
 
-            GpioIo (Exclusive, PullDown, 0x0000, 0x0000, IoRestrictionNone, "\\_SB.GIO0", 0x00, ResourceConsumer, ,) {0x0055}
+            GpioIo (Exclusive, PullDown, 0, 0, IoRestrictionNone, "\\_SB.GIO0", 0, ResourceConsumer, ,) {85}
         })
         Return (PBUF)
     }

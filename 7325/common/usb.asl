@@ -2,10 +2,10 @@
 // HPD_STATUS_LOW_NOTIFY_EVENT    -  0x92
 // HPD_STATUS_HIGH_NOTIFY_EVENT   -  0x93
 // All other valus are invalid
-Name (HPDB, Zero)
+Name (HPDB, 0x00000000)
 
 //HPD Status
-Name (HPDS, Buffer (One) {0x00})
+Name (HPDS, Buffer() {0x00})
 
 Name (DPPN, 0x0D)
 
@@ -13,10 +13,10 @@ Name (DPPN, 0x0D)
 // 0 -> CC1
 // 1 -> CC2
 // 2 -> CC Open
-Name (CCST, Buffer (One) {0x02})
+Name (CCST, Buffer() {0x02})
 
-Name (PORT, Buffer (One) {0x02})
-Name (HIRQ, Buffer (One) {0x00})
+Name (PORT, Buffer() {0x02})
+Name (HIRQ, Buffer() {0x00})
 
 // USB Capabilities bitmap
 // Indicates the platform's USB capabilities, extend as required.
@@ -26,61 +26,61 @@ Name (HIRQ, Buffer (One) {0x00})
 //     1  PMIC VBUS detection supported
 //     2  USB PHY interrupt supported (seperate from ULPI)
 //     3  TypeC supported
-Name (USBC, Buffer (One) {0x0B})
+Name (USBC, Buffer() {0x0B})
 
-Name (MUXC, Buffer (One) {0x00})
+Name (MUXC, Buffer() {0x00})
 
 Device (URS0)
 {
     Name (_HID, "QCOM0A8B")
     Name (_CID, "PNP0CA1")
     Alias (\_SB.PSUB, _SUB)
-    Name (_UID, Zero)
-    Name (_CCA, Zero) // Cache-incoherent bus-master, Hardware does not manage cache coherency
+    Name (_UID, 0)
+    Name (_CCA, 0) // Cache-incoherent bus-master, Hardware does not manage cache coherency
     Name (_DEP, Package (0x02)
     {
         \_SB.PEP0,
         \_SB.UCS0
     })
     Name (_CRS, ResourceTemplate () {
-        Memory32Fixed (ReadWrite, 0x0A600000, 0x000FFFFF,)
+        Memory32Fixed (ReadWrite, 0x0A600000, 0x000FFFFF)
     })
 
     // Dynamically enumerated device (host mode stack) on logical USB bus
     Device (USB0)
     {
-        Name (_ADR, Zero)
-        Name (_S0W, 0x03)
+        Name (_ADR, 0)
+        Name (_S0W, 3)
         Name (_CRS, ResourceTemplate ()
         {
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, ) {0x000000A5,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, SharedAndWake, ,, ) {0x000000A2,}
-            Interrupt (ResourceConsumer, Level, ActiveHigh, SharedAndWake, ,, ) {0x00000211,}
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, SharedAndWake, ,, ) {0x0000020F,}
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, SharedAndWake, ,, ) {0x0000020E,}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared       , , , ) {0xA5}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, SharedAndWake, , , ) {0xA2}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, SharedAndWake, , , ) {0x211}
+            Interrupt (ResourceConsumer, Edge , ActiveHigh, SharedAndWake, , , ) {0x20F}
+            Interrupt (ResourceConsumer, Edge , ActiveHigh, SharedAndWake, , , ) {0x20E}
         })
 
         Device (RHUB)
         {
-            Name (_ADR, Zero)
+            Name (_ADR, 0)
             Device (PRT1)
             {
-                Name (_ADR, One)
+                Name (_ADR, 1)
 
                 // _UPC as defined in the ACPI spec.
-                Name (_UPC, Package (0x04)
+                Name (_UPC, Package()
                 {
-                    One,                            // Port is connectable.
+                    0x01,                           // Port is connectable.
                     0x09,                           // Connector type: Type C connector - USB2 and SS with switch.
-                    Zero,                           // Reserved0 - must be zero.
-                    Zero                            // Reserved1 - must be zero.
+                    0x00000000,                     // Reserved0 - must be zero.
+                    0x00000000                      // Reserved1 - must be zero.
                 })
 
                 // _PLD as defined in the ACPI spec. The GroupToken and GroupPosition are used to
                 // derive a unique "Connector ID". The other fields are not really important.
-                Name (_PLD, Package (One)
+                Name (_PLD, Package()
                 {
-                    Buffer (0x14)
+                    Buffer ()
                     {
                         0x82,                       // Revision 2, ignore color.
                         0x00, 0x00, 0x00,           // Color (ignored).
@@ -153,7 +153,7 @@ Device (URS0)
         // 0 - DirectAccess: The register address is accessed directly from the mapped memory.
         //
         Method (PHYC, 0, NotSerialized) {
-            Name (CFG0, Package (Zero){})
+            Name (CFG0, Package (Zero) {} )
             Return (CFG0)
         }
     } // USB0
@@ -161,27 +161,27 @@ Device (URS0)
     // Dynamically enumerated device (peripheral mode stack) on logical USB bus
     Device (UFN0)
     {
-        Name (_ADR, One)
-        Name (_S0W, 0x03) // Enable power management
+        Name (_ADR, 1)
+        Name (_S0W, 3) // Enable power management
 
         Device (RHUB)
         {
-            Name (_ADR, Zero)
+            Name (_ADR, 0)
             Device (PRT1)
             {
-                Name (_ADR, One)
+                Name (_ADR, 1)
 
                 // _UPC as defined in the ACPI spec.
-                Name (_UPC, Package (0x04)
+                Name (_UPC, Package()
                 {
-                    One,                            // Port is connectable.
+                    0x01,                           // Port is connectable.
                     0x09,                           // Connector type: Type C connector - USB2 and SS with switch.
-                    Zero,                           // Reserved0 - must be zero.
-                    Zero                            // Reserved1 - must be zero.
+                    0x00000000,                     // Reserved0 - must be zero.
+                    0x00000000                      // Reserved1 - must be zero.
                 })
-                Name (_PLD, Package (One)
+                Name (_PLD, Package()
                 {
-                    Buffer (0x14)
+                    Buffer()
                     {
                         0x82,                       // Revision 2, ignore color.
                         0x00, 0x00, 0x00,           // Color (ignored).
@@ -197,9 +197,9 @@ Device (URS0)
         }
         Name (_CRS, ResourceTemplate () {
             // usb30_ctrl_irq[0]
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, ) {0x000000A5,}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, , , ) {0xA5}
             //usb30_power_event_irq
-            Interrupt (ResourceConsumer, Level, ActiveHigh, SharedAndWake, ,, ) {0x000000A2,}
+            Interrupt (ResourceConsumer, Level, ActiveHigh, SharedAndWake, , , ) {0xA2}
         })
 
         // Device Specific Method takes 4 args:
@@ -294,48 +294,51 @@ Device (USB1)
     Name (_HID, "QCOM0AA1")
     Name (_CID, "ACPI\\PNP0D15")
     Alias (\_SB.PSUB, _SUB)
-    Name (_UID, One)
-    Name (_CCA, Zero)
+    Name (_UID, 1)
+    Name (_CCA, 0)
 
-    Method (_STA, 0, NotSerialized) { Return (Zero) }
+    Method (_STA)
+    {
+        Return (0)
+    }
 
-    Name (_DEP, Package (One)
+    Name (_DEP, Package (0x1)
     {
         \_SB.PEP0
     })
 
-    Name (_S0W, 0x03)
-    Name (_ADR, Zero)
+    Name (_S0W, 3)
+    Name (_ADR, 0)
 
     Name (_CRS, ResourceTemplate ()
     {
-        Memory32Fixed (ReadWrite, 0x08C00000, 0x000FFFFF,)
-        Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, ) {0x00000112,}
-        Interrupt (ResourceConsumer, Level, ActiveHigh, SharedAndWake, ,, ) {0x00000111,}
-        Interrupt (ResourceConsumer, Edge, ActiveHigh, SharedAndWake, ,, ) {0x0000020D,}
-        Interrupt (ResourceConsumer, Edge, ActiveHigh, SharedAndWake, ,, ) {0x0000020C,}
+        Memory32Fixed (ReadWrite, 0x08C00000, 0x000FFFFF)
+        Interrupt (ResourceConsumer, Level, ActiveHigh, Shared       , , , ) {0x112}
+        Interrupt (ResourceConsumer, Level, ActiveHigh, SharedAndWake, , , ) {0x111}
+        Interrupt (ResourceConsumer, Edge , ActiveHigh, SharedAndWake, , , ) {0x20D}
+        Interrupt (ResourceConsumer, Edge , ActiveHigh, SharedAndWake, , , ) {0x20C}
     })
 
     Device (RHUB)
     {
-        Name (_ADR, Zero)
+        Name (_ADR, 0) // Value zero reserved for Root Hub
         Device (PRT1)
         {
-            Name (_ADR, One)
+            Name (_ADR, 1)
 
             // _UPC as defined in the ACPI spec.
-            Name (_UPC, Package (0x04)
+            Name (_UPC, Package()
             {
-                One,                                // Port is connectable.
+                0x01,                               // Port is connectable.
                 0x06,                               // Connector type:
-                Zero,                               // Reserved0 - must be zero.
-                Zero                                // Reserved1 - must be zero.
+                0x00000000,                         // Reserved0 - must be zero.
+                0x00000000                          // Reserved1 - must be zero.
             })
             // _PLD as defined in the ACPI spec. The GroupToken and GroupPosition are used to
             // derive a unique "Connector ID". The other fields are not really important.
-            Name (_PLD, Package (One)
+            Name (_PLD, Package()
             {
-                Buffer (0x14)
+                Buffer()
                 {
                     0x82,                           // Revision 2, ignore color.
                     0x00, 0x00, 0x00,               // Color (ignored).
@@ -410,7 +413,7 @@ Device (USB1)
     // 0 - DirectAccess: The register address is accessed directly from the mapped memory.
     //
     Method (PHYC, 0, NotSerialized) {
-        Name (CFG0, Package (Zero){})
+        Name (CFG0, Package() {} )
         Return (CFG0)
     }
 }
@@ -418,11 +421,12 @@ Device (USB1)
 Device (UCS0)
 {
     Name (_HID, "QCOM0AA4")
-    Name (_DEP, Package (One) {\_SB.PEP0})
+    Name (_DEP, Package() {\_SB.PEP0})
 
     Method (_CRS, 0, NotSerialized) {
-        Name (RBUF, ResourceTemplate () {
-            GpioIo (Exclusive, PullDown, 0x0000, 0x0000, IoRestrictionNone, "\\_SB.GIO0", 0x00, ResourceConsumer, ,) {0x0023}
+        Name (RBUF, ResourceTemplate ()
+        {
+            GpioIo (Exclusive, PullDown, 0, 0, IoRestrictionNone, "\\_SB.GIO0", 0, ResourceConsumer, ,) {0x23}
         })
         Return (RBUF)
     }

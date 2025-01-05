@@ -7,13 +7,13 @@ Device (SPMI)
     Alias (\_SB.PSUB, _SUB)
     Name (_CID, "PNP0CA2")
     Name (_UID, One)
-    Name (_CCA, Zero)
+    Name (_CCA, 0)
 
     Method (_CRS, 0, NotSerialized)
     {
         Name (RBUF, ResourceTemplate ()
         {
-            Memory32Fixed (ReadWrite, 0x0C400000, 0x02800000,)
+            Memory32Fixed (ReadWrite, 0x0C400000, 0x02800000)
         })
         Return (RBUF)
     }

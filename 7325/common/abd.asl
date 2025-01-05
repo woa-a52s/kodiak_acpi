@@ -14,13 +14,13 @@ Device (ABD)
     Name (_HID, "QCOM0427")
     Alias (\_SB.PSUB, _SUB)
     Name (_UID, 0)
-    OperationRegion (ROP1, GenericSerialBus, Zero, 0x0100)
+    OperationRegion (ROP1, GenericSerialBus, 0x00000000, 0x100)
     Name (AVBL, Zero)
     Method (_REG, 0x2, NotSerialized)
     {
-        If ((Arg0 == 0x09))
+        If(Lequal(Arg0, 0x9))
         {
-            AVBL = Arg1
+            Store(Arg1, AVBL)
         }
     }
 }

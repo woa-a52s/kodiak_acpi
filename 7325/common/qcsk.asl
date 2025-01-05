@@ -1,9 +1,13 @@
+//
+// QCSK Device. (Not sure in which ASL file it should belong).
+//
 Device (QCSK)
 {
-    Name (_HID, "QCOM0AAC")  // _HID: Hardware ID
+    Name (_HID, "QCOM0AAC")
     Alias (\_SB.PSUB, _SUB)
-    Method (_STA, 0, NotSerialized)  // _STA: Status
+
+    Method (_STA)
     {
-        Return (Zero)
+        Return (0)
     }
 }

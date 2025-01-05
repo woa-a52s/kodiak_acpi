@@ -19,8 +19,8 @@ Device(SYSM) {
             0,     // Residency counter frequency
             0,     // Enabled parent state
             45824, // Integer entry method
-            Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-            Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+            Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+            Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
             "platform.DRIPS" // Name
         }
     }) // End of _LPI
@@ -42,8 +42,8 @@ Device(SYSM) {
                 0,    // Residency counter frequency
                 0,    // Enabled parent state
                 32,   // Integer entry method
-                Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                 "L3Cluster.D2" // Name
             },
             // State 1: D4
@@ -55,8 +55,8 @@ Device(SYSM) {
                 0,    // Residency counter frequency
                 1,    // Enabled parent state (Till E1)
                 64,   // Integer entry methods
-                Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                 "L3Cluster.D4" // Name
             }
         }) // End of _LPI
@@ -69,7 +69,7 @@ Device(SYSM) {
             Name(_LPI, Package() {
                 0, // Version
                 0, // Level ID
-                4,  // Count
+                4, // Count
 
                 // Core Clock Gate - C1
                 Package() {
@@ -79,9 +79,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver0.C1" // Name
                 },
                 // C2
@@ -92,9 +92,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver0.C2"
                 },
                 // C3
@@ -105,9 +105,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver0.C3" // Name
                 },
                 // C4
@@ -118,9 +118,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     2,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver0.C4" // Name
                 }
             }) // End of _LPI
@@ -144,9 +144,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver1.C1" // Name
                 },
                 // C2
@@ -157,9 +157,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver1.C2" // Name
                 },
                 // C3
@@ -170,9 +170,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state (Enables D4)
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver1.C3" // Name
                 },
                 // C4
@@ -183,9 +183,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     2,    // Enabled parent state (Enables LLC)
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver1.C4" // Name
                 }
             }) // End of _LPI
@@ -199,7 +199,7 @@ Device(SYSM) {
             Name(_LPI, Package() {
                 0, // Version
                 0, // Level ID
-                4,  // Count
+                4, // Count
 
                 // Core Clock Gate - C1
                 Package() {
@@ -209,9 +209,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver2.C1" // Name
                 },
                 // C2
@@ -222,9 +222,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver2.C2" // Name
                 },
                 // C3
@@ -235,9 +235,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver2.C3" // Name
                 },
                 // C4
@@ -248,9 +248,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     2,    // Enabled parent state (Enables LLC)
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver2.C4" // Name
                 }
             }) // End of _LPI
@@ -264,7 +264,7 @@ Device(SYSM) {
             Name(_LPI, Package() {
                 0, // Version
                 0, // Level ID
-                4,  // Count
+                4, // Count
 
                 // Core Clock Gate - C1
                 Package() {
@@ -274,9 +274,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver3.C1" // Name
                 },
                 // C2
@@ -287,9 +287,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver3.C2" // Name
                 },
                 // C3
@@ -300,9 +300,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state (Enables D4)
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver3.C3" // Name
                 },
                 // C4
@@ -313,9 +313,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     2,    // Enabled parent state (Enables LLC)
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoSilver3.C4" // Name
                 }
             }) // End of _LPI
@@ -329,7 +329,7 @@ Device(SYSM) {
             Name(_LPI, Package() {
                 0, // Version
                 0, // Level ID
-                4,  // Count
+                4, // Count
 
                 // Core Clock Gate - C1
                 Package() {
@@ -339,9 +339,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoGold0.C1" // Name
                 },
                 // C2
@@ -352,9 +352,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoGold0.C2" // Name
                 },
                 // C3
@@ -365,9 +365,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state (Enables D4)
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoGold0.C3" // Name
                 },
                 // C4
@@ -378,9 +378,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     2,    // Enabled parent state (Enables LLC)
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoGold0.C4" // Name
                 }
             }) // End of _LPI
@@ -394,7 +394,7 @@ Device(SYSM) {
             Name(_LPI, Package() {
                 0, // Version
                 0, // Level ID
-                4,  // Count
+                4, // Count
 
                 // Core Clock Gate - C1
                 Package() {
@@ -404,9 +404,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoGold1.C1" // Name
                 },
                 // C2
@@ -417,9 +417,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoGold1.C2" // Name
                 },
                 // C3
@@ -430,9 +430,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoGold1.C3" // Name
                 },
                 // C4
@@ -443,9 +443,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     2,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoGold1.C4" // Name
                 }
             }) // End of _LPI
@@ -459,7 +459,7 @@ Device(SYSM) {
             Name(_LPI, Package() {
                 0, // Version
                 0, // Level ID
-                4,  // Count
+                4, // Count
 
                 // Core Clock Gate - C1
                 Package() {
@@ -469,9 +469,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoGold2.C1"
                 },
                 // C2
@@ -482,9 +482,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoGold2.C2" // Name
                 },
                 // C3
@@ -495,9 +495,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoGold2.C3" // Name
                 },
                 // C4
@@ -508,9 +508,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     2,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoGold2.C4" // Name
                 }
             }) // End of _LPI
@@ -524,7 +524,7 @@ Device(SYSM) {
             Name(_LPI, Package() {
                 0, // Version
                 0, // Level ID
-                4,  // Count
+                4, // Count
 
                 // Core Clock Gate - C1
                 Package() {
@@ -534,9 +534,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoPrime0.C1" // Name
                 },
                 // C2
@@ -547,9 +547,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoPrime0.C2" // Name
                 },
                 // C3
@@ -560,9 +560,9 @@ Device(SYSM) {
                     1,     // Arch context last flags
                     0,     // Residency counter frequency
                     1,     // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoPrime0.C3" // Name
                 },
                 // C4
@@ -573,9 +573,9 @@ Device(SYSM) {
                     1,      // Arch context last flags
                     0,      // Residency counter frequency
                     2,      // Enabled parent state
-                    Buffer(0x11) {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer(0x11) {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
                     "KryoPrime0.C4" // Name
                 }
             }) // End of _LPI

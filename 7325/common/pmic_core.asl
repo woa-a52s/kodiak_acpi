@@ -97,11 +97,13 @@ Device (PM01)
     })
 
     Method (_CRS, 0, NotSerialized) {
-        Name (RBUF, ResourceTemplate () {
-            // QGIC Interrupt Resource
-            // Register for SPMI Interrupt 513
-            Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, ) {513}
-        })
+        Name (RBUF,
+            ResourceTemplate () {
+                // QGIC Interrupt Resource
+                // Register for SPMI Interrupt 513
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, , , ) {513}
+            }
+        )
         Return (RBUF)
     }
 
@@ -163,16 +165,21 @@ Device (PMAP) {
     //PMAP is dependent on ABD for operation region access
 
     // Get pseudo SPB controller port which is used to handle the ACPI operation region access
-    Method (GEPT, 0, NotSerialized) {
-        Name (BUFF, Buffer (0x04){})
-        CreateByteField (BUFF, Zero, STAT)
+    Method (GEPT)
+    {
+        Name (BUFF, Buffer (4){})
+        CreateByteField (BUFF, 0x00, STAT)
         CreateWordField (BUFF, 0x02, DATA)
-        DATA = 0x02
+        Store(0x2, DATA)
         Return (DATA)
     }
 
-    Method (_CRS, 0, NotSerialized) {
-        Name (RBUF, Buffer (0x02) {0x79, 0x00})
+    Method (_CRS, 0, NotSerialized)
+    {
+        Name (RBUF, Buffer ()
+        {
+            0x79, 0x00
+        })
         Return (RBUF)
     }
 }
@@ -182,45 +189,45 @@ Device (PMAP) {
 //
 Device (PRTC) {
     Name (_HID, "ACPI000E")
-    Name (_DEP, Package() {"\\_SB.PMAP"})       // PRTC is dependent on PMAP which implements the RTC Functions
+    Name (_DEP, Package() {"\\_SB.PMAP"})  // PRTC is dependent on PMAP which implements the RTC Functions
 
     // Get the capabilities of the time and alarm device
     Method (_GCP)
     {
-        Return (0x04)
+        Return (0x04) // Bit 2 set indicating Get Set Supported
     }
 
     Field (\_SB.ABD.ROP1, BufferAcc, NoLock, Preserve)
     {
         Connection (I2cSerialBus (0x0002, ControllerInitiated, 0x0, AddressingMode7Bit, "\\_SB.ABD", 0x00, ResourceConsumer, ,)),
         AccessAs (BufferAcc, AttribRawBytes (24)),
-        FLD0,   192
+        FLD0,192
     }
 
-    Method (_GRT, 0, NotSerialized) // Get the Real time
+    Method (_GRT) // Get the Real time
     {
-        Name (BUFF, Buffer (0x1A){})            // 18 bytes STAT(1), SIZE(1), Time(16)
-        CreateField (BUFF, 0x10, 0x80, TME1)    // Create the TIME Field - For the time
-        CreateField (BUFF, 0x90, 0x20, ACT1)    // Create the AC TIMER Field
-        CreateField (BUFF, 0xB0, 0x20, ACW1)    // Create the AC Wake Alarm Status Field
-        BUFF = FLD0
+        Name (BUFF, Buffer (26){})         // 18 bytes STAT(1), SIZE(1), Time(16)
+        CreateField (BUFF, 16, 128, TME1)  // Create the TIME Field - For the time
+        CreateField (BUFF, 144, 32, ACT1)  // Create the AC TIMER Field
+        CreateField (BUFF, 176, 32, ACW1)  // Create the AC Wake Alarm Status Field
+        Store(FLD0, BUFF)
         Return (TME1)
     }
 
-    Method (_SRT, 1, NotSerialized) // Set the Real time
+    Method (_SRT, 1) // Set the Real time
     {
-        Name (BUFF, Buffer (0x32){})            // 18 bytes STAT(1), SIZE(1), Time(16)
-        CreateByteField (BUFF, 0x0, STAT)      // Create the STAT Field
-        CreateField (BUFF, 0x10, 0x80, TME1)    // Create the TIME Field - For the time
-        CreateField (BUFF, 0x90, 0x20, ACT1)    // Create the AC TIMER Field
-        CreateField (BUFF, 0xB0, 0x20, ACW1)    // Create the AC Wake Alarm Status Field
-        ACT1 = 0x0
-        TME1 = Arg0
-        ACW1 = 0x0
-        BUFF = FLD0 = BUFF                      // Write the transaction to the Psuedo I2C Port
+        Name (BUFF, Buffer (50){})         // 18 bytes STAT(1), SIZE(1), Time(16)
+        CreateByteField (BUFF, 0x0, STAT)  // Create the STAT Field
+        CreateField (BUFF, 16, 128, TME1)  // Create the TIME Field - For the time
+        CreateField (BUFF, 144, 32, ACT1)  // Create the AC TIMER Field
+        CreateField (BUFF, 176, 32, ACW1)  // Create the AC Wake Alarm Status Field
+        Store(0x0, ACT1)
+        Store(Arg0, TME1)
+        Store(0x0, ACW1)
+        Store(Store(BUFF, FLD0),BUFF)      // Write the transaction to the Psuedo I2C Port
 
         // Return the status
-        If ((STAT != 0x00)) {
+        If(LNotEqual(STAT,0x00)) {
             Return (1) // Call to OpRegion failed
         }
         Return (0) // success

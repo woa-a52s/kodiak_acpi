@@ -11,7 +11,7 @@ Device (RPEN)
     Name (_HID, "QCOM06E1")
     Alias (\_SB.PSUB, _SUB)
 
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }
@@ -24,7 +24,7 @@ Device (PILC)
 {
     Name (_HID, "QCOM06E0")
 
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }
@@ -43,7 +43,7 @@ Device (CDI)
     Name (_HID, "QCOM0A2F")
     Alias (\_SB.PSUB, _SUB)
 
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }
@@ -68,7 +68,7 @@ Device (ADSP)
     })
     Name (_HID, "QCOM0A1B")
 
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }
@@ -77,7 +77,7 @@ Device (ADSP)
     {
         Name (RBUF, ResourceTemplate ()
         {
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000206,}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {518}
         })
         Return (RBUF)
     }
@@ -90,7 +90,7 @@ Device (ADSP)
 //
 Device (AMSS)
 {
-    Name (_CCA, Zero)
+    Name (_CCA, 0)
     Name (_DEP, Package (0x09)
     {
         \_SB.PEP0,
@@ -109,7 +109,7 @@ Device (AMSS)
     {
         Name (RBUF, ResourceTemplate ()
         {
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000128,}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {296}
         })
         Return (RBUF)
     }
@@ -130,7 +130,7 @@ Device (QSM)
         \_SB.RPEN
     })
 
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }
@@ -144,12 +144,12 @@ Device (SSDD)
 {
     Name (_HID, "QCOM0A20")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One)
+    Name (_DEP, Package (0x1)
     {
         \_SB.GLNK
     })
 
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }
@@ -169,7 +169,7 @@ Device (PDSR)
         \_SB.IPC0
     })
 
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }
@@ -194,7 +194,7 @@ Device (NSP0)
     Name (_HID, "QCOM0AB0")
     Alias (\_SB.PSUB, _SUB)
 
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }
@@ -203,7 +203,7 @@ Device (NSP0)
     {
         Name (RBUF, ResourceTemplate ()
         {
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000262,}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {610}
         })
         Return (RBUF)
     }
@@ -228,7 +228,7 @@ Device (WPSS)
     Name (_HID, "QCOM0AE2")
     Alias (\_SB.PSUB, _SUB)
 
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }
@@ -237,81 +237,12 @@ Device (WPSS)
     {
         Name (RBUF, ResourceTemplate ()
         {
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000026B,}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {619}
         })
         Return (RBUF)
     }
 
-    Device (QWLN)
-    {
-        Name (_ADR, Zero)
-        Name (_DEP, Package (0x03)
-        {
-            \_SB.PEP0,
-            \_SB.MMU0,
-            \_SB.IPC0
-        })
-
-        Name (_PRW, Package (0x02) {Zero, Zero})
-        Name (_S0W, 0x03)
-        Name (_S4W, 0x03)
-        Name (_PRR, Package (One) {\_SB.WPSS.QWLN.WRST})
-
-        Method (_CRS, 0, NotSerialized)
-        {
-            Name (RBUF, ResourceTemplate ()
-            {
-                Memory32Fixed (ReadWrite, 0x17A10040, 0x00000010,)
-                Memory32Fixed (ReadWrite, 0x80C00000, 0x00C00000,)
-
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000320,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000321,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000322,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000323,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000324,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000325,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000326,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000327,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000328,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000329,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000032A,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000032B,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000032C,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000032D,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000032E,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000032F,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000330,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000331,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000332,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000333,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000334,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000335,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000336,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000337,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000338,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x00000339,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000033A,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000033B,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, ExclusiveAndWake, ,, ) {0x0000033C,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000033D,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000033E,}
-                Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {0x0000033F,}
-            })
-            Return (RBUF)
-        }
-
-        PowerResource (WRST, 0x05, 0x0000)
-        {
-            Method (_STA, 0, NotSerialized)
-            {
-                Return (0x0F)
-            }
-
-            Method (_ON, 0, NotSerialized) {}
-            Method (_OFF, 0, NotSerialized) {}
-            Method (_RST, 0, NotSerialized) {}
-        }
-    }
+    Include("wcnss_wlan.asl")
 
     Scope (\_SB)
     {
@@ -354,12 +285,12 @@ Device (TFTP)
 {
     Name (_HID, "QCOM06DC")
     Alias (\_SB.PSUB, _SUB)
-    Name (_DEP, Package (One)
+    Name (_DEP, Package (0x01)
     {
         \_SB.IPC0
     })
 
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }
