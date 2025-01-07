@@ -1,7 +1,7 @@
 //
 // HWN LED - Hardware LED notification device
 //
-Name(HWNL, 0)
+Name(HWNL, 0) // Set 0 to disable device
 Device(HWN0)
 {
     Name(_HID, "QCOM0A68")

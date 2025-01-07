@@ -4,7 +4,7 @@
 //
 
 //
-// (bluetooth soc codename here) Bluetooth
+// Qualcomm FastConnect 6700 WCN6750 Bluetooth device
 //
 Device (BTH0)
 {
@@ -47,7 +47,7 @@ Device (BTH0)
         })
         Return (PBUF)
     }
-    Method (_STA, 0, NotSerialized)
+    Method (_STA)
     {
         Return (0x0F)
     }

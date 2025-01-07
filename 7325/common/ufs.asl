@@ -8,7 +8,7 @@ Device (UFS0)
     Alias (\_SB.EMUL, EMUL)
     Name (_UID, 0)
     Name (_CCA, 0)
-    Name (_DEP, Package (0x1)
+    Name (_DEP, Package()
     {
         \_SB.PEP0
     })

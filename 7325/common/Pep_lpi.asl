@@ -5,12 +5,12 @@
 Device(SYSM) {
     Name(_HID, "ACPI0010")
     Name(_UID, 0x100000)
-
     Name(_LPI, Package() {
-        0, // Version
+        0,         // Version
         0x1000000, // Level ID
-        1, // Count
+        1,         // Count
 
+        // DRIPS State - Xo Shutdown + Cx retention + AOSS Sleep + LLC deactivate
         Package() {
             9500,  // Min residency (us)
             6000,  // Wake latency (us)
@@ -18,9 +18,9 @@ Device(SYSM) {
             32,    // Arch context last flags + 32 For Debugger Transistion by PEP.
             0,     // Residency counter frequency
             0,     // Enabled parent state
-            45824, // Integer entry method
-            Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-            Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+            45824,  // Integer entry method PSCI E3 + F3 + LLC
+            ResourceTemplate(){Register(SystemMemory,0,0,0,0)},	 // Residency counter register
+            ResourceTemplate(){Register(SystemMemory,0,0,0,0)},	 // Usage counter register
             "platform.DRIPS" // Name
         }
     }) // End of _LPI
@@ -29,9 +29,9 @@ Device(SYSM) {
         Name(_HID, "ACPI0010")
         Name(_UID, 0x10)
         Name(_LPI, Package() {
-            0, // Version
+            0,         // Version
             0x1000000, // Level ID
-            2, // Count
+            2,         // Count
 
             // State 0: D2
             Package() {
@@ -42,8 +42,8 @@ Device(SYSM) {
                 0,    // Residency counter frequency
                 0,    // Enabled parent state
                 32,   // Integer entry method
-                Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                ResourceTemplate(){Register(SystemMemory,0,0,0,0)},	 // Residency counter register
+                ResourceTemplate(){Register(SystemMemory,0,0,0,0)},	 // Usage counter register
                 "L3Cluster.D2" // Name
             },
             // State 1: D4
@@ -55,13 +55,13 @@ Device(SYSM) {
                 0,    // Residency counter frequency
                 1,    // Enabled parent state (Till E1)
                 64,   // Integer entry methods
-                Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                ResourceTemplate(){Register(SystemMemory,0,0,0,0)},	// Residency counter register
+                ResourceTemplate(){Register(SystemMemory,0,0,0,0)},	// Usage counter register
                 "L3Cluster.D4" // Name
             }
         }) // End of _LPI
 
-        Device(CPU0) { // Kyro Silver CPU0
+        Device(CPU0) { // Kryo Silver CPU0 < SYSM.CLUS.CPU0
             Name(_HID, "ACPI0007")
             Name(_UID, 0)
             Method(_STA) { Return(0xf) }
@@ -79,9 +79,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x00000000FFFFFFFF, 3)}, // Register entry method <= WFI
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver0.C1" // Name
                 },
                 // C2
@@ -92,10 +92,11 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    "KryoSilver0.C2"
+                    // Register (AddressSpaceKeyword, RegisterBitWidth, RegisterBitOffset, RegisterAddress, AccessSize, DescriptorName)
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x0000000000000002, 3)}, // Register entry method
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
+                    "KryoSilver0.C2" // Name
                 },
                 // C3
                 Package() {
@@ -104,10 +105,10 @@ Device(SYSM) {
                     1,    // Flags, set bit0 to 1 to enable this state
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
-                    1,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    1,    // Enabled parent state (Enables D4)              0x40000003
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000003,3)}, // Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver0.C3" // Name
                 },
                 // C4
@@ -117,16 +118,16 @@ Device(SYSM) {
                     1,    // Flags, set bit0 to 1 to enable this state
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
-                    2,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    2,    // Enabled parent state (Enables D4)              0x40000003
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000004,3)}, // Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver0.C4" // Name
                 }
             }) // End of _LPI
         } // End of CPU0
 
-        Device(CPU1) { // Kyro Silver CPU1
+        Device(CPU1) { // Kyro Silver CPU1 < SYSM.CLUS.CPU1
             Name(_HID, "ACPI0007")
             Name(_UID, 1)
             Method(_STA) { Return(0xf) }
@@ -144,9 +145,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x00000000FFFFFFFF, 3)}, // Register entry method <= WFI
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver1.C1" // Name
                 },
                 // C2
@@ -157,9 +158,10 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    // Register (AddressSpaceKeyword, RegisterBitWidth, RegisterBitOffset, RegisterAddress, AccessSize, DescriptorName)
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x0000000000000002, 3)}, // Register entry method
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver1.C2" // Name
                 },
                 // C3
@@ -170,9 +172,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state (Enables D4)
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000003,3)}, // Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver1.C3" // Name
                 },
                 // C4
@@ -183,15 +185,15 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     2,    // Enabled parent state (Enables LLC)
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000004,3)}, // Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver1.C4" // Name
                 }
             }) // End of _LPI
         } // End of CPU1
 
-        Device(CPU2) { // Kyro Silver CPU2
+        Device(CPU2) { // Kyro Silver CPU2 < SYSM.CLUS.CPU1
             Name(_HID, "ACPI0007")
             Name(_UID, 2)
             Method(_STA) { Return(0xf) }
@@ -209,9 +211,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x00000000FFFFFFFF, 3)}, // Register entry method <= WFI
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver2.C1" // Name
                 },
                 // C2
@@ -222,9 +224,10 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    // Register (AddressSpaceKeyword, RegisterBitWidth, RegisterBitOffset, RegisterAddress, AccessSize, DescriptorName)
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x0000000000000002, 3)}, // Register entry method
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver2.C2" // Name
                 },
                 // C3
@@ -234,10 +237,10 @@ Device(SYSM) {
                     1,    // Flags, set bit0 to 1 to enable this state
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
-                    1,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    1,    // Enabled parent state (Enables D4)
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000003,3)}, // Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver2.C3" // Name
                 },
                 // C4
@@ -248,15 +251,15 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     2,    // Enabled parent state (Enables LLC)
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000004,3)}, // Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver2.C4" // Name
                 }
             }) // End of _LPI
         } // End of CPU2
 
-        Device(CPU3) { // Kyro Silver CPU3
+        Device(CPU3) { // Kyro Silver CPU3 < SYSM.CLUS.CPU3
             Name(_HID, "ACPI0007")
             Name(_UID, 0x3)
             Method(_STA) { Return(0xf) }
@@ -274,9 +277,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x00000000FFFFFFFF, 3)}, // Register entry method <= WFI
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver3.C1" // Name
                 },
                 // C2
@@ -287,9 +290,10 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    // Register (AddressSpaceKeyword, RegisterBitWidth, RegisterBitOffset, RegisterAddress, AccessSize, DescriptorName)
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x0000000000000002, 3)}, // Register entry method
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver3.C2" // Name
                 },
                 // C3
@@ -300,9 +304,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state (Enables D4)
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000003,3)}, // Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver3.C3" // Name
                 },
                 // C4
@@ -313,15 +317,15 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     2,    // Enabled parent state (Enables LLC)
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000004,3)}, // Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},		// Usage counter register
                     "KryoSilver3.C4" // Name
                 }
             }) // End of _LPI
         } // End of CPU3
 
-        Device(CPU4) { // Kyro Gold CPU0
+        Device(CPU4) { // Kryo Gold CPU0 < SYSM.CLUS.CPU4
             Name(_HID, "ACPI0007")
             Name(_UID, 0x4)
             Method(_STA) { Return(0xf) }
@@ -339,9 +343,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x00000000FFFFFFFF, 3)}, // Register entry method <= WFI
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Usage counter register
                     "KryoGold0.C1" // Name
                 },
                 // C2
@@ -352,9 +356,10 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    // Register (AddressSpaceKeyword, RegisterBitWidth, RegisterBitOffset, RegisterAddress, AccessSize, DescriptorName)
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x0000000000000002, 3)},  // Register entry method
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						 // Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						 // Usage counter register
                     "KryoGold0.C2" // Name
                 },
                 // C3
@@ -365,9 +370,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state (Enables D4)
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000003,3)}, // Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},					  // Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},				  	  // Usage counter register
                     "KryoGold0.C3" // Name
                 },
                 // C4
@@ -378,15 +383,15 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     2,    // Enabled parent state (Enables LLC)
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000004,3)}, 	// Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Usage counter register
                     "KryoGold0.C4" // Name
                 }
             }) // End of _LPI
         } // End of CPU4
 
-        Device(CPU5) { // Kyro Gold CPU1
+        Device(CPU5) { // Kryo Gold CPU1 < SYSM.CLUS.CPU5
             Name(_HID, "ACPI0007")
             Name(_UID, 0x5)
             Method(_STA) { Return(0xf) }
@@ -404,9 +409,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x00000000FFFFFFFF, 3)}, // Register entry method <= WFI
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Usage counter register
                     "KryoGold1.C1" // Name
                 },
                 // C2
@@ -417,9 +422,10 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    // Register (AddressSpaceKeyword, RegisterBitWidth, RegisterBitOffset, RegisterAddress, AccessSize, DescriptorName)
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x0000000000000002, 3)},  // Register entry method
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						 // Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						 // Usage counter register
                     "KryoGold1.C2" // Name
                 },
                 // C3
@@ -430,9 +436,9 @@ Device(SYSM) {
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000003,3)}, // Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},					  // Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},				  	  // Usage counter register
                     "KryoGold1.C3" // Name
                 },
                 // C4
@@ -442,16 +448,16 @@ Device(SYSM) {
                     1,    // Flags, set bit0 to 1 to enable this state
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
-                    2,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    2,    // Enabled parent state (Enables D4)   0x40000003
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000004,3)}, 	// Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Usage counter register
                     "KryoGold1.C4" // Name
                 }
             }) // End of _LPI
         } // End of CPU5
 
-        Device(CPU6) { // Kryo Gold CPU2
+        Device(CPU6) { // Kryo Gold CPU2 < SYSM.CLUS.CPU6
             Name(_HID, "ACPI0007")
             Name(_UID, 0x6)
             Method(_STA) { Return(0xf) }
@@ -469,10 +475,10 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    "KryoGold2.C1"
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x00000000FFFFFFFF, 3)}, // Register entry method <= WFI
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Usage counter register
+                    "KryoGold2.C1" // Name
                 },
                 // C2
                 Package() {
@@ -482,9 +488,10 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    // Register (AddressSpaceKeyword, RegisterBitWidth, RegisterBitOffset, RegisterAddress, AccessSize, DescriptorName)
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x0000000000000002, 3)},  // Register entry method
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						 // Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						 // Usage counter register
                     "KryoGold2.C2" // Name
                 },
                 // C3
@@ -494,10 +501,10 @@ Device(SYSM) {
                     1,    // Flags, set bit0 to 1 to enable this state
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
-                    1,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    1,    // Enabled parent state (Enables D4)  0x40000003
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000003,3)}, // Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},					  // Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},				  	  // Usage counter register
                     "KryoGold2.C3" // Name
                 },
                 // C4
@@ -507,16 +514,16 @@ Device(SYSM) {
                     1,    // Flags, set bit0 to 1 to enable this state
                     1,    // Arch context last flags
                     0,    // Residency counter frequency
-                    2,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    2,    // Enabled parent state (Enables D4)  0x40000004
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000004,3)}, 	// Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Usage counter register
                     "KryoGold2.C4" // Name
                 }
             }) // End of _LPI
         } // End of CPU6
 
-        Device(CPU7) { // Kryo Prime CPU3
+        Device(CPU7) { // Kryo Prime CPU0 < SYSM.CLUS.CPU7
             Name(_HID, "ACPI0007")
             Name(_UID, 0x7)
             Method(_STA) { Return(0xf) }
@@ -534,9 +541,9 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     0,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 255, 255, 255, 255, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x00000000FFFFFFFF, 3)}, // Register entry method <= WFI
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Usage counter register
                     "KryoPrime0.C1" // Name
                 },
                 // C2
@@ -547,9 +554,10 @@ Device(SYSM) {
                     0,    // Arch context last flags
                     0,    // Residency counter frequency
                     1,    // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    // Register (AddressSpaceKeyword, RegisterBitWidth, RegisterBitOffset, RegisterAddress, AccessSize, DescriptorName)
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0, 0x0000000000000002, 3)},  // Register entry method
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						 // Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						 // Usage counter register
                     "KryoPrime0.C2" // Name
                 },
                 // C3
@@ -559,10 +567,10 @@ Device(SYSM) {
                     1,     // Flags, set bit0 to 1 to enable this state
                     1,     // Arch context last flags
                     0,     // Residency counter frequency
-                    1,     // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 3, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    1,     // Enabled parent state (Enables D4)  0x40000003
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000003,3)}, // Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},					  // Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},				  	  // Usage counter register
                     "KryoPrime0.C3" // Name
                 },
                 // C4
@@ -572,10 +580,10 @@ Device(SYSM) {
                     1,      // Flags, set bit0 to 1 to enable this state
                     1,      // Arch context last flags
                     0,      // Residency counter frequency
-                    2,      // Enabled parent state
-                    Buffer() {130, 12, 0, 127, 32, 0, 3, 4, 0, 0, 64, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
-                    Buffer() {130, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 0},
+                    2,      // Enabled parent state (Enables D4)  0x40000004
+                    ResourceTemplate(){Register(FFixedHW, 0x20, 0,0x0000000040000004,3)}, 	// Core collapse.
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Residency counter register
+                    ResourceTemplate(){Register(SystemMemory,0,0,0,0)},						// Usage counter register
                     "KryoPrime0.C4" // Name
                 }
             }) // End of _LPI

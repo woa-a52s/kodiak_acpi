@@ -26,7 +26,7 @@ Device (BTNS)
         Return (RBUF)
     }
 
-    Name (_DSD, Package (2)
+    Name (_DSD, Package()
     {
         ToUUID ("fa6bd625-9ce8-470d-a2c7-b3ca36c4282e"),
         Package()

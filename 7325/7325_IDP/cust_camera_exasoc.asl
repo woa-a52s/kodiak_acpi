@@ -24,6 +24,18 @@ Device (CAMP)
     Name (_HID, "QCOM0A32")
     Name (_UID, 27)
 
+    Method(_SUB, 0x0, NotSerialized)
+    {
+        If(LEqual(\_SB_.SKUV, 1))
+        {
+            Return("IDP07280")
+        }
+        Else
+        {
+            Return("IDP17280")
+        }
+    }
+
     Method (_STA)
     {
         Return (0x0F)
@@ -231,7 +243,7 @@ Device (CAMI)
 }
 
 //
-// ??? Sensor
+// Tele Sensor Device
 //
 Device (CAMT)
 {
@@ -287,7 +299,7 @@ Device (CAMT)
 }
 
 //
-// ??? Sensor
+// Ultrawide Sensor Device
 //
 Device (CAMU)
 {

@@ -31,17 +31,17 @@ Device (MPCS)
     {
         Name (RBUF, ResourceTemplate ()
         {
-            Memory32Fixed (ReadWrite, 0x0ACE0000, 0x00002000)                              // PHY 0 memory
-            Memory32Fixed (ReadWrite, 0x0ACE2000, 0x00002000)                              // PHY 1 memory
-            Memory32Fixed (ReadWrite, 0x0ACE4000, 0x00002000)                              // PHY 2 memory
-            Memory32Fixed (ReadWrite, 0x0ACE6000, 0x00002000)                              // PHY 3 memory
-            Memory32Fixed (ReadWrite, 0x0ACE8000, 0x00002000)                              // PHY 4 memory
+            Memory32Fixed (ReadWrite, 0x0ACE0000, 0x00002000)    // PHY 0 memory
+            Memory32Fixed (ReadWrite, 0x0ACE2000, 0x00002000)    // PHY 1 memory
+            Memory32Fixed (ReadWrite, 0x0ACE4000, 0x00002000)    // PHY 2 memory
+            Memory32Fixed (ReadWrite, 0x0ACE6000, 0x00002000)    // PHY 3 memory
+            Memory32Fixed (ReadWrite, 0x0ACE8000, 0x00002000)    // PHY 4 memory
 
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {509}    // PHY 0 interrupt, csiphy_0_irq
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {510}    // PHY 1 interrupt, csiphy_0_irq
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {511}    // PHY 2 interrupt, csiphy_0_irq
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {480}    // PHY 3 interrupt, csiphy_0_irq
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {154}    // PHY 4 interrupt, csiphy_0_irq
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {509}    // PHY 0 interrupt, csiphy_0_irq
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {510}    // PHY 1 interrupt, csiphy_0_irq
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {511}    // PHY 2 interrupt, csiphy_0_irq
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {480}    // PHY 3 interrupt, csiphy_0_irq
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {154}    // PHY 4 interrupt, csiphy_0_irq
         })
 
         Return (RBUF)
@@ -79,18 +79,18 @@ Device (JPGE)
     {
         Name (RBUF, ResourceTemplate ()
         {
-            Memory32Fixed (ReadWrite, 0x0AC4E000, 0x00004000, )
-            Memory32Fixed (ReadWrite, 0x0AC52000, 0x00004000, )
+            Memory32Fixed (ReadWrite, 0x0AC4E000, 0x00004000)
+            Memory32Fixed (ReadWrite, 0x0AC52000, 0x00004000)
 
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) { 506 }
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) { 507 }
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {506}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {507}
         })
         Return (RBUF)
     }
 }
 
 //
-// VFE
+// VFE - Spectra 395 ISP Camera Device
 //
 Device (VFE0)
 {
@@ -133,10 +133,10 @@ Device (VFE0)
             Memory32Fixed (ReadWrite, 0x0AC6B000, 0x00001000)
 
             //
-            Memory32Fixed (ReadOnly, 0x0AC6F000, 0x00008000)
+            Memory32Fixed (ReadOnly,  0x0AC6F000, 0x00008000)
 
             //
-            Memory32Fixed (ReadOnly, 0x0AC87000, 0x0000A000)
+            Memory32Fixed (ReadOnly,  0x0AC87000, 0x0000A000)
             //
             Memory32Fixed (ReadWrite, 0x0ACC4000, 0x00005000)
 
@@ -148,52 +148,52 @@ Device (VFE0)
 
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {493}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {493}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {494}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {494}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {483}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {483}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {409}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {409}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {495}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {495}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {497}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {497}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {499}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {499}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {673}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {673}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {501}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {501}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {392}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {392}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {508}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {508}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {496}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {496}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {498}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {498}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {672}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {672}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {500}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {500}
 
             //
-            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, ) {391}
+            Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, , , ) {391}
 
         })
         Return (RBUF)

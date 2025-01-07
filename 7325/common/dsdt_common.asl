@@ -2,7 +2,7 @@
 //
 //
 Name(SOID, 0xffffffff)          // Holds the Chip Id
-Name(STOR, 0xabcabcab)
+Name(STOR, 0xabcabcab)          // Holds boot options 0 = nvme, 1 = ufs
 Name(SIDS, "899800000000000")   // Holds the Chip ID translated to a string
 Name(SIDV, 0xffffffff)          // Holds the Chip Version as (major<<16)|(minor&0xffff)
 Name(SVMJ, 0xffff)              // Holds the major Chip Version
@@ -10,31 +10,32 @@ Name(SVMI, 0xffff)              // Holds the minor Chip Version
 Name(SDFE, 0xffff)              // Holds the Chip Family enum
 Name(SFES, "899800000000000")   // Holds the Chip Family translated to a string
 Name(SIDM, 0xfffffffff)         // Holds the Modem Support bit field
-Name(SUFS, 0xffffffff)
-Name(PUS3, 0xffffffff)
-Name(SUS3, 0xffffffff)
-Name(SIDT, 0xffffffff)
-Name(SJTG, 0xffffffff)
-Name(SOSN, 0xaaaaaaaabbbbbbbb)
-Name(PLST, 0xffffffff)
-Name(EMUL, 0xffffffff)
-Name(RMTB, 0xaaaaaaaa)
-Name(RMTX, 0xbbbbbbbb)
-Name(RFMB, 0xcccccccc)
-Name(RFMS, 0xdddddddd)
-Name(RFAB, 0xeeeeeeee)
-Name(RFAS, 0x77777777)
+Name(SUFS, 0xffffffff)          // Holds secondary UFS enablement (1 = enabled)
+Name(PUS3, 0xffffffff)          // Holds whether primary UFS has 3.0 part (1 = UFS 3.0 and newer)
+Name(SUS3, 0xffffffff)          // Holds whether secondary UFS has 3.0 part (1 = UFS 3.0 and newer)
+Name(SIDT, 0xffffffff)          // Holds the Chip Tier value
+Name(SJTG, 0xffffffff)          // Holds the JTAG ID
+Name(SOSN, 0xaaaaaaaabbbbbbbb)  // Holds the Chip Serial Number
+Name(PLST, 0xffffffff)          // Holds the Device platform subtype
+Name(EMUL, 0xffffffff)          // Holds the Device emulation type
+Name(RMTB, 0xaaaaaaaa)          // Holds the RemoteFS shared memory base address
+Name(RMTX, 0xbbbbbbbb)          // Holds the RemoteFS shared memory length
+Name(RFMB, 0xcccccccc)          // Holds the RFSA MPSS shared memory base address
+Name(RFMS, 0xdddddddd)          // Holds the RFSA MPSS shared memory length
+Name(RFAB, 0xeeeeeeee)          // Holds the RFSA ADSP shared memory base address
+Name(RFAS, 0x77777777)          // Holds the RFSA ADSP shared memory length
 Name(TCMA, 0xdeadbeef)          // Holds TrEE Carveout Memory Address
 Name(TCML, 0xbeefdead)          // Holds TrEE Carveout Memory Length
 Name(SOSI, 0xdeadbeefffffffff)  // Holds the base address of the SoCInfo shared memory region used by ChipInfoLib
-Name(PRP1, 0xffffffff)
-Name(SKUV, 0xffffffff)
+Name(PRP1, 0xffffffff)          // 0xFFFFFFFF - PCIe state unknown : 0x00000001 - PCIe root port 1 present : 0x00000000 - PCIe root port 1 not present
+Name(SKUV, 0xffffffff)          // SKU Version. On IDP kodiak platforms set to 1
 Name(SDDR, 0xffffffff)
 
 //
 // Storage - UFS/SD
 //
 Include("ufs.asl")
+Include("emmc.asl")
 Include("sdc.asl")
 
 //
@@ -84,8 +85,11 @@ Include("spmi.asl")
 //
 // TLMM controller.
 //
-Include("gpio.asl")
+Include("qcgpio.asl")
 
+//
+// Inter Processor Communication Device
+//
 Device(IPCC)
 {
     Name(_HID, "QCOM06C2")
@@ -118,7 +122,7 @@ Include("rfs.asl")
 Include("ipa.asl")
 
 //
-//Qualcomm DIAG Service
+// Qualcomm DIAG Service
 //
 Device(QDIG)
 {
@@ -131,6 +135,10 @@ Device(QDIG)
 }
 
 Include("ssm.asl")
+
+//
+// Clusters & cores
+//
 Include("Pep_lpi.asl")
 
 //
@@ -157,6 +165,9 @@ Include("qgpi.asl")
 
 Include("qwpp.asl")
 
+//
+// SOC Partition Interface Device
+//
 Device(SOCP)
 {
     Name(_HID, "QCOM06DD")

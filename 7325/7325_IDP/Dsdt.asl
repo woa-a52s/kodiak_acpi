@@ -9,9 +9,10 @@ DefinitionBlock("DSDT.aml", "DSDT", 0x02, "QCOMM ", "SDM7280 ", 3)
         Include("dsdt_common.asl")
 
         //
-        // Hardware Notifications 0
+        // Hardware LED notification device
         //
         Include("cust_hwn0.asl")
+
         Include("cust_camera.asl")
         Include("cust_sensors.asl")
         Include("usb.asl")
@@ -20,7 +21,7 @@ DefinitionBlock("DSDT.aml", "DSDT", 0x02, "QCOMM ", "SDM7280 ", 3)
         Include("cust_thermal_zones.asl")
 
         //
-        // Hardware Notifications 1
+        // Hardware Haptics device
         //
         Include("cust_hwn1.asl")
 
@@ -34,11 +35,18 @@ DefinitionBlock("DSDT.aml", "DSDT", 0x02, "QCOMM ", "SDM7280 ", 3)
         //
         Include("cust_arraybutton.asl")
 
+        //
+        // 5GNR Coexistence Manager Modem Driver
+        //
         Device(NRCX)
         {
             Name(_HID, "QCOM0AD6")
             Alias(\_SB_.PSUB, _SUB)
         }
+
+        //
+        // AutoReg Driver
+        //
         Device(PSAU)
         {
             Name(_HID, "QCOM0AE1")
@@ -46,30 +54,22 @@ DefinitionBlock("DSDT.aml", "DSDT", 0x02, "QCOMM ", "SDM7280 ", 3)
         }
         Scope(\_SB_.NRCX)
         {
-            Method(_STA, 0x0, NotSerialized)
+            // Load component, version check (SKUV) has been disabled
+            Method(_STA)
             {
-                If(LOr(LOr(LEqual(\_SB_.SKUV, 0x4), LEqual(\_SB_.SKUV, 0x6)), LEqual(\_SB_.SKUV, 0x7)))
-                {
-                    Return(0)
-                }
-                Else
-                {
-                    Return(0xf)
-                }
+                // If(LOr(LOr(LEqual(\_SB_.SKUV, 0x4), LEqual(\_SB_.SKUV, 0x6)), LEqual(\_SB_.SKUV, 0x7))) { Return(0) }
+                // Else {
+                Return(0xf) //}
             }
         }
         Scope(\_SB_.PSAU)
         {
-            Method(_STA, 0x0, NotSerialized)
+            // Load component, version check (SKUV) has been disabled
+            Method(_STA)
             {
-                If(LOr(LOr(LEqual(\_SB_.SKUV, 0x4), LEqual(\_SB_.SKUV, 0x6)), LEqual(\_SB_.SKUV, 0x7)))
-                {
-                    Return(0)
-                }
-                Else
-                {
-                    Return(0xf)
-                }
+                // If(LOr(LOr(LEqual(\_SB_.SKUV, 0x4), LEqual(\_SB_.SKUV, 0x6)), LEqual(\_SB_.SKUV, 0x7))) { Return(0) }
+                // Else {
+                Return(0xf) //}
             }
         }
 

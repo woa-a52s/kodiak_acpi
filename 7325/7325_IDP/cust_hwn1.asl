@@ -1,7 +1,7 @@
 //
 // HWN Haptics - Hardware Haptics device
 //
-Name (HWNH, 0)
+Name (HWNH, 0) // Set 0 to disable device
 Device (HWN1)
 {
     Name (_HID, "QCOM0A69")
@@ -14,7 +14,7 @@ Device (HWN1)
             Return (0)
         }
         Else {
-            Return (0x1)
+            Return (0x0F)
         }
     }
 

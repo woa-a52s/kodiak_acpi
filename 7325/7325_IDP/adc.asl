@@ -42,8 +42,8 @@ Device(ADC1)
         Name(INTB, ResourceTemplate ()
         {
 
-            GpioInt(Edge, ActiveHigh, ExclusiveAndWake, PullUp, 0, "\\_SB.PM01", 0, ResourceConsumer, , RawDataBuffer (0x1){0x2}) {32}
-            GpioInt(Edge, ActiveHigh, ExclusiveAndWake, PullUp, 0, "\\_SB.PM01", 0, ResourceConsumer, , RawDataBuffer (0x1){0x2}) {40}
+            GpioInt(Edge, ActiveHigh, ExclusiveAndWake, PullUp, 0, "\\_SB.PM01", 0, ResourceConsumer, , RawDataBuffer(){0x2}) {32}
+            GpioInt(Edge, ActiveHigh, ExclusiveAndWake, PullUp, 0, "\\_SB.PM01", 0, ResourceConsumer, , RawDataBuffer(){0x2}) {40}
         })
 
         /*
