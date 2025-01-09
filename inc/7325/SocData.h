@@ -52,10 +52,10 @@ typedef struct _SMMUNODE_APPSTCU{
 .Reserved	=	0x0,		\
 .SmmuFlags	=	0x1,		\
 .BaseAddress	=	0x15000000,		\
-.PowerPhyAddress	=	0x0017C054,		\
-.PowerCtrlBmsk	=	0x1,		\
-.PowerCtrlPollBmsk	=	0x80000000,		\
-.ClkPhyAddress	=	0x0017C028,		\
+.PowerPhyAddress	=	0x0,		\
+.PowerCtrlBmsk	=	0x0,		\
+.PowerCtrlPollBmsk	=	0x0,		\
+.ClkPhyAddress	=	0x0017c02c,		\
 .ClkCtrlBmsk	=	0x1,		\
 .ClkCtrlPollBmsk	=	0x80000000,		\
 .HaltPhyAddress	=	0x0,		\
@@ -64,53 +64,53 @@ typedef struct _SMMUNODE_APPSTCU{
 .NumImplDefinedRegisters	=	0,		\
 .ImplDefinedRegistersEntrySize	=	16,		\
 .ImplDefinedRegistersOffset	=	0x0,		\
-.NumSIDMappingsMax	=	252,		\
+.NumSIDMappingsMax	=	510,		\
 .SIDMappingsEntrySize	=	10,		\
-.NumSIDMappingsValid	=	120,		\
+.NumSIDMappingsValid	=	224,		\
 .SIDMappingsOffset	=	offsetof(SMMUNODE_APPSTCU,SIDMappings),		\
 .SIDMappings	={		\
     {		\
-        .SIDBase	=	0x0016,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x0003,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x0005,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0x16,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x0004,		\
+        .SIDBase	=	0x0400,		\
         .SIDFlags	=	0,		\
         .Count	=	1,		\
         .SIDType	=	3,		\
-        .Vmid	=	0xF,		\
+        .Vmid	=	0,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x040,		\
+        .SIDBase	=	0x0401,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	3,		\
+        .Vmid	=	0,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x0402,		\
         .SIDFlags	=	0,		\
         .Count	=	2,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
+        .SIDType	=	3,		\
+        .Vmid	=	0,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x042,		\
+        .SIDBase	=	0x0800,		\
+        .SIDFlags	=	0x1C,		\
+        .Count	=	1,		\
+        .SIDType	=	3,		\
+        .Vmid	=	0,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x0801,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	0,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x0820,		\
         .SIDFlags	=	0,		\
         .Count	=	1,		\
         .SIDType	=	1,		\
