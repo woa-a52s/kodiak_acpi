@@ -19,25 +19,25 @@ SET ASL_EXECUTABLE=/home/arminas/Documents/kodiak_acpi/bin/asl.exe
 
 2. To build DSDT only:
 ```
-.\build_acpi.bat -p 7325 -d QRD
+.\build_acpi.bat -p 7325 -d qrd7325
 ```
 
 3. To only build AeoB files:
 ```
-.\build_acpi.bat -p 7325 -d QRD -aeob
+.\build_acpi.bat -p 7325 -d qrd7325 -aeob
 ```
 
 4. To build ACPI tables (DSDT and other SoC tables):
 ```
-.\build_acpi.bat -p 7325 -d QRD -acpi
+.\build_acpi.bat -p 7325 -d qrd7325 -acpi
 ```
 
 5. To build everything (DSDT, AeoB, SoC ACPI):
 ```
-.\build_acpi.bat -p 7325 -d QRD -all
+.\build_acpi.bat -p 7325 -d qrd7325 -all
 ```
 
  - This project can also be built on Linux OS using Wine. Just pass the `wine` command before `build_acpi.bat`:
  ```
- wine build_acpi.bat -p 7325 -d QRD
+ wine build_acpi.bat -p 7325 -d qrd7325
  ```
