@@ -43,7 +43,7 @@ typedef struct _SMMUNODE_APPSTCU{
     UINT32 SIDMappingsEntrySize;
     UINT32 NumSIDMappingsValid;
     UINT32 SIDMappingsOffset;
-    SIDMAPPING SIDMappings[252];
+    SIDMAPPING SIDMappings[510];
 }SMMUNODE_APPSTCU;
 
 #define SMMUNODE_APPSTCU_VAR  {		\
@@ -70,7 +70,7 @@ typedef struct _SMMUNODE_APPSTCU{
 .SIDMappingsOffset	=	offsetof(SMMUNODE_APPSTCU,SIDMappings),		\
 .SIDMappings	={		\
     {		\
-        .SIDBase	=	0x0400,		\
+        .SIDBase	=	0x400,		\
         .SIDFlags	=	0,		\
         .Count	=	1,		\
         .SIDType	=	3,		\
@@ -78,7 +78,7 @@ typedef struct _SMMUNODE_APPSTCU{
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x0401,		\
+        .SIDBase	=	0x401,		\
         .SIDFlags	=	0,		\
         .Count	=	1,		\
         .SIDType	=	3,		\
@@ -86,7 +86,7 @@ typedef struct _SMMUNODE_APPSTCU{
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x0402,		\
+        .SIDBase	=	0x402,		\
         .SIDFlags	=	0,		\
         .Count	=	2,		\
         .SIDType	=	3,		\
@@ -94,41 +94,1513 @@ typedef struct _SMMUNODE_APPSTCU{
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x0800,		\
+        .SIDBase	=	0x800,		\
         .SIDFlags	=	0x1C,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x801,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x820,		\
+        .SIDFlags	=	0x1C,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	0x3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x821,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	0xD,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x840,		\
+        .SIDFlags	=	0x1C,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x841,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x860,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x861,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x880,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x881,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x8A0,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x8A1,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x8C0,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x8C1,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x8E0,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x8E1,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xC00,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xC01,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xC20,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xC21,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xC40,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xC41,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xC60,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xC61,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xC80,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xC81,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xCA0,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xCA1,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xCC0,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xCC1,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xCE0,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xCE1,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2000,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2001,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2020,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2021,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2040,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2041,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2062,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2080,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2081,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x20A0,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x20A1,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x20C0,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x20E0,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2100,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2101,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2120,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2121,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2140,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2141,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	13,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x440,		\
+        .SIDFlags	=	0,		\
         .Count	=	1,		\
         .SIDType	=	3,		\
         .Vmid	=	0,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x0801,		\
+        .SIDBase	=	0x420,		\
         .SIDFlags	=	0,		\
         .Count	=	1,		\
-        .SIDType	=	1,		\
+        .SIDType	=	3,		\
         .Vmid	=	0,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x0820,		\
+        .SIDBase	=	0x4E4,		\
         .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0x19,		\
+        .Count	=	2,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x043,		\
+        .SIDBase	=	0x4E6,		\
         .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0x18,		\
+        .Count	=	2,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0xA0,		\
+        .SIDBase	=	0x4EA,		\
         .SIDFlags	=	0,		\
-        .Count	=	16,		\
+        .Count	=	2,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x4F2,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x4F3,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	9,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x4F4,		\
+        .SIDFlags	=	0,		\
+        .Count	=	2,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x4F6,		\
+        .SIDFlags	=	0,		\
+        .Count	=	2,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x4F8,		\
+        .SIDFlags	=	0,		\
+        .Count	=	2,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x4FA,		\
+        .SIDFlags	=	0,		\
+        .Count	=	2,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x4FC,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	9,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x4FD,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	9,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x4FE,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	9,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x4FF,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x900,		\
+        .SIDFlags	=	30,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x901,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	10,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x902,		\
+        .SIDFlags	=	30,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x903,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	17,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xD00,		\
+        .SIDFlags	=	30,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xD01,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	10,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xD02,		\
+        .SIDFlags	=	30,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0xD03,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	17,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x0,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x480,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x481,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x482,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x483,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x484,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x488,		\
+        .SIDFlags	=	0,		\
+        .Count	=	8,		\
+        .SIDType	=	3,		\
+        .Vmid	=	0,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1820,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1821,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1822,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1825,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1826,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1827,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1828,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1829,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x182a,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x182b,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x182c,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1832,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1833,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1834,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1800,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	6,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1801,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1802,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	48,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1803,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1804,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1805,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1806,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1807,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x180F,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1860,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1861,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1862,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1863,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1864,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1868,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1869,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1840,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1848,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1849,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x184A,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x184B,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x184C,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x184D,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1181,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1182,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1183,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1184,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1185,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1186,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1187,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1188,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1189,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	10,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x118B,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x118C,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x118D,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x118E,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x118F,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11A0,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	30,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11A1,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11A2,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11A3,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11A4,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11A5,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11A6,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11A7,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11A8,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11A9,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	10,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11AA,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	42,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11AB,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11AC,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11AD,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11AE,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x11AF,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1581,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1582,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1583,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1584,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1585,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1586,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1587,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1588,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1589,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	10,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x158B,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x158C,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x158D,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x158E,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x158F,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15A0,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	30,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15A1,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15A2,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15A3,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15A4,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15A5,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15A6,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15A7,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15A8,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15A9,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	10,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15AA,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	42,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15AB,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15AC,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15AD,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15AE,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x15AF,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x4A0,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x4C0,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x123,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x124,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	3,		\
+        .Vmid	=	0,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x125,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x136,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x43,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x44,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	3,		\
+        .Vmid	=	0,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x45,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	22,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x56,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
         .SIDType	=	1,		\
         .Vmid	=	3,		\
         .CBIndex	=	0,		\
@@ -136,23 +1608,7 @@ typedef struct _SMMUNODE_APPSTCU{
     {		\
         .SIDBase	=	0xC0,		\
         .SIDFlags	=	0,		\
-        .Count	=	16,		\
-        .SIDType	=	1,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x20,		\
-        .SIDFlags	=	0,		\
-        .Count	=	16,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0xE0,		\
-        .SIDFlags	=	0,		\
-        .Count	=	16,		\
+        .Count	=	1,		\
         .SIDType	=	1,		\
         .Vmid	=	3,		\
         .CBIndex	=	0,		\
@@ -160,7 +1616,15 @@ typedef struct _SMMUNODE_APPSTCU{
     {		\
         .SIDBase	=	0x100,		\
         .SIDFlags	=	0,		\
-        .Count	=	16,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x60,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
         .SIDType	=	1,		\
         .Vmid	=	3,		\
         .CBIndex	=	0,		\
@@ -169,36 +1633,12 @@ typedef struct _SMMUNODE_APPSTCU{
         .SIDBase	=	0x460,		\
         .SIDFlags	=	0,		\
         .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x6C3,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x6C4,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
         .SIDType	=	3,		\
         .Vmid	=	0,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x6C5,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0x16,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x6D6,		\
+        .SIDBase	=	0x80,		\
         .SIDFlags	=	0,		\
         .Count	=	1,		\
         .SIDType	=	1,		\
@@ -206,810 +1646,130 @@ typedef struct _SMMUNODE_APPSTCU{
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x6EB,		\
+        .SIDBase	=	0xA0,		\
         .SIDFlags	=	0,		\
         .Count	=	1,		\
         .SIDType	=	1,		\
-        .Vmid	=	5,		\
+        .Vmid	=	3,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x6E3,		\
+        .SIDBase	=	0xE0,		\
         .SIDFlags	=	0,		\
         .Count	=	1,		\
-        .SIDType	=	2,		\
+        .SIDType	=	1,		\
         .Vmid	=	3,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x700,		\
-        .SIDFlags	=	0,		\
-        .Count	=	4,		\
-        .SIDType	=	1,		\
-        .Vmid	=	1,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x704,		\
-        .SIDFlags	=	0,		\
-        .Count	=	4,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x708,		\
-        .SIDFlags	=	0,		\
-        .Count	=	2,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x70A,		\
-        .SIDFlags	=	0,		\
-        .Count	=	2,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0x16,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x70C,		\
-        .SIDFlags	=	0,		\
-        .Count	=	6,		\
-        .SIDType	=	1,		\
-        .Vmid	=	1,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x712,		\
-        .SIDFlags	=	0,		\
+        .SIDBase	=	0x2180,		\
+        .SIDFlags	=	28,		\
         .Count	=	1,		\
         .SIDType	=	2,		\
         .Vmid	=	3,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x713,		\
-        .SIDFlags	=	0,		\
+        .SIDBase	=	0x2181,		\
+        .SIDFlags	=	28,		\
         .Count	=	1,		\
         .SIDType	=	2,		\
         .Vmid	=	9,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x714,		\
-        .SIDFlags	=	0,		\
-        .Count	=	4,		\
+        .SIDBase	=	0x2183,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
         .SIDType	=	2,		\
-        .Vmid	=	3,		\
+        .Vmid	=	10,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x718,		\
-        .SIDFlags	=	0,		\
-        .Count	=	2,		\
+        .SIDBase	=	0x2184,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
         .SIDType	=	2,		\
-        .Vmid	=	3,		\
+        .Vmid	=	11,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x71A,		\
-        .SIDFlags	=	0,		\
-        .Count	=	2,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0x16,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x71C,		\
-        .SIDFlags	=	0,		\
-        .Count	=	2,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x71E,		\
-        .SIDFlags	=	0,		\
+        .SIDBase	=	0x2185,		\
+        .SIDFlags	=	28,		\
         .Count	=	1,		\
         .SIDType	=	2,		\
         .Vmid	=	9,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x71F,		\
-        .SIDFlags	=	0,		\
+        .SIDBase	=	0x21A0,		\
+        .SIDFlags	=	28,		\
         .Count	=	1,		\
         .SIDType	=	2,		\
         .Vmid	=	3,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x720,		\
+        .SIDBase	=	0x21A2,		\
         .SIDFlags	=	0,		\
-        .Count	=	3,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	12,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x21A4,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	11,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x2187,		\
+        .SIDFlags	=	28,		\
+        .Count	=	1,		\
         .SIDType	=	2,		\
         .Vmid	=	3,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x724,		\
-        .SIDFlags	=	0,		\
-        .Count	=	3,		\
-        .SIDType	=	3,		\
-        .Vmid	=	0xF,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x740,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x760,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x780,		\
+        .SIDBase	=	0x1C00,		\
         .SIDFlags	=	0,		\
         .Count	=	2,		\
-        .SIDType	=	3,		\
-        .Vmid	=	0xF,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x7A0,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	5,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x7A1,		\
-        .SIDFlags	=	0,		\
-        .Count	=	3,		\
         .SIDType	=	2,		\
         .Vmid	=	3,		\
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x7C0,		\
+        .SIDBase	=	0x1C02,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	25,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1C03,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	24,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1C04,		\
+        .SIDFlags	=	0,		\
+        .Count	=	4,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1C08,		\
         .SIDFlags	=	0,		\
         .Count	=	8,		\
         .SIDType	=	1,		\
-        .Vmid	=	0x1A,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1401,		\
-        .SIDFlags	=	0,		\
-        .Count	=	6,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1409,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x140A,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	9,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1411,		\
-        .SIDFlags	=	0,		\
-        .Count	=	6,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1419,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x141A,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	9,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1420,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0x1E,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1421,		\
-        .SIDFlags	=	0,		\
-        .Count	=	6,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1429,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x142A,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	9,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1820,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	6,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1821,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1823,		\
-        .SIDFlags	=	0,		\
-        .Count	=	3,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x182C,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1800,		\
-        .SIDFlags	=	0,		\
-        .Count	=	6,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0x16,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1806,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1807,		\
-        .SIDFlags	=	0,		\
-        .Count	=	6,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0x16,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x180D,		\
-        .SIDFlags	=	0,		\
-        .Count	=	5,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1812,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0x16,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1813,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1814,		\
-        .SIDFlags	=	0,		\
-        .Count	=	7,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0x16,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x880,		\
-        .SIDFlags	=	0x1E,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x881,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x888,		\
-        .SIDFlags	=	0x1E,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x889,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x808,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x809,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x810,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x811,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x818,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x819,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0xC80,		\
-        .SIDFlags	=	0x1E,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0xC81,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0xC88,		\
-        .SIDFlags	=	0x1E,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0xC89,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0xc08,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0xc09,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0xc10,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0xc11,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0xc18,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0xc19,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1090,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1091,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x10A0,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x10A1,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	9,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x10A3,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	2,		\
-        .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x10A5,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	9,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x10A8,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x10A9,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	9,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x10AB,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x10AC,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x10AD,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	9,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x10B4,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x10B0,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x10B2,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xC,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1000,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1001,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1020,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1021,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1028,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1029,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1030,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1031,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1038,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1039,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1040,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1041,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1048,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1049,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1050,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1051,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1058,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1059,		\
-        .SIDFlags	=	0,		\
-        .Count	=	1,		\
-        .SIDType	=	1,		\
-        .Vmid	=	0xD,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1060,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1068,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1070,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x107A,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
-        .Vmid	=	3,		\
-        .CBIndex	=	0,		\
-    },		\
-    {		\
-        .SIDBase	=	0x1078,		\
-        .SIDFlags	=	0x1C,		\
-        .Count	=	1,		\
-        .SIDType	=	2,		\
         .Vmid	=	3,		\
         .CBIndex	=	0,		\
     },		\
@@ -1022,9 +1782,81 @@ typedef struct _SMMUNODE_APPSTCU{
         .CBIndex	=	0,		\
     },		\
     {		\
-        .SIDBase	=	0x1C00,		\
+        .SIDBase	=	0x1C20,		\
+        .SIDFlags	=	0,		\
+        .Count	=	32,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1C40,		\
+        .SIDFlags	=	0,		\
+        .Count	=	64,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1C80,		\
+        .SIDFlags	=	0,		\
+        .Count	=	2,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1C82,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	25,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1C83,		\
+        .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	24,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1C84,		\
+        .SIDFlags	=	0,		\
+        .Count	=	4,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1C88,		\
+        .SIDFlags	=	0,		\
+        .Count	=	8,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1C90,		\
         .SIDFlags	=	0,		\
         .Count	=	16,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1CA0,		\
+        .SIDFlags	=	0,		\
+        .Count	=	32,		\
+        .SIDType	=	1,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x1CC0,		\
+        .SIDFlags	=	0,		\
+        .Count	=	64,		\
         .SIDType	=	1,		\
         .Vmid	=	3,		\
         .CBIndex	=	0,		\
@@ -1032,11 +1864,6 @@ typedef struct _SMMUNODE_APPSTCU{
 },		\
 }
 
-typedef struct _IMPLREGISTER {
-    UINT64 PhysicalAddress;
-    UINT32 Value;
-    UINT32 Reserved;
-}IMPLREGISTER;
 
 
 
@@ -1062,8 +1889,7 @@ typedef struct _SMMUNODE_GFX{
     UINT32 SIDMappingsEntrySize;
     UINT32 NumSIDMappingsValid;
     UINT32 SIDMappingsOffset;
-    IMPLREGISTER ImplRegisters[4];
-    SIDMAPPING SIDMappings[12];
+    SIDMAPPING SIDMappings[30];
 }SMMUNODE_GFX;
 
 #define SMMUNODE_GFX_VAR  {		\
@@ -1071,49 +1897,27 @@ typedef struct _SMMUNODE_GFX{
 .Revision	=	0x1,		\
 .Reserved	=	0x0,		\
 .SmmuFlags	=	0x1,		\
-.BaseAddress	=	0x05040000,		\
-.PowerPhyAddress	=	0x0017C02C,		\
+.BaseAddress	=	0x3da0000,		\
+.PowerPhyAddress	=	0x03d92004,		\
 .PowerCtrlBmsk	=	0x1,		\
 .PowerCtrlPollBmsk	=	0x80000000,		\
-.ClkPhyAddress	=	0x0017C000,		\
+.ClkPhyAddress	=	0x03d92000,		\
 .ClkCtrlBmsk	=	0x1,		\
 .ClkCtrlPollBmsk	=	0x80000000,		\
 .HaltPhyAddress	=	0x0,		\
 .HaltWriteBmsk	=	0x0,		\
 .HaltPollBmsk	=	0x0,		\
-.NumImplDefinedRegisters	=	4,		\
+.NumImplDefinedRegisters	=	0,		\
 .ImplDefinedRegistersEntrySize	=	16,		\
-.ImplDefinedRegistersOffset	=	offsetof(SMMUNODE_GFX,ImplRegisters),		\
-.NumSIDMappingsMax	=	12,		\
+.ImplDefinedRegistersOffset	=	0,		\
+.NumSIDMappingsMax	=	30,		\
 .SIDMappingsEntrySize	=	10,		\
-.NumSIDMappingsValid	=	6,		\
+.NumSIDMappingsValid	=	14,		\
 .SIDMappingsOffset	=	offsetof(SMMUNODE_GFX,SIDMappings),		\
-.ImplRegisters	={		\
-    {		\
-        .PhysicalAddress	=	0x5046000,		\
-        .Value	=	0x3270,		\
-        .Reserved	=	0,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x5046060,		\
-        .Value	=	0x1055,		\
-        .Reserved	=	0,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x5046800,		\
-        .Value	=	0x6,		\
-        .Reserved	=	0,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x5046900,		\
-        .Value	=	0x3ff,		\
-        .Reserved	=	0,		\
-    },		\
-},		\
 .SIDMappings	={		\
     {		\
         .SIDBase	=	0,		\
-        .SIDFlags	=	1,		\
+        .SIDFlags	=	61,		\
         .Count	=	1,		\
         .SIDType	=	2,		\
         .Vmid	=	3,		\
@@ -1121,10 +1925,18 @@ typedef struct _SMMUNODE_GFX{
     },		\
     {		\
         .SIDBase	=	1,		\
-        .SIDFlags	=	0,		\
-        .Count	=	2,		\
+        .SIDFlags	=	61,		\
+        .Count	=	1,		\
         .SIDType	=	2,		\
-        .Vmid	=	0xA,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	2,		\
+    },		\
+    {		\
+        .SIDBase	=	2,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	10,		\
         .CBIndex	=	0,		\
     },		\
     {		\
@@ -1132,12 +1944,12 @@ typedef struct _SMMUNODE_GFX{
         .SIDFlags	=	0,		\
         .Count	=	1,		\
         .SIDType	=	1,		\
-        .Vmid	=	0x26,		\
+        .Vmid	=	38,		\
         .CBIndex	=	0,		\
     },		\
     {		\
         .SIDBase	=	4,		\
-        .SIDFlags	=	0,		\
+        .SIDFlags	=	60,		\
         .Count	=	1,		\
         .SIDType	=	2,		\
         .Vmid	=	3,		\
@@ -1145,7 +1957,7 @@ typedef struct _SMMUNODE_GFX{
     },		\
     {		\
         .SIDBase	=	5,		\
-        .SIDFlags	=	0,		\
+        .SIDFlags	=	60,		\
         .Count	=	1,		\
         .SIDType	=	2,		\
         .Vmid	=	3,		\
@@ -1153,7 +1965,63 @@ typedef struct _SMMUNODE_GFX{
     },		\
     {		\
         .SIDBase	=	7,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x400,		\
+        .SIDFlags	=	61,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x401,		\
+        .SIDFlags	=	61,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	2,		\
+    },		\
+    {		\
+        .SIDBase	=	0x402,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	10,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x403,		\
         .SIDFlags	=	0,		\
+        .Count	=	1,		\
+        .SIDType	=	1,		\
+        .Vmid	=	38,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x404,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x405,		\
+        .SIDFlags	=	60,		\
+        .Count	=	1,		\
+        .SIDType	=	2,		\
+        .Vmid	=	3,		\
+        .CBIndex	=	0,		\
+    },		\
+    {		\
+        .SIDBase	=	0x407,		\
+        .SIDFlags	=	60,		\
         .Count	=	1,		\
         .SIDType	=	2,		\
         .Vmid	=	3,		\
