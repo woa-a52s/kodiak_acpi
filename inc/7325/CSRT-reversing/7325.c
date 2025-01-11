@@ -2255,49 +2255,336 @@ C0 1C -> dec: 7360, hex: 0x1CC0  // SIDBase
 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 
+//
+// SMCHANDLERNODE
+//
+
+// #define SMCHANDLERNODE_TZ_PIL_INIT_ID  {		\
+
+10 00 00 00     // SMCEntryNodeSize
+01 00           // Revision 1
+00 00           // Reserved0 0
+01 02 00 42     // SMCId 0x42000201
+02              // Category 2
+01              // IsSerialized 1
+00 00           // Reserved1
+
+// #define SMCHANDLERNODE_TZ_PIL_MEM_ID  {		\
+
+10 00 00 00     // SMCEntryNodeSize
+01 00           // Revision 1
+00 00           // Reserved0 0
+02 02 00 42     // SMCId 0x42000202
+02              // Category 2
+01              // IsSerialized 1
+00 00           // Reserved1
+
+// #define SMCHANDLERNODE_TZ_PIL_AUTH_RESET_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+05 02 00 42 -> dec: 1107296773, hex: 0x42000205
+02          -> dec: 2, hex: 0x2
+01          -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_PIL_UNLOCK_XPU_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+06 02 00 42 -> dec: 1107296774, hex: 0x42000206
+02          -> dec: 2, hex: 0x2
+01          -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_SUBSYS_SET_STATE_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+0A 01 00 42 -> dec: 1107296522, hex: 0x4200010A
+02          -> dec: 2, hex: 0x2
+01          -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_MEM_PROTECT_VIDEO_VAR  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+08 0C 00 42 -> dec: 1107299336, hex: 0x42000C08
+02          -> dec: 2, hex: 0x2
+01          -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_PIL_IS_SUBSYS_SUPPORTED_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+07 02 00 42 -> dec: 1107296775, hex: 0x42000207
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_PIL_IS_SUBSYS_MANDATED_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+08 02 00 42 -> dec: 1107296776, hex: 0x42000208
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_MEM_PROTECT_TAGVM  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+17 0C 00 42 -> dec: 1107299351, hex: 0x42000C17
+00          -> dec: 0, hex: 0x0
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_MEM_PROTECT_SD_CTRL  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+0F 0C 00 42 -> dec: 1107299343, hex: 0x42000C0F
+00          -> dec: 0, hex: 0x0
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_ASSIGN_IO_RANGE  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+19 0C 00 42 -> dec: 1107299353, hex: 0x42000C19
+00          -> dec: 0, hex: 0x0
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_HYP_PRNG_GETDATA_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+02 0A 00 42 -> dec: 1107298818, hex: 0x42000A02
+00          -> dec: 0, hex: 0x0
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_INFO_IS_SVC_AVAILABLE_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+01 06 00 42 -> dec: 1107297793, hex: 0x42000601
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_POWER_COLLAPSE_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+02 01 00 42 -> dec: 1107296514, hex: 0x42000102
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_DUMP_REQUEST_CACHE_DUMP_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+05 03 00 42 -> dec: 1107297029, hex: 0x42000305
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_DUMP_SECURITY_ALLOWS_MEM_DUMP_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+10 03 00 C2 -> dec: 3254780688, hex: 0xC2000310
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_IO_ACCESS_READ_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+01 05 00 42 -> dec: 1107297537, hex: 0x42000501
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_IO_ACCESS_WRITE_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+02 05 00 42 -> dec: 1107297538, hex: 0x42000502
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_POWER_SPMI_DISABLE_BUS_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+02 09 00 42 -> dec: 1107298562, hex: 0x42000902
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_CONFIG_HW_FOR_RAM_DUMP_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+09 01 00 42 -> dec: 1107296521, hex: 0x42000109
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_CONFIG_CPU_ERRATA_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+12 01 00 42 -> dec: 1107296530, hex: 0x42000112
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_DUMP_RPM_ONLINE_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+0F 03 00 42 -> dec: 1107297039, hex: 0x4200030F
+02          -> dec: 2, hex: 0x2
+01          -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_RESTORE_SEC_CFG  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+02 0C 00 42 -> dec: 1107299330, hex: 0x42000C02
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_DUMP_SECURITY_ALLOWS_MEM_DUMP_LEGACY_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+0B 03 00 42 -> dec: 1107297035, hex: 0x4200030B
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_HYP_MEM_PROTECT_ASSIGN  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+16 0C 00 42 -> dec: 1107299350, hex: 0x42000C16
+02          -> dec: 2, hex: 0x2
+01          -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_TREE_SKEXT_INFO_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+0A 00 00 70 -> dec: 1879048202, hex: 0x7000000A
+02          -> dec: 2, hex: 0x2
+01          -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_SK_HIBERNATE  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+0A 09 00 42 -> dec: 1107298570, hex: 0x4200090A
+02          -> dec: 2, hex: 0x2
+01          -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_PROPRIETARY_1  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+02 0F 00 42 -> dec: 1107300098, hex: 0x42000F02
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_PROPRIETARY_2  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+03 0F 00 42 -> dec: 1107300099, hex: 0x42000F03
+03          -> dec: 3, hex: 0x3
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+// #define SMCHANDLERNODE_TZ_SECURE_MOR_REGIONS_ID  {		\
+
+10 00 00 00 -> dec: 16, hex: 0x10
+01 00       -> dec: 1, hex: 0x1
+00 00       -> dec: 0, hex: 0x0
+0B 09 00 42 -> dec: 1107298571, hex: 0x4200090B
+00          -> dec: 0, hex: 0x0
+00          -> dec: 0, hex: 0x0
+00 00       -> dec: 0, hex: 0x0
+
+//
+// SMCHANDLERNODE END
+//
 
 
-00 00 00 00 00 00 00 00 00 00
+//
+// typedef struct _SKEXTENSIONNODE_QCSKEXTENSION{
+//
 
+10 58 00 00             // SKExtTableSize
+02 00                   // Revision
+00 00                   // Reserved
+34 12 00 00 00 00 00 00 // SKExtId
+0A 00 00 00             // SMCIDsHandleArraySize
+04 00 00 00             // SMCIDsHandleArrayEntrySize
+5C 00 00 00             // SMCIDsHandleArrayOffset
+0D 00 00 00             // SMCIDsOriginateArraySize
+04 00 00 00             // SMCIDsOriginateArrayEntrySize
+84 00 00 00             // SMCIDsOriginateArrayOffset
+36 00 00 00             // AddressRangeArraySize
 10 00 00 00
-01 00
-00 00
-01 02 00 42
-
-02 01 00 00 10 00 00 00 01 00
-00 00 02 02 00 42 02 01 00 00 10 00 00 00 01 00
-00 00 05 02 00 42 02 01 00 00 10 00 00 00 01 00
-00 00 06 02 00 42 02 01 00 00 10 00 00 00 01 00
-00 00 0A 01 00 42 02 01 00 00 10 00 00 00 01 00
-00 00 08 0C 00 42 02 01 00 00 10 00 00 00 01 00
-00 00 07 02 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 08 02 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 17 0C 00 42 00 00 00 00 10 00 00 00 01 00
-00 00 0F 0C 00 42 00 00 00 00 10 00 00 00 01 00
-00 00 19 0C 00 42 00 00 00 00 10 00 00 00 01 00
-00 00 02 0A 00 42 00 00 00 00 10 00 00 00 01 00
-00 00 01 06 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 02 01 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 05 03 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 10 03 00 C2 03 00 00 00 10 00 00 00 01 00
-00 00 01 05 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 02 05 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 02 09 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 09 01 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 12 01 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 0F 03 00 42 02 01 00 00 10 00 00 00 01 00
-00 00 02 0C 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 0B 03 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 16 0C 00 42 02 01 00 00 10 00 00 00 01 00
-00 00 0A 00 00 70 02 01 00 00 10 00 00 00 01 00
-00 00 0A 09 00 42 02 01 00 00 10 00 00 00 01 00
-00 00 02 0F 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 03 0F 00 42 03 00 00 00 10 00 00 00 01 00
-00 00 0B 09 00 42 00 00 00 00 10 58 00 00 02 00
-00 00 34 12 00 00 00 00 00 00 0A 00 00 00 04 00
-00 00 5C 00 00 00 0D 00 00 00 04 00 00 00 84 00
-00 00 36 00 00 00 10 00 00 00 B8 00 00 00 04 00
-00 00 04 00 00 00 18 04 00 00 28 04 00 00 88 13
+B8 00 00 00
+04 00 00 00
+04 00 00 00
+18 04 00 00
+28 04 00 00 88 13
 00 00 18 00 00 00 04 00 00 00 B0 17 00 00 10 18
 00 00 00 40 00 00 01 02 00 42 02 02 00 42 05 02
 00 42 06 02 00 42 0F 03 00 42 0A 01 00 42 08 0C
@@ -2362,6 +2649,8 @@ C0 1C -> dec: 7360, hex: 0x1CC0  // SIDBase
 00 00 01 00 00 00 0C 00 00 00 08 00 00 00 0B 00
 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00
 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
