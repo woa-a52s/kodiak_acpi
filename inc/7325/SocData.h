@@ -2511,16 +2511,6 @@ typedef struct _SMCHANDLERNODE{
     UINT16 Reserved1;
 }SMCHANDLERNODE;
 
-#define SMCHANDLERNODE_HYP_MEM_PROTECT_ASSIGN  {		\
-.SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
-.Revision	=	0x1,		\
-.Reserved0	=	0,		\
-.SMCId	=	0x42000C16,		\
-.Category	=	2,		\
-.IsSerialized	=	1,		\
-.Reserved1	=	0,		\
-}
-
 #define SMCHANDLERNODE_TZ_PIL_INIT_ID  {		\
 .SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
 .Revision	=	0x1,		\
@@ -2551,11 +2541,11 @@ typedef struct _SMCHANDLERNODE{
 .Reserved1	=	0x0,		\
 }
 
-#define SMCHANDLERNODE_TZ_DUMP_RPM_ONLINE_ID  {		\
+#define SMCHANDLERNODE_TZ_PIL_UNLOCK_XPU_ID  {		\
 .SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
 .Revision	=	0x1,		\
 .Reserved0	=	0x0,		\
-.SMCId	=	0x4200030F,		\
+.SMCId	=	0x42000206,		\
 .Category	=	2,		\
 .IsSerialized	=	1,		\
 .Reserved1	=	0x0,		\
@@ -2581,54 +2571,24 @@ typedef struct _SMCHANDLERNODE{
 .Reserved1	=	0x0,		\
 }
 
-#define SMCHANDLERNODE_TZ_PIL_UNLOCK_XPU_ID  {		\
+#define SMCHANDLERNODE_TZ_PIL_IS_SUBSYS_SUPPORTED_ID  {		\
 .SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
 .Revision	=	0x1,		\
 .Reserved0	=	0x0,		\
-.SMCId	=	0x42000206,		\
-.Category	=	2,		\
-.IsSerialized	=	1,		\
+.SMCId	=	0x42000207,		\
+.Category	=	3,		\
+.IsSerialized	=	0,		\
 .Reserved1	=	0x0,		\
 }
 
-#define SMCHANDLERNODE_TZ_TREE_SKEXT_INFO_ID  {		\
+#define SMCHANDLERNODE_TZ_PIL_IS_SUBSYS_MANDATED_ID  {		\
 .SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
 .Revision	=	0x1,		\
-.Reserved0	=	0,		\
-.SMCId	=	0x7000000A,		\
-.Category	=	2,		\
-.IsSerialized	=	1,		\
-.Reserved1	=	0,		\
-}
-
-#define SMCHANDLERNODE_SK_HIBERNATE  {		\
-.SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
-.Revision	=	0x1,		\
-.Reserved0	=	0,		\
-.SMCId	=	0x4200090A,		\
-.Category	=	2,		\
-.IsSerialized	=	1,		\
-.Reserved1	=	0,		\
-}
-
-#define SMCHANDLERNODE_PROPRIETARY_1  {		\
-.SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
-.Revision	=	0x1,		\
-.Reserved0	=	0,		\
-.SMCId	=	0x42000F02,		\
+.Reserved0	=	0x0,		\
+.SMCId	=	0x42000208,		\
 .Category	=	3,		\
 .IsSerialized	=	0,		\
-.Reserved1	=	0,		\
-}
-
-#define SMCHANDLERNODE_PROPRIETARY_2  {		\
-.SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
-.Revision	=	0x1,		\
-.Reserved0	=	0,		\
-.SMCId	=	0x42000F03,		\
-.Category	=	3,		\
-.IsSerialized	=	0,		\
-.Reserved1	=	0,		\
+.Reserved1	=	0x0,		\
 }
 
 #define SMCHANDLERNODE_TZ_MEM_PROTECT_TAGVM  {		\
@@ -2666,16 +2626,6 @@ typedef struct _SMCHANDLERNODE{
 .Revision	=	0x1,		\
 .Reserved0	=	0x0,		\
 .SMCId	=	0x42000A02,		\
-.Category	=	0,		\
-.IsSerialized	=	0,		\
-.Reserved1	=	0x0,		\
-}
-
-#define SMCHANDLERNODE_TZ_SECURE_MOR_REGIONS_ID  {		\
-.SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
-.Revision	=	0x1,		\
-.Reserved0	=	0x0,		\
-.SMCId	=	0x4200090B,		\
 .Category	=	0,		\
 .IsSerialized	=	0,		\
 .Reserved1	=	0x0,		\
@@ -2771,23 +2721,13 @@ typedef struct _SMCHANDLERNODE{
 .Reserved1	=	0x0,		\
 }
 
-#define SMCHANDLERNODE_TZ_PIL_IS_SUBSYS_SUPPORTED_ID  {		\
+#define SMCHANDLERNODE_TZ_DUMP_RPM_ONLINE_ID  {		\
 .SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
 .Revision	=	0x1,		\
 .Reserved0	=	0x0,		\
-.SMCId	=	0x42000207,		\
-.Category	=	3,		\
-.IsSerialized	=	0,		\
-.Reserved1	=	0x0,		\
-}
-
-#define SMCHANDLERNODE_TZ_PIL_IS_SUBSYS_MANDATED_ID  {		\
-.SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
-.Revision	=	0x1,		\
-.Reserved0	=	0x0,		\
-.SMCId	=	0x42000208,		\
-.Category	=	3,		\
-.IsSerialized	=	0,		\
+.SMCId	=	0x4200030F,		\
+.Category	=	2,		\
+.IsSerialized	=	1,		\
 .Reserved1	=	0x0,		\
 }
 
@@ -2809,6 +2749,66 @@ typedef struct _SMCHANDLERNODE{
 .Category	=	3,		\
 .IsSerialized	=	0,		\
 .Reserved1	=	0,		\
+}
+
+#define SMCHANDLERNODE_HYP_MEM_PROTECT_ASSIGN  {		\
+.SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
+.Revision	=	0x1,		\
+.Reserved0	=	0,		\
+.SMCId	=	0x42000C16,		\
+.Category	=	2,		\
+.IsSerialized	=	1,		\
+.Reserved1	=	0,		\
+}
+
+#define SMCHANDLERNODE_TZ_TREE_SKEXT_INFO_ID  {		\
+.SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
+.Revision	=	0x1,		\
+.Reserved0	=	0,		\
+.SMCId	=	0x7000000A,		\
+.Category	=	2,		\
+.IsSerialized	=	1,		\
+.Reserved1	=	0,		\
+}
+
+#define SMCHANDLERNODE_SK_HIBERNATE  {		\
+.SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
+.Revision	=	0x1,		\
+.Reserved0	=	0,		\
+.SMCId	=	0x4200090A,		\
+.Category	=	2,		\
+.IsSerialized	=	1,		\
+.Reserved1	=	0,		\
+}
+
+#define SMCHANDLERNODE_PROPRIETARY_1  {		\
+.SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
+.Revision	=	0x1,		\
+.Reserved0	=	0,		\
+.SMCId	=	0x42000F02,		\
+.Category	=	3,		\
+.IsSerialized	=	0,		\
+.Reserved1	=	0,		\
+}
+
+#define SMCHANDLERNODE_PROPRIETARY_2  {		\
+.SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
+.Revision	=	0x1,		\
+.Reserved0	=	0,		\
+.SMCId	=	0x42000F03,		\
+.Category	=	3,		\
+.IsSerialized	=	0,		\
+.Reserved1	=	0,		\
+}
+
+#define SMCHANDLERNODE_TZ_SECURE_MOR_REGIONS_ID  {		\
+.SMCEntryNodeSize	=	sizeof(SMCHANDLERNODE),		\
+.Revision	=	0x1,		\
+.Reserved0	=	0x0,		\
+.SMCId	=	0x4200090B,		\
+.Category	=	0,		\
+.IsSerialized	=	0,		\
+.Reserved1	=	0x0,		\
 }
 
 typedef struct _SMCID {
@@ -2854,17 +2854,18 @@ typedef struct _SKEXTENSIONNODE_QCSKEXTENSION{
     UINT32 SubsystemIDArrayEntrySize;
     UINT32 SubsystemIDArrayOffset;
     UINT32 SKExtParamsOffset;
+    UINT32 Unknown1;
+    UINT32 Unknown2;
     UINT32 SKExtParamsSize;
-    SMCID SMCIDsHandleArray[10];
+    SMCID SMCIDsHandleArray[13];
     SMCID SMCIDsOriginateArray[13];
-    ADDRESSRANGE AddressRangeArray[26];
+    ADDRESSRANGE AddressRangeArray[54];
     SID SubsystemIDArray[4];
-    SKEXTNPARAMBYTE SKExtParams[4];
 }SKEXTENSIONNODE_QCSKEXTENSION;
 
 #define SKEXTENSIONNODE_QCSKEXTENSION_VAR  {		\
 .SKExtTableSize	=	sizeof(SKEXTENSIONNODE_QCSKEXTENSION),		\
-.Revision	=	0x1,		\
+.Revision	=	0x2,		\
 .Reserved	=	0x0,		\
 .SKExtId	=	0x1234,		\
 .SMCIDsHandleArraySize	=	10,		\
@@ -2873,15 +2874,26 @@ typedef struct _SKEXTENSIONNODE_QCSKEXTENSION{
 .SMCIDsOriginateArraySize	=	13,		\
 .SMCIDsOriginateArrayEntrySize	=	4,		\
 .SMCIDsOriginateArrayOffset	=	offsetof(SKEXTENSIONNODE_QCSKEXTENSION,SMCIDsOriginateArray),		\
-.AddressRangeArraySize	=	26,		\
+.AddressRangeArraySize	=	54,		\
 .AddressRangeArrayEntrySize	=	16,		\
 .AddressRangeArrayOffset	=	offsetof(SKEXTENSIONNODE_QCSKEXTENSION,AddressRangeArray),		\
 .SubsystemIDArraySize	=	4,		\
 .SubsystemIDArrayEntrySize	=	4,		\
 .SubsystemIDArrayOffset	=	offsetof(SKEXTENSIONNODE_QCSKEXTENSION,SubsystemIDArray),		\
-.SKExtParamsOffset	=	offsetof(SKEXTENSIONNODE_QCSKEXTENSION,SKExtParams),		\
+.SKExtParamsOffset	=	0x428,		\
+.Unknown1 = 5000, \
+.Unknown2 = 24, \
 .SKExtParamsSize	=	4,		\
 .SMCIDsHandleArray	={		\
+    {		\
+        .Value	=	0x17b0,		\
+    },		\
+    {		\
+        .Value	=	0x1810,		\
+    },		\
+    {		\
+        .Value	=	0x4000,		\
+    },		\
     {		\
         .Value	=	0x42000201,		\
     },		\
@@ -2956,107 +2968,219 @@ typedef struct _SKEXTENSIONNODE_QCSKEXTENSION{
 },		\
 .AddressRangeArray	={		\
     {		\
-        .PhysicalAddress	=	0x01e04000,		\
-        .Size	=	0xC000,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x1e5e000,		\
+        .PhysicalAddress	=	0x3000000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x0aac0000,		\
-        .Size	=	0x25000,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x17300000,		\
-        .Size	=	0x4000,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x17000000,		\
-        .Size	=	0x48000,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x0503C000,		\
+        .PhysicalAddress	=	0x3555000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x05060000,		\
+        .PhysicalAddress	=	0x355B000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x05400000,		\
-        .Size	=	0x40000,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x05800000,		\
-        .Size	=	0x4000,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x5f19000,		\
+        .PhysicalAddress	=	0xAAC1000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x5f05000,		\
+        .PhysicalAddress	=	0xAAC2000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x5f1a000,		\
+        .PhysicalAddress	=	0xAAB0000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x5f1f000,		\
+        .PhysicalAddress	=	0x147000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x5f0b000,		\
+        .PhysicalAddress	=	0x3383000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x04080000,		\
-        .Size	=	0x4000,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x08000000,		\
-        .Size	=	0x400000,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x00145000,		\
+        .PhysicalAddress	=	0x3389000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x01f40000,		\
-        .Size	=	0x40000,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x0C2A0000,		\
-        .Size	=	0x60000,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x00147000,		\
+        .PhysicalAddress	=	0x338A000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x0b2e0000,		\
+        .PhysicalAddress	=	0x338C000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x00163000,		\
+        .PhysicalAddress	=	0x3C00000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x0c210000,		\
-        .Size	=	0x80000,		\
-    },		\
-    {		\
-        .PhysicalAddress	=	0x172000,		\
+        .PhysicalAddress	=	0x3C02000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x1881000,		\
+        .PhysicalAddress	=	0x3C04000,		\
         .Size	=	0x1000,		\
     },		\
     {		\
-        .PhysicalAddress	=	0x1882000,		\
+        .PhysicalAddress	=	0x3C40000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3941000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3C0A000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3396000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x331E000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3300000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x1F62000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xB5E1000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xC2D0000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x145000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x1F74000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xC2E0000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3D3C000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xA300000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x8A00000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3917000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3918000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x391D000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3910000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3911000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3912000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3919000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3916000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3915000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3940000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3901000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x339B000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x19D000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x1F77000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xC2C0000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xA00B000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xA004000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xA010000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xA016000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xA318000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xA341000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x3D81000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xAAB1000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0x780000,		\
+        .Size	=	0x1000,		\
+    },		\
+    {		\
+        .PhysicalAddress	=	0xA350000,		\
         .Size	=	0x1000,		\
     },		\
 },		\
@@ -3072,20 +3196,6 @@ typedef struct _SKEXTENSIONNODE_QCSKEXTENSION{
     },		\
     {		\
         .Value	=	11,		\
-    },		\
-},		\
-.SKExtParams	={		\
-    {		\
-        .bytevalue	=	0x8,		\
-    },		\
-    {		\
-        .bytevalue	=	0x9,		\
-    },		\
-    {		\
-        .bytevalue	=	0xA,		\
-    },		\
-    {		\
-        .bytevalue	=	0xB,		\
     },		\
 },		\
 }
@@ -3120,7 +3230,7 @@ typedef struct _RESOURCEDESCRIPTOR_RD{
     VMCONFIGNODE VMConfigNodes[33];
     UINT8 Pad1;
     unsigned char Padding[19999];
-    SMCHANDLERNODE SMCIDNodes[28];
+    SMCHANDLERNODE SMCIDNodes[30];
     SKEXTENSIONNODE_QCSKEXTENSION SKExtensionTables_qcskextension;
     ACCESSCONTROLNODE AccessControlBuffer[20000];
 }RESOURCEDESCRIPTOR_RD;
@@ -3149,7 +3259,7 @@ typedef struct _RESOURCEDESCRIPTOR_RD{
 .VMConfigNodes	=	{VMCONFIGNODE_HLOS,VMCONFIGNODE_HYP,VMCONFIGNODE_SSC_Q6_ELF,VMCONFIGNODE_ADSP_Q6_ELF,VMCONFIGNODE_SSC_HLOS,VMCONFIGNODE_CP_BITSTREAM,VMCONFIGNODE_PROPRIETARY_1,VMCONFIGNODE_CP_PIXEL,VMCONFIGNODE_CP_NON_PIXEL,VMCONFIGNODE_VIDEO_FW,VMCONFIGNODE_PROPRIETARY_2,VMCONFIGNODE_CP_CAMERA,VMCONFIGNODE_HLOS_UNMAPPED,VMCONFIGNODE_MSS_MSA,VMCONFIGNODE_MSS_NONMSA,VMCONFIGNODE_CP_SECDISP,VMCONFIGNODE_LPASS,VMCONFIGNODE_WLAN,VMCONFIGNODE_WLAN_COPYENG,VMCONFIGNODE_SPSS_SP,VMCONFIGNODE_SPSS_NONSP,VMCONFIGNODE_SHARED_GPU_PIL,VMCONFIGNODE_CDSP_Q6_ELF,VMCONFIGNODE_HLOS_GSI,VMCONFIGNODE_ADSP_SHARED,VMCONFIGNODE_SPSS_SP_SHARED,VMCONFIGNODE_SPSS_HLOS_SHARED,VMCONFIGNODE_ADSP_HEAP,VMCONFIGNODE_NPU_FW,VMCONFIGNODE_CP_NPU,VMCONFIGNODE_CP_CDSP,VMCONFIGNODE_MSS_NAV,VMCONFIGNODE_PROPRIETARY_3 },		\
 .Pad1 = 1,  \
 .Padding = {0}, /* Initialize padding to 0 */ \
-.SMCIDNodes	=	{SMCHANDLERNODE_TZ_PIL_INIT_ID,SMCHANDLERNODE_TZ_PIL_MEM_ID,SMCHANDLERNODE_TZ_PIL_AUTH_RESET_ID,SMCHANDLERNODE_TZ_PIL_UNLOCK_XPU_ID,SMCHANDLERNODE_TZ_SUBSYS_SET_STATE_ID,SMCHANDLERNODE_TZ_MEM_PROTECT_VIDEO_VAR,SMCHANDLERNODE_TZ_PIL_IS_SUBSYS_SUPPORTED_ID,SMCHANDLERNODE_TZ_PIL_IS_SUBSYS_MANDATED_ID,SMCHANDLERNODE_TZ_MEM_PROTECT_TAGVM,SMCHANDLERNODE_TZ_MEM_PROTECT_SD_CTRL,SMCHANDLERNODE_TZ_ASSIGN_IO_RANGE,SMCHANDLERNODE_HYP_PRNG_GETDATA_ID,SMCHANDLERNODE_TZ_INFO_IS_SVC_AVAILABLE_ID,SMCHANDLERNODE_TZ_POWER_COLLAPSE_ID,SMCHANDLERNODE_TZ_DUMP_REQUEST_CACHE_DUMP_ID,SMCHANDLERNODE_TZ_DUMP_SECURITY_ALLOWS_MEM_DUMP_ID,SMCHANDLERNODE_TZ_IO_ACCESS_READ_ID,SMCHANDLERNODE_TZ_IO_ACCESS_WRITE_ID,SMCHANDLERNODE_TZ_POWER_SPMI_DISABLE_BUS_ID,SMCHANDLERNODE_TZ_CONFIG_HW_FOR_RAM_DUMP_ID,SMCHANDLERNODE_TZ_CONFIG_CPU_ERRATA_ID,SMCHANDLERNODE_TZ_DUMP_RPM_ONLINE_ID,SMCHANDLERNODE_TZ_RESTORE_SEC_CFG,SMCHANDLERNODE_TZ_DUMP_SECURITY_ALLOWS_MEM_DUMP_LEGACY_ID,SMCHANDLERNODE_HYP_MEM_PROTECT_ASSIGN,SMCHANDLERNODE_TZ_TREE_SKEXT_INFO_ID,SMCHANDLERNODE_SK_HIBERNATE,SMCHANDLERNODE_TZ_SECURE_MOR_REGIONS_ID	},		\
+.SMCIDNodes	=	{SMCHANDLERNODE_TZ_PIL_INIT_ID,SMCHANDLERNODE_TZ_PIL_MEM_ID,SMCHANDLERNODE_TZ_PIL_AUTH_RESET_ID,SMCHANDLERNODE_TZ_PIL_UNLOCK_XPU_ID,SMCHANDLERNODE_TZ_SUBSYS_SET_STATE_ID,SMCHANDLERNODE_TZ_MEM_PROTECT_VIDEO_VAR,SMCHANDLERNODE_TZ_PIL_IS_SUBSYS_SUPPORTED_ID,SMCHANDLERNODE_TZ_PIL_IS_SUBSYS_MANDATED_ID,SMCHANDLERNODE_TZ_MEM_PROTECT_TAGVM,SMCHANDLERNODE_TZ_MEM_PROTECT_SD_CTRL,SMCHANDLERNODE_TZ_ASSIGN_IO_RANGE,SMCHANDLERNODE_HYP_PRNG_GETDATA_ID,SMCHANDLERNODE_TZ_INFO_IS_SVC_AVAILABLE_ID,SMCHANDLERNODE_TZ_POWER_COLLAPSE_ID,SMCHANDLERNODE_TZ_DUMP_REQUEST_CACHE_DUMP_ID,SMCHANDLERNODE_TZ_DUMP_SECURITY_ALLOWS_MEM_DUMP_ID,SMCHANDLERNODE_TZ_IO_ACCESS_READ_ID,SMCHANDLERNODE_TZ_IO_ACCESS_WRITE_ID,SMCHANDLERNODE_TZ_POWER_SPMI_DISABLE_BUS_ID,SMCHANDLERNODE_TZ_CONFIG_HW_FOR_RAM_DUMP_ID,SMCHANDLERNODE_TZ_CONFIG_CPU_ERRATA_ID,SMCHANDLERNODE_TZ_DUMP_RPM_ONLINE_ID,SMCHANDLERNODE_TZ_RESTORE_SEC_CFG,SMCHANDLERNODE_TZ_DUMP_SECURITY_ALLOWS_MEM_DUMP_LEGACY_ID,SMCHANDLERNODE_HYP_MEM_PROTECT_ASSIGN,SMCHANDLERNODE_TZ_TREE_SKEXT_INFO_ID,SMCHANDLERNODE_SK_HIBERNATE,SMCHANDLERNODE_PROPRIETARY_1,SMCHANDLERNODE_PROPRIETARY_2,SMCHANDLERNODE_TZ_SECURE_MOR_REGIONS_ID	},		\
 .SKExtensionTables_qcskextension	=	SKEXTENSIONNODE_QCSKEXTENSION_VAR		,\
 .AccessControlBuffer	={		\
     {		\
