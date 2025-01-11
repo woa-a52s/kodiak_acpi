@@ -2042,18 +2042,6 @@ typedef struct _VMCONFIGNODE{
     UINT8 VMType;
 }VMCONFIGNODE;
 
-#define VMCONFIGNODE_RPM  {		\
-.SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
-.Revision	=	0x2,		\
-.Reserved1	=	0x0,		\
-.Vmid	=	2,		\
-.Type	=	0,		\
-.Reserved2	=	0x0,		\
-.InputAddressWidth	=	36,		\
-.OutputAddressWidth	=	36,		\
-.VMType	=	2,		\
-}
-
 #define VMCONFIGNODE_HLOS  {		\
 .SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
 .Revision	=	0x2,		\
@@ -2114,11 +2102,11 @@ typedef struct _VMCONFIGNODE{
 .VMType	=	1,		\
 }
 
-#define VMCONFIGNODE_CP_TOUCH  {		\
+#define VMCONFIGNODE_CP_BITSTREAM  {		\
 .SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
 .Revision	=	0x2,		\
 .Reserved1	=	0x0,		\
-.Vmid	=	8,		\
+.Vmid	=	9,		\
 .Type	=	0,		\
 .Reserved2	=	0x0,		\
 .InputAddressWidth	=	36,		\
@@ -2126,11 +2114,11 @@ typedef struct _VMCONFIGNODE{
 .VMType	=	1,		\
 }
 
-#define VMCONFIGNODE_CP_BITSTREAM  {		\
+#define VMCONFIGNODE_PROPRIETARY_1  {		\
 .SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
 .Revision	=	0x2,		\
 .Reserved1	=	0x0,		\
-.Vmid	=	9,		\
+.Vmid	=	0x33,		\
 .Type	=	0,		\
 .Reserved2	=	0x0,		\
 .InputAddressWidth	=	36,		\
@@ -2170,6 +2158,18 @@ typedef struct _VMCONFIGNODE{
 .Type	=	0,		\
 .Reserved2	=	0x0,		\
 .InputAddressWidth	=	32,		\
+.OutputAddressWidth	=	36,		\
+.VMType	=	1,		\
+}
+
+#define VMCONFIGNODE_PROPRIETARY_2  {		\
+.SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
+.Revision	=	0x2,		\
+.Reserved1	=	0x0,		\
+.Vmid	=	0x1F,		\
+.Type	=	0,		\
+.Reserved2	=	0x0,		\
+.InputAddressWidth	=	36,		\
 .OutputAddressWidth	=	36,		\
 .VMType	=	1,		\
 }
@@ -2234,66 +2234,6 @@ typedef struct _VMCONFIGNODE{
 .VMType	=	1,		\
 }
 
-#define VMCONFIGNODE_CP_APP  {		\
-.SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
-.Revision	=	0x2,		\
-.Reserved1	=	0x0,		\
-.Vmid	=	0x12,		\
-.Type	=	0,		\
-.Reserved2	=	0x0,		\
-.InputAddressWidth	=	36,		\
-.OutputAddressWidth	=	36,		\
-.VMType	=	0,		\
-}
-
-#define VMCONFIGNODE_UNMAPPED  {		\
-.SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
-.Revision	=	0x2,		\
-.Reserved1	=	0x0,		\
-.Vmid	=	0x13,		\
-.Type	=	0,		\
-.Reserved2	=	0x0,		\
-.InputAddressWidth	=	36,		\
-.OutputAddressWidth	=	36,		\
-.VMType	=	0,		\
-}
-
-#define VMCONFIGNODE_TZ  {		\
-.SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
-.Revision	=	0x2,		\
-.Reserved1	=	0x0,		\
-.Vmid	=	1,		\
-.Type	=	1,		\
-.Reserved2	=	0x0,		\
-.InputAddressWidth	=	36,		\
-.OutputAddressWidth	=	36,		\
-.VMType	=	0,		\
-}
-
-#define VMCONFIGNODE_TZ_UNMAPPED  {		\
-.SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
-.Revision	=	0x2,		\
-.Reserved1	=	0x0,		\
-.Vmid	=	0x14,		\
-.Type	=	1,		\
-.Reserved2	=	0x0,		\
-.InputAddressWidth	=	36,		\
-.OutputAddressWidth	=	36,		\
-.VMType	=	0,		\
-}
-
-#define VMCONFIGNODE_TZ_STATIC  {		\
-.SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
-.Revision	=	0x2,		\
-.Reserved1	=	0x0,		\
-.Vmid	=	0x15,		\
-.Type	=	1,		\
-.Reserved2	=	0x0,		\
-.InputAddressWidth	=	36,		\
-.OutputAddressWidth	=	36,		\
-.VMType	=	0,		\
-}
-
 #define VMCONFIGNODE_LPASS  {		\
 .SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
 .Revision	=	0x2,		\
@@ -2354,16 +2294,16 @@ typedef struct _VMCONFIGNODE{
 .VMType	=	1,		\
 }
 
-#define VMCONFIGNODE_CP_CAMERA_PREVIEW  {		\
+#define VMCONFIGNODE_SHARED_GPU_PIL  {		\
 .SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
 .Revision	=	0x2,		\
 .Reserved1	=	0x0,		\
-.Vmid	=	0x1D,		\
+.Vmid	=	0x26,		\
 .Type	=	0,		\
 .Reserved2	=	0x0,		\
 .InputAddressWidth	=	36,		\
 .OutputAddressWidth	=	36,		\
-.VMType	=	1,		\
+.VMType	=	0,		\
 }
 
 #define VMCONFIGNODE_CDSP_Q6_ELF  {		\
@@ -2373,7 +2313,7 @@ typedef struct _VMCONFIGNODE{
 .Vmid	=	0x1E,		\
 .Type	=	0,		\
 .Reserved2	=	0x0,		\
-.InputAddressWidth	=	36,		\
+.InputAddressWidth	=	32,		\
 .OutputAddressWidth	=	36,		\
 .VMType	=	1,		\
 }
@@ -2397,7 +2337,7 @@ typedef struct _VMCONFIGNODE{
 .Vmid	=	0x21,		\
 .Type	=	0,		\
 .Reserved2	=	0x0,		\
-.InputAddressWidth	=	36,		\
+.InputAddressWidth	=	32,		\
 .OutputAddressWidth	=	36,		\
 .VMType	=	1,		\
 }
@@ -2408,18 +2348,6 @@ typedef struct _VMCONFIGNODE{
 .Reserved1	=	0x0,		\
 .Vmid	=	0x22,		\
 .Type	=	1,		\
-.Reserved2	=	0x0,		\
-.InputAddressWidth	=	36,		\
-.OutputAddressWidth	=	36,		\
-.VMType	=	1,		\
-}
-
-#define VMCONFIGNODE_KERNEL_PROTECTION  {		\
-.SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
-.Revision	=	0x2,		\
-.Reserved1	=	0x0,		\
-.Vmid	=	0x23,		\
-.Type	=	0,		\
 .Reserved2	=	0x0,		\
 .InputAddressWidth	=	36,		\
 .OutputAddressWidth	=	36,		\
@@ -2448,18 +2376,6 @@ typedef struct _VMCONFIGNODE{
 .InputAddressWidth	=	36,		\
 .OutputAddressWidth	=	36,		\
 .VMType	=	1,		\
-}
-
-#define VMCONFIGNODE_SHARED_GPU_PIL  {		\
-.SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
-.Revision	=	0x2,		\
-.Reserved1	=	0x0,		\
-.Vmid	=	0x26,		\
-.Type	=	0,		\
-.Reserved2	=	0x0,		\
-.InputAddressWidth	=	36,		\
-.OutputAddressWidth	=	36,		\
-.VMType	=	0,		\
 }
 
 #define VMCONFIGNODE_NPU_FW  {		\
@@ -2505,9 +2421,21 @@ typedef struct _VMCONFIGNODE{
 .Vmid	=	0x2B,		\
 .Type	=	0,		\
 .Reserved2	=	0x0,		\
+.InputAddressWidth	=	32,		\
+.OutputAddressWidth	=	32,		\
+.VMType	=	1,		\
+}
+
+#define VMCONFIGNODE_PROPRIETARY_3  {		\
+.SizeofVMConfigNode	=	sizeof(VMCONFIGNODE),		\
+.Revision	=	0x2,		\
+.Reserved1	=	0x0,		\
+.Vmid	=	0x2C,		\
+.Type	=	0,		\
+.Reserved2	=	0x0,		\
 .InputAddressWidth	=	36,		\
 .OutputAddressWidth	=	36,		\
-.VMType	=	1,		\
+.VMType	=	0,		\
 }
 
 typedef struct _SRCVM {
@@ -6400,7 +6328,7 @@ typedef struct _RESOURCEDESCRIPTOR_RD{
     UINT32 ACConfigNodesOffset;
     SMMUNODE_APPSTCU SMMUNodes_appstcu;
     SMMUNODE_GFX SMMUNodes_gfx;
-    VMCONFIGNODE VMConfigNodes[39];
+    VMCONFIGNODE VMConfigNodes[1462];
     VMASSIGNRULE_HLOS_TO_CP_SECDISP VMAssignRules_hlos_to_cp_secdisp;
     VMASSIGNRULE_HLOS_TO_CP_CAMERA VMAssignRules_hlos_to_cp_camera;
     VMASSIGNRULE_HLOS_TO_CP_TOUCH VMAssignRules_hlos_to_cp_touch;
@@ -6471,7 +6399,7 @@ typedef struct _RESOURCEDESCRIPTOR_RD{
     VMASSIGNRULE_HLOS_UNMAP_TO_HYP VMAssignRules_hlos_unmap_to_hyp;
     VMASSIGNRULE_GPU_PIL_TO_HLOS VMAssignRules_gpu_pil_to_hlos;
     VMASSIGNRULE_HYP_TO_HLOS VMAssignRules_hyp_to_hlos;
-    SMCHANDLERNODE SMCIDNodes[28];
+    SMCHANDLERNODE SMCIDNodes[30];
     SKEXTENSIONNODE_QCSKEXTENSION SKExtensionTables_qcskextension;
     ACCESSCONTROLNODE AccessControlBuffer[20000];
 }RESOURCEDESCRIPTOR_RD;
@@ -6485,11 +6413,11 @@ typedef struct _RESOURCEDESCRIPTOR_RD{
 .Reserved	=	0x0,		\
 .NumSMMUNodes	=	2,		\
 .SMMUNodesOffset	=	offsetof(RESOURCEDESCRIPTOR_RD,SMMUNodes_appstcu),		\
-.NumVMConfigNodes	=	39,		\
+.NumVMConfigNodes	=	33,		\
 .VMConfigNodesOffset	=	offsetof(RESOURCEDESCRIPTOR_RD,VMConfigNodes),		\
-.NumVMAssignRules	=	70,		\
+.NumVMAssignRules	=	20000,		\
 .VMAssignRulesOffset	=	offsetof(RESOURCEDESCRIPTOR_RD,VMAssignRules_hlos_to_cp_secdisp),		\
-.NumSMCEntries	=	28,		\
+.NumSMCEntries	=	30,		\
 .SMCEntriesOffset	=	offsetof(RESOURCEDESCRIPTOR_RD,SMCIDNodes),		\
 .NumSKExtTables	=	1,		\
 .SKExtTablesOffset	=	offsetof(RESOURCEDESCRIPTOR_RD,SKExtensionTables_qcskextension),		\
@@ -6497,7 +6425,7 @@ typedef struct _RESOURCEDESCRIPTOR_RD{
 .ACConfigNodesOffset	=	offsetof(RESOURCEDESCRIPTOR_RD,AccessControlBuffer),		\
 .SMMUNodes_appstcu	=	SMMUNODE_APPSTCU_VAR		,\
 .SMMUNodes_gfx	=	SMMUNODE_GFX_VAR		,\
-.VMConfigNodes	=	{VMCONFIGNODE_TZ,VMCONFIGNODE_RPM,VMCONFIGNODE_HLOS,VMCONFIGNODE_HYP,VMCONFIGNODE_SSC_Q6_ELF,VMCONFIGNODE_ADSP_Q6_ELF,VMCONFIGNODE_SSC_HLOS,VMCONFIGNODE_CP_TOUCH,VMCONFIGNODE_CP_BITSTREAM,VMCONFIGNODE_CP_PIXEL,VMCONFIGNODE_CP_NON_PIXEL,VMCONFIGNODE_VIDEO_FW,VMCONFIGNODE_CP_CAMERA,VMCONFIGNODE_HLOS_UNMAPPED,VMCONFIGNODE_MSS_MSA,VMCONFIGNODE_MSS_NONMSA,VMCONFIGNODE_CP_SECDISP,VMCONFIGNODE_CP_APP,VMCONFIGNODE_UNMAPPED,VMCONFIGNODE_TZ_UNMAPPED,VMCONFIGNODE_TZ_STATIC,VMCONFIGNODE_LPASS,VMCONFIGNODE_WLAN,VMCONFIGNODE_WLAN_COPYENG,VMCONFIGNODE_SPSS_SP,VMCONFIGNODE_SPSS_NONSP,VMCONFIGNODE_SHARED_GPU_PIL,VMCONFIGNODE_CP_CAMERA_PREVIEW,VMCONFIGNODE_CDSP_Q6_ELF,VMCONFIGNODE_HLOS_GSI,VMCONFIGNODE_ADSP_SHARED,VMCONFIGNODE_SPSS_SP_SHARED,VMCONFIGNODE_KERNEL_PROTECTION,VMCONFIGNODE_SPSS_HLOS_SHARED,VMCONFIGNODE_ADSP_HEAP,VMCONFIGNODE_NPU_FW,VMCONFIGNODE_CP_NPU,VMCONFIGNODE_CP_CDSP,VMCONFIGNODE_MSS_NAV	},		\
+.VMConfigNodes	=	{VMCONFIGNODE_HLOS,VMCONFIGNODE_HYP,VMCONFIGNODE_SSC_Q6_ELF,VMCONFIGNODE_ADSP_Q6_ELF,VMCONFIGNODE_SSC_HLOS,VMCONFIGNODE_CP_BITSTREAM,VMCONFIGNODE_PROPRIETARY_1,VMCONFIGNODE_CP_PIXEL,VMCONFIGNODE_CP_NON_PIXEL,VMCONFIGNODE_VIDEO_FW,VMCONFIGNODE_PROPRIETARY_2,VMCONFIGNODE_CP_CAMERA,VMCONFIGNODE_HLOS_UNMAPPED,VMCONFIGNODE_MSS_MSA,VMCONFIGNODE_MSS_NONMSA,VMCONFIGNODE_CP_SECDISP,VMCONFIGNODE_LPASS,VMCONFIGNODE_WLAN,VMCONFIGNODE_WLAN_COPYENG,VMCONFIGNODE_SPSS_SP,VMCONFIGNODE_SPSS_NONSP,VMCONFIGNODE_SHARED_GPU_PIL,VMCONFIGNODE_CDSP_Q6_ELF,VMCONFIGNODE_HLOS_GSI,VMCONFIGNODE_ADSP_SHARED,VMCONFIGNODE_SPSS_SP_SHARED,VMCONFIGNODE_SPSS_HLOS_SHARED,VMCONFIGNODE_ADSP_HEAP,VMCONFIGNODE_NPU_FW,VMCONFIGNODE_CP_NPU,VMCONFIGNODE_CP_CDSP,VMCONFIGNODE_MSS_NAV,VMCONFIGNODE_PROPRIETARY_3 },		\
 .VMAssignRules_hlos_to_cp_secdisp	=	VMASSIGNRULE_HLOS_TO_CP_SECDISP_VAR		,\
 .VMAssignRules_hlos_to_cp_camera	=	VMASSIGNRULE_HLOS_TO_CP_CAMERA_VAR		,\
 .VMAssignRules_hlos_to_cp_touch	=	VMASSIGNRULE_HLOS_TO_CP_TOUCH_VAR		,\

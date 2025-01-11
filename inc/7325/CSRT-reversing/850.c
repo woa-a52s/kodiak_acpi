@@ -656,6 +656,7 @@ FF 03 00 00             // Value
 24              // OutputAddressWidth
 02              // VMType
 
+
 0E 00 00 00 02 00 00 00 03 00 00 24
 24 01 0E 00 00 00 02 00 00 00 04 00 00 24 24 01
 0E 00 00 00 02 00 00 00 05 00 00 20 24 01 0E 00
@@ -687,13 +688,95 @@ FF 03 00 00             // Value
 00 24 24 01 0E 00 00 00 02 00 00 00 25 00 00 24
 24 01 0E 00 00 00 02 00 00 00 28 00 00 24 24 01
 0E 00 00 00 02 00 00 00 29 00 00 24 24 01 0E 00
-00 00 02 00 00 00 2A 00 00 24 24 01 0E 00 00 00
-02 00 00 00 2B 00 00 24 24 01 27 00 00 00 01 00
-00 00 01 00 00 00 01 00 00 00 24 00 00 00 01 00
-00 00 02 00 00 00 25 00 00 00 01 00 01 00 03 11
-04 27 00 00 00 01 00 00 00 01 00 00 00 01 00 00
-00 24 00 00 00 01 00 00 00 02 00 00 00 25 00 00
-00 01 00 01 00 03 0D 07 27 00 00 00 01 00 00 00
+00 00 02 00 00 00 2A 00 00 24 24 01
+
+// Last VMCONFIGNODE
+0E 00 00 00     // SizeofVMConfigNode
+02 00           // Revision
+00 00           // Reserved1
+2B              // Vmid
+00              // Type
+00              // Reserved2
+24              // InputAddressWidth
+24              // OutputAddressWidth
+01              // VMType
+
+//
+// VMConfigNodes END
+//
+
+
+//
+// typedef struct _VMASSIGNRULE_HLOS_TO_CP_SECDISP{
+//
+
+
+27 00 00 00 // AssignRuleNodeSize
+01 00       // Revision
+00 00       // Reserved
+01 00 00 00 // SrcVMsCount
+01 00 00 00 // SrcVMsEntrySize
+24 00 00 00 // SrcVMsOffset
+01 00 00 00 // DstVMsCount
+02 00 00 00 // DstVMsEntrySize
+25 00 00 00 // DstVMsOffset
+01          // ClearOnAssign
+00          // ClearOnSecure
+01          // NotifySKExtension
+00          // NotifyTZ
+
+//
+// SrcVMs
+//
+
+03  // Vmid
+
+//
+// DstVMs
+//
+
+11  // Vmid
+04  // Permissions
+
+//
+// _VMASSIGNRULE_HLOS_TO_CP_SECDISP END
+//
+
+
+//
+// typedef struct _VMASSIGNRULE_HLOS_TO_CP_CAMERA{
+//
+
+27 00 00 00 // AssignRuleNodeSize
+01 00       // Revision
+00 00       // Reserved
+01 00 00 00 // SrcVMsCount
+01 00 00 00 // SrcVMsEntrySize
+24 00 00 00 // SrcVMsOffset
+01 00 00 00 // DstVMsCount
+02 00 00 00 // DstVMsEntrySize
+25 00 00 00 // DstVMsOffset
+01          // ClearOnAssign
+00          // ClearOnSecure
+01          // NotifySKExtension
+00          // NotifyTZ
+
+//
+// SrcVMs
+//
+
+
+03          // Vmid
+
+//
+// DstVMs
+//
+
+0D          // Vmid
+07          // Permissions
+
+
+27 00 00 00 01 00 00 00
 01 00 00 00 01 00 00 00 24 00 00 00 01 00 00 00
 02 00 00 00 25 00 00 00 00 00 01 00 03 08 07 27
 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 24
