@@ -105,7 +105,7 @@ ACPI_CSRT_TABLE Csrt = {
     CSRT_RD_SUBTYPE_TIMER,
     1,
     QWdogTimer,
-    0x17980000,  //  Timer base address
+    0x17C10000,  //  Timer base address
     32765,    //  frequency
     32,          //  GSIV 
     .SocData=SOCDTABLE_SOCD_VAR,
